@@ -17,15 +17,15 @@ All rights reserved.
 ### Images
 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/21d85de8-c625-45ac-92d5-312f086d13d2" alt="Yume Home" width="800" />
+<img src="/docs/Yume Home.png" alt="Yume Home" width="800" />
 </p>
 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/ac50d986-5330-45f5-958d-6f9b96e1bcb9" alt="Yume Habits" width="800" />
+<img src="/docs/Yume Habits.png" alt="Yume Habits" width="800" />
 </p>
 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/f2482582-95ad-413f-b671-7768deac7a76" alt="Yume Habits View" width="800" />
+<img src="/docs/Yume Habit View.png" alt="Yume Habits View" width="800" />
 </p>
 
 ---
