@@ -1,3 +1,5 @@
-# yume_kitai
+# Yume Kitai
 
-A new Flutter project.
+Roshin Nishad (c) 2025
+
+Apache License 2.0
