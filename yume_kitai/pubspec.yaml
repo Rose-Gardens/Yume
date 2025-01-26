@@ -16,6 +16,7 @@ dependencies:
   provider: ^6.1.2
   smooth_corner:
     path: smooth_corner/
+  sqflite: ^2.4.1
 
 dev_dependencies:
   flutter_test:
