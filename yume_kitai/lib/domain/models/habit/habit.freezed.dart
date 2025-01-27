@@ -21,6 +21,7 @@ Habit _$HabitFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Habit {
   String get title => throw _privateConstructorUsedError;
+  String get freq => throw _privateConstructorUsedError;
   String get desc => throw _privateConstructorUsedError;
   String get icon => throw _privateConstructorUsedError;
   String get color => throw _privateConstructorUsedError;
@@ -39,7 +40,8 @@ abstract class $HabitCopyWith<$Res> {
   factory $HabitCopyWith(Habit value, $Res Function(Habit) then) =
       _$HabitCopyWithImpl<$Res, Habit>;
   @useResult
-  $Res call({String title, String desc, String icon, String color});
+  $Res call(
+      {String title, String freq, String desc, String icon, String color});
 }
 
 /// @nodoc
@@ -58,6 +60,7 @@ class _$HabitCopyWithImpl<$Res, $Val extends Habit>
   @override
   $Res call({
     Object? title = null,
+    Object? freq = null,
     Object? desc = null,
     Object? icon = null,
     Object? color = null,
@@ -66,6 +69,10 @@ class _$HabitCopyWithImpl<$Res, $Val extends Habit>
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      freq: null == freq
+          ? _value.freq
+          : freq // ignore: cast_nullable_to_non_nullable
               as String,
       desc: null == desc
           ? _value.desc
@@ -90,7 +97,8 @@ abstract class _$$HabitImplCopyWith<$Res> implements $HabitCopyWith<$Res> {
       __$$HabitImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, String desc, String icon, String color});
+  $Res call(
+      {String title, String freq, String desc, String icon, String color});
 }
 
 /// @nodoc
@@ -107,6 +115,7 @@ class __$$HabitImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = null,
+    Object? freq = null,
     Object? desc = null,
     Object? icon = null,
     Object? color = null,
@@ -115,6 +124,10 @@ class __$$HabitImplCopyWithImpl<$Res>
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      freq: null == freq
+          ? _value.freq
+          : freq // ignore: cast_nullable_to_non_nullable
               as String,
       desc: null == desc
           ? _value.desc
@@ -137,6 +150,7 @@ class __$$HabitImplCopyWithImpl<$Res>
 class _$HabitImpl implements _Habit {
   const _$HabitImpl(
       {required this.title,
+      required this.freq,
       required this.desc,
       required this.icon,
       required this.color});
@@ -147,6 +161,8 @@ class _$HabitImpl implements _Habit {
   @override
   final String title;
   @override
+  final String freq;
+  @override
   final String desc;
   @override
   final String icon;
@@ -155,7 +171,7 @@ class _$HabitImpl implements _Habit {
 
   @override
   String toString() {
-    return 'Habit(title: $title, desc: $desc, icon: $icon, color: $color)';
+    return 'Habit(title: $title, freq: $freq, desc: $desc, icon: $icon, color: $color)';
   }
 
   @override
@@ -164,6 +180,7 @@ class _$HabitImpl implements _Habit {
         (other.runtimeType == runtimeType &&
             other is _$HabitImpl &&
             (identical(other.title, title) || other.title == title) &&
+            (identical(other.freq, freq) || other.freq == freq) &&
             (identical(other.desc, desc) || other.desc == desc) &&
             (identical(other.icon, icon) || other.icon == icon) &&
             (identical(other.color, color) || other.color == color));
@@ -171,7 +188,7 @@ class _$HabitImpl implements _Habit {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, title, desc, icon, color);
+  int get hashCode => Object.hash(runtimeType, title, freq, desc, icon, color);
 
   /// Create a copy of Habit
   /// with the given fields replaced by the non-null parameter values.
@@ -192,6 +209,7 @@ class _$HabitImpl implements _Habit {
 abstract class _Habit implements Habit {
   const factory _Habit(
       {required final String title,
+      required final String freq,
       required final String desc,
       required final String icon,
       required final String color}) = _$HabitImpl;
@@ -200,6 +218,8 @@ abstract class _Habit implements Habit {
 
   @override
   String get title;
+  @override
+  String get freq;
   @override
   String get desc;
   @override

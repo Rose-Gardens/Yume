@@ -8,6 +8,7 @@ part of 'habit.dart';
 
 _$HabitImpl _$$HabitImplFromJson(Map<String, dynamic> json) => _$HabitImpl(
       title: json['title'] as String,
+      freq: json['freq'] as String,
       desc: json['desc'] as String,
       icon: json['icon'] as String,
       color: json['color'] as String,
@@ -16,6 +17,7 @@ _$HabitImpl _$$HabitImplFromJson(Map<String, dynamic> json) => _$HabitImpl(
 Map<String, dynamic> _$$HabitImplToJson(_$HabitImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
+      'freq': instance.freq,
       'desc': instance.desc,
       'icon': instance.icon,
       'color': instance.color,

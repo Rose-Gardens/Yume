@@ -10,6 +10,7 @@ part 'habit.g.dart';
 class Habit with _$Habit {
   const factory Habit({
     required String title,
+    required String freq,
     required String desc,
     required String icon,
     required String color,
