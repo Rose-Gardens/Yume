@@ -9,9 +9,19 @@ abstract class HabitRepository {
   /// Returns the full list of [Habit] for the user.
   Future<Result<List<Habit>>> getHabitList();
 
-  /// Returns list of specific [Habit] by id
-  Future<Result<List<Habit>>> getHabitById(int id);
+  /// Returns history list of specific [Habit] by id.
+  Future<Result<List<Habit>>> getHabitHistoryById(int id);
 
-  /// Returns list of specific [Habit] from a dateTime range
-  Future<Result<List<Habit>>> getHabitByDateTime(DateTime startDateTime, DateTime endDateTime);
+  /// Returns history list of specific [Habit] from a dateTime range.
+  Future<Result<List<Habit>>> getHabitHistoryByDateTime(
+      DateTime startDateTime, DateTime endDateTime);
+
+  /// Creates a new [Habit].
+  Future<Result<void>> createHabit(Habit habit);
+
+  /// Updates a [Habit].
+  Future<Result<void>> updateHabit(Habit habit);
+
+  /// Deletes a habit.
+  Future<Result<void>> deleteHabit(int id);
 }

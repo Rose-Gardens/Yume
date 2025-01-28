@@ -7,18 +7,20 @@ part of 'habit.dart';
 // **************************************************************************
 
 _$HabitImpl _$$HabitImplFromJson(Map<String, dynamic> json) => _$HabitImpl(
-      title: json['title'] as String,
-      freq: json['freq'] as String,
-      desc: json['desc'] as String,
-      icon: json['icon'] as String,
-      color: json['color'] as String,
+      habitId: (json['habitId'] as num).toInt(),
+      habitTitle: json['habitTitle'] as String,
+      habitFreq: json['habitFreq'] as String,
+      habitDesc: json['habitDesc'] as String,
+      habitColor: json['habitColor'] as String,
+      habitIcon: json['habitIcon'] as String,
     );
 
 Map<String, dynamic> _$$HabitImplToJson(_$HabitImpl instance) =>
     <String, dynamic>{
-      'title': instance.title,
-      'freq': instance.freq,
-      'desc': instance.desc,
-      'icon': instance.icon,
-      'color': instance.color,
+      'habitId': instance.habitId,
+      'habitTitle': instance.habitTitle,
+      'habitFreq': instance.habitFreq,
+      'habitDesc': instance.habitDesc,
+      'habitColor': instance.habitColor,
+      'habitIcon': instance.habitIcon,
     };

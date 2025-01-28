@@ -20,11 +20,23 @@ Habit _$HabitFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Habit {
-  String get title => throw _privateConstructorUsedError;
-  String get freq => throw _privateConstructorUsedError;
-  String get desc => throw _privateConstructorUsedError;
-  String get icon => throw _privateConstructorUsedError;
-  String get color => throw _privateConstructorUsedError;
+  /// The primary-key / id of the Habit. e.g. "5"
+  int get habitId => throw _privateConstructorUsedError;
+
+  /// The title of the Habit. e.g. "Run 5k"
+  String get habitTitle => throw _privateConstructorUsedError;
+
+  /// The frequency value per week (number or csv-days) of the Habit. e.g. "M, T, Th"
+  String get habitFreq => throw _privateConstructorUsedError;
+
+  /// The description of the Habit. e.g. "Running 5km to gain fitness"
+  String get habitDesc => throw _privateConstructorUsedError;
+
+  /// The color hex value of the Habit. e.g. "0xFF7a3dbb"
+  String get habitColor => throw _privateConstructorUsedError;
+
+  /// The icon string value of the Habit. e.g. "Icons.directions_run"
+  String get habitIcon => throw _privateConstructorUsedError;
 
   /// Serializes this Habit to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,7 +53,12 @@ abstract class $HabitCopyWith<$Res> {
       _$HabitCopyWithImpl<$Res, Habit>;
   @useResult
   $Res call(
-      {String title, String freq, String desc, String icon, String color});
+      {int habitId,
+      String habitTitle,
+      String habitFreq,
+      String habitDesc,
+      String habitColor,
+      String habitIcon});
 }
 
 /// @nodoc
@@ -59,32 +76,37 @@ class _$HabitCopyWithImpl<$Res, $Val extends Habit>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = null,
-    Object? freq = null,
-    Object? desc = null,
-    Object? icon = null,
-    Object? color = null,
+    Object? habitId = null,
+    Object? habitTitle = null,
+    Object? habitFreq = null,
+    Object? habitDesc = null,
+    Object? habitColor = null,
+    Object? habitIcon = null,
   }) {
     return _then(_value.copyWith(
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
+      habitId: null == habitId
+          ? _value.habitId
+          : habitId // ignore: cast_nullable_to_non_nullable
+              as int,
+      habitTitle: null == habitTitle
+          ? _value.habitTitle
+          : habitTitle // ignore: cast_nullable_to_non_nullable
               as String,
-      freq: null == freq
-          ? _value.freq
-          : freq // ignore: cast_nullable_to_non_nullable
+      habitFreq: null == habitFreq
+          ? _value.habitFreq
+          : habitFreq // ignore: cast_nullable_to_non_nullable
               as String,
-      desc: null == desc
-          ? _value.desc
-          : desc // ignore: cast_nullable_to_non_nullable
+      habitDesc: null == habitDesc
+          ? _value.habitDesc
+          : habitDesc // ignore: cast_nullable_to_non_nullable
               as String,
-      icon: null == icon
-          ? _value.icon
-          : icon // ignore: cast_nullable_to_non_nullable
+      habitColor: null == habitColor
+          ? _value.habitColor
+          : habitColor // ignore: cast_nullable_to_non_nullable
               as String,
-      color: null == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
+      habitIcon: null == habitIcon
+          ? _value.habitIcon
+          : habitIcon // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -98,7 +120,12 @@ abstract class _$$HabitImplCopyWith<$Res> implements $HabitCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String title, String freq, String desc, String icon, String color});
+      {int habitId,
+      String habitTitle,
+      String habitFreq,
+      String habitDesc,
+      String habitColor,
+      String habitIcon});
 }
 
 /// @nodoc
@@ -114,32 +141,37 @@ class __$$HabitImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = null,
-    Object? freq = null,
-    Object? desc = null,
-    Object? icon = null,
-    Object? color = null,
+    Object? habitId = null,
+    Object? habitTitle = null,
+    Object? habitFreq = null,
+    Object? habitDesc = null,
+    Object? habitColor = null,
+    Object? habitIcon = null,
   }) {
     return _then(_$HabitImpl(
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
+      habitId: null == habitId
+          ? _value.habitId
+          : habitId // ignore: cast_nullable_to_non_nullable
+              as int,
+      habitTitle: null == habitTitle
+          ? _value.habitTitle
+          : habitTitle // ignore: cast_nullable_to_non_nullable
               as String,
-      freq: null == freq
-          ? _value.freq
-          : freq // ignore: cast_nullable_to_non_nullable
+      habitFreq: null == habitFreq
+          ? _value.habitFreq
+          : habitFreq // ignore: cast_nullable_to_non_nullable
               as String,
-      desc: null == desc
-          ? _value.desc
-          : desc // ignore: cast_nullable_to_non_nullable
+      habitDesc: null == habitDesc
+          ? _value.habitDesc
+          : habitDesc // ignore: cast_nullable_to_non_nullable
               as String,
-      icon: null == icon
-          ? _value.icon
-          : icon // ignore: cast_nullable_to_non_nullable
+      habitColor: null == habitColor
+          ? _value.habitColor
+          : habitColor // ignore: cast_nullable_to_non_nullable
               as String,
-      color: null == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
+      habitIcon: null == habitIcon
+          ? _value.habitIcon
+          : habitIcon // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -149,29 +181,43 @@ class __$$HabitImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$HabitImpl implements _Habit {
   const _$HabitImpl(
-      {required this.title,
-      required this.freq,
-      required this.desc,
-      required this.icon,
-      required this.color});
+      {required this.habitId,
+      required this.habitTitle,
+      required this.habitFreq,
+      required this.habitDesc,
+      required this.habitColor,
+      required this.habitIcon});
 
   factory _$HabitImpl.fromJson(Map<String, dynamic> json) =>
       _$$HabitImplFromJson(json);
 
+  /// The primary-key / id of the Habit. e.g. "5"
   @override
-  final String title;
+  final int habitId;
+
+  /// The title of the Habit. e.g. "Run 5k"
   @override
-  final String freq;
+  final String habitTitle;
+
+  /// The frequency value per week (number or csv-days) of the Habit. e.g. "M, T, Th"
   @override
-  final String desc;
+  final String habitFreq;
+
+  /// The description of the Habit. e.g. "Running 5km to gain fitness"
   @override
-  final String icon;
+  final String habitDesc;
+
+  /// The color hex value of the Habit. e.g. "0xFF7a3dbb"
   @override
-  final String color;
+  final String habitColor;
+
+  /// The icon string value of the Habit. e.g. "Icons.directions_run"
+  @override
+  final String habitIcon;
 
   @override
   String toString() {
-    return 'Habit(title: $title, freq: $freq, desc: $desc, icon: $icon, color: $color)';
+    return 'Habit(habitId: $habitId, habitTitle: $habitTitle, habitFreq: $habitFreq, habitDesc: $habitDesc, habitColor: $habitColor, habitIcon: $habitIcon)';
   }
 
   @override
@@ -179,16 +225,23 @@ class _$HabitImpl implements _Habit {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HabitImpl &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.freq, freq) || other.freq == freq) &&
-            (identical(other.desc, desc) || other.desc == desc) &&
-            (identical(other.icon, icon) || other.icon == icon) &&
-            (identical(other.color, color) || other.color == color));
+            (identical(other.habitId, habitId) || other.habitId == habitId) &&
+            (identical(other.habitTitle, habitTitle) ||
+                other.habitTitle == habitTitle) &&
+            (identical(other.habitFreq, habitFreq) ||
+                other.habitFreq == habitFreq) &&
+            (identical(other.habitDesc, habitDesc) ||
+                other.habitDesc == habitDesc) &&
+            (identical(other.habitColor, habitColor) ||
+                other.habitColor == habitColor) &&
+            (identical(other.habitIcon, habitIcon) ||
+                other.habitIcon == habitIcon));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, title, freq, desc, icon, color);
+  int get hashCode => Object.hash(runtimeType, habitId, habitTitle, habitFreq,
+      habitDesc, habitColor, habitIcon);
 
   /// Create a copy of Habit
   /// with the given fields replaced by the non-null parameter values.
@@ -208,24 +261,38 @@ class _$HabitImpl implements _Habit {
 
 abstract class _Habit implements Habit {
   const factory _Habit(
-      {required final String title,
-      required final String freq,
-      required final String desc,
-      required final String icon,
-      required final String color}) = _$HabitImpl;
+      {required final int habitId,
+      required final String habitTitle,
+      required final String habitFreq,
+      required final String habitDesc,
+      required final String habitColor,
+      required final String habitIcon}) = _$HabitImpl;
 
   factory _Habit.fromJson(Map<String, dynamic> json) = _$HabitImpl.fromJson;
 
+  /// The primary-key / id of the Habit. e.g. "5"
   @override
-  String get title;
+  int get habitId;
+
+  /// The title of the Habit. e.g. "Run 5k"
   @override
-  String get freq;
+  String get habitTitle;
+
+  /// The frequency value per week (number or csv-days) of the Habit. e.g. "M, T, Th"
   @override
-  String get desc;
+  String get habitFreq;
+
+  /// The description of the Habit. e.g. "Running 5km to gain fitness"
   @override
-  String get icon;
+  String get habitDesc;
+
+  /// The color hex value of the Habit. e.g. "0xFF7a3dbb"
   @override
-  String get color;
+  String get habitColor;
+
+  /// The icon string value of the Habit. e.g. "Icons.directions_run"
+  @override
+  String get habitIcon;
 
   /// Create a copy of Habit
   /// with the given fields replaced by the non-null parameter values.

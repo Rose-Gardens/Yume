@@ -3,11 +3,13 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'ui/core/themes/app_theme.dart';
-import 'routing/router.dart';
-import 'main_development.dart' as development;
 
-void main() {
+import 'main_development.dart' as development;
+import 'routing/router.dart';
+import 'ui/core/themes/app_theme.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   development.main();
 }
 

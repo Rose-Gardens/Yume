@@ -3,11 +3,12 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+
+import 'package:smooth_corner/smooth_corner.dart';
 import 'package:yume_kitai/ui/core/ui/custom_checkbox.dart';
 
-import '../view_models/habits_viewmodel.dart';
 import '../../core/themes/theme_extension.dart';
-import 'package:smooth_corner/smooth_corner.dart';
+import '../view_models/habits_viewmodel.dart';
 
 class HabitsScreen extends StatefulWidget {
   const HabitsScreen({super.key, required this.viewModel});
