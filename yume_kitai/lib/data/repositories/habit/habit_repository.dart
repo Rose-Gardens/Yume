@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import '../../../domain/models/habit/habit.dart';
+import '../../../domain/models/habit/habit_history.dart';
 import '../../../utils/result.dart';
 
 abstract class HabitRepository {
@@ -10,11 +11,11 @@ abstract class HabitRepository {
   Future<Result<List<Habit>>> getHabitList();
 
   /// Returns history list of specific [Habit] by id.
-  Future<Result<List<Habit>>> getHabitHistoryById(int id);
+  Future<Result<List<Habit>>> getHabitHistoryById(int habitId);
 
-  /// Returns history list of specific [Habit] from a dateTime range.
-  Future<Result<List<Habit>>> getHabitHistoryByDateTime(
-      DateTime startDateTime, DateTime endDateTime);
+  /// Returns history list of [Habit]s on a specific date.
+  Future<Result<List<HabitHistory>>> getHabitHistoryByDateTime(
+      String habitDate);
 
   /// Creates a new [Habit].
   Future<Result<void>> createHabit(Habit habit);
