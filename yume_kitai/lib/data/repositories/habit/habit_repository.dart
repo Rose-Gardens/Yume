@@ -9,13 +9,16 @@ import '../../../utils/result.dart';
 abstract class HabitRepository {
   /// Returns the full list of [Habit] for the user.
   Future<Result<List<Habit>>> getHabitList();
+  
+  /// Returns a [Habit] matching the given id.
+  Future<Result<Habit>> getHabit(int habitId);
 
   /// Returns history list of specific [Habit] by id.
-  Future<Result<List<Habit>>> getHabitHistoryById(int habitId);
+  Future<Result<List<HabitHistory>>> getHabitHistoryById(int habitId);
 
-  /// Returns history list of [Habit]s on a specific date.
-  Future<Result<List<HabitHistory>>> getHabitHistoryByDateTime(
-      String habitDate);
+  /// Returns history list of [Habit]s between two dates (inclusive).
+  Future<Result<List<HabitHistory>>> getHabitHistoryByDate(
+      String startDate, String endDate);
 
   /// Creates a new [Habit].
   Future<Result<void>> createHabit(Habit habit);
@@ -24,5 +27,5 @@ abstract class HabitRepository {
   Future<Result<void>> updateHabit(Habit habit);
 
   /// Deletes a habit.
-  Future<Result<void>> deleteHabit(int id);
+  Future<Result<void>> deleteHabit(int habitId);
 }

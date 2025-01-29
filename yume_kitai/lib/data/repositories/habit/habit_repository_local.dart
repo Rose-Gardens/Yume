@@ -19,7 +19,7 @@ class HabitRepositoryLocal implements HabitRepository {
 
   final LocalDataService _localDataService;
 
-  // Defines a function that inserts or "creates" a Habit into the database.
+  /// Defines a function that inserts or "creates" a [Habit] into the database.
   @override
   Future<Result<void>> createHabit(Habit habit) async {
     try {
@@ -32,7 +32,7 @@ class HabitRepositoryLocal implements HabitRepository {
     }
   }
 
-  // Defines a function that deletes a Habit based on its habit_id.
+  /// Defines a function that deletes a [Habit] based on its habit_id.
   @override
   Future<Result<void>> deleteHabit(int habitId) async {
     try {
@@ -44,30 +44,36 @@ class HabitRepositoryLocal implements HabitRepository {
     }
   }
 
+  /// Defines a function that updates a [Habit]'s data based on its habit_id.
   @override
   Future<Result<void>> updateHabit(Habit habit) async {
-    // TODO: implement updateHabit
-    throw UnimplementedError();
-  }
-
-  // Defines a function that gets the history entries of Habits between a
-  // specific range of timestamps.
-  @override
-  Future<Result<List<HabitHistory>>> getHabitHistoryByDateTime(
-      String habitDate) async {
     try {
       final db = await _localDataService.getDatabaseInstance();
-      final List<Map<String, Object?>> habitHistoryByDateTimeMap = await db
-          .query('habit_history',
-              where: 'DATE(h_history_datetime_stamp) = ',
-              whereArgs: [habitDate]);
+      await db.update('habits', habit.toJson(),
+          where: 'habit_id = ?', whereArgs: [habit.habitId]);
+      return const Result.ok(null);
+    } on Exception catch (e) {
+      return Result.error(e);
+    }
+  }
+
+  /// Defines a function that gets the history data of [Habit]s between two dates (inclusive).
+  @override
+  Future<Result<List<HabitHistory>>> getHabitHistoryByDate(
+      String startDate, String endDate) async {
+    try {
+      final db = await _localDataService.getDatabaseInstance();
+      final List<Map<String, Object?>> habitHistoryByDate = await db.query(
+          'habit_history',
+          where: 'DATE(h_history_datetime_stamp) BETWEEN ? AND ?',
+          whereArgs: [startDate, endDate]);
       return Result.ok([
         for (final {
               'h_history_id': habitHistoryId as int,
-              'h_history_timestamp': habitHistoryDateTimeStamp as String,
+              'h_history_datetime_stamp': habitHistoryDateTimeStamp as String,
               'h_history_habit_state': habitHistoryState as String,
               'habit_id': habitId as int
-            } in habitHistoryByDateTimeMap)
+            } in habitHistoryByDate)
           HabitHistory(
               // Creates a HabitHistory object using the data pulled from the query.
               habitHistoryId: habitHistoryId,
@@ -80,15 +86,83 @@ class HabitRepositoryLocal implements HabitRepository {
     }
   }
 
+  /// Defines a function that gets the history data of a [Habit] based on its habit_id.
   @override
-  Future<Result<List<Habit>>> getHabitHistoryById(int id) async {
-    // TODO: implement getHabitHistoryById
-    throw UnimplementedError();
+  Future<Result<List<HabitHistory>>> getHabitHistoryById(int habitId) async {
+    try {
+      final db = await _localDataService.getDatabaseInstance();
+      final List<Map<String, Object?>> habitHistoryById = await db
+          .query('habit_history', where: 'habit_id = ?', whereArgs: [habitId]);
+      return Result.ok([
+        for (final {
+              'h_history_id': habitHistoryId as int,
+              'h_history_datetime_stamp': habitHistoryDateTimeStamp as String,
+              'h_history_habit_state': habitHistoryState as String,
+              'habit_id': habitId as int
+            } in habitHistoryById)
+          HabitHistory(
+              // Creates a HabitHistory object using the data pulled from the query.
+              habitHistoryId: habitHistoryId,
+              habitHistoryDateTimeStamp: habitHistoryDateTimeStamp,
+              habitHistoryState: habitHistoryState,
+              habitId: habitId)
+      ]);
+    } on Exception catch (e) {
+      return Result.error(e);
+    }
   }
 
+  /// Defines a function that returns the full list of [Habit]s.
   @override
   Future<Result<List<Habit>>> getHabitList() async {
-    // TODO: implement getHabitList
-    throw UnimplementedError();
+    try {
+      final db = await _localDataService.getDatabaseInstance();
+      final List<Map<String, Object?>> habitList = await db.query('habits');
+      return Result.ok([
+        for (final {
+              'habit_id': habitId as int,
+              'habit_title': habitTitle as String,
+              'habit_freq': habitFreq as String,
+              'habit_desc': habitDesc as String,
+              'habit_color': habitColor as String,
+              'habit_icon': habitIcon as String
+            } in habitList)
+          Habit(
+              habitId: habitId,
+              habitTitle: habitTitle,
+              habitFreq: habitFreq,
+              habitDesc: habitDesc,
+              habitColor: habitColor,
+              habitIcon: habitIcon)
+      ]);
+    } on Exception catch (e) {
+      return Result.error(e);
+    }
+  }
+
+  /// Defines a function that returns a [Habit] based on its habit_id.
+  @override
+  Future<Result<Habit>> getHabit(int habitId) async {
+    try {
+      final db = await _localDataService.getDatabaseInstance();
+      final List<Map<String, Object?>> habitList =
+          await db.query('habits', where: 'habit_id = ?', whereArgs: [habitId]);
+      if (habitList.isNotEmpty) {
+        final habitRow = habitList.first;
+        final habit = Habit(
+            habitId: habitRow['habit_id'] as int,
+            habitTitle: habitRow['habit_title'] as String,
+            habitFreq: habitRow['habit_freq'] as String,
+            habitDesc: habitRow['habit_desc'] as String,
+            habitColor: habitRow['habit_color'] as String,
+            habitIcon: habitRow['habit_icon'] as String);
+
+        return Result.ok(habit);
+      } else {
+        return Result.error(Exception('No habit found'));
+      }
+    } on Exception catch (e) {
+      return Result.error(e);
+    }
   }
 }
