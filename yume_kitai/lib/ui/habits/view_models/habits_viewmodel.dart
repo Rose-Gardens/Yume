@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:logging/logging.dart';
+import 'package:yume_kitai/data/repositories/habit/habit_repository.dart';
 
 class Task {
   final String title;
@@ -83,7 +84,10 @@ var _tasks = [
 ];
 
 class HabitsViewModel extends ChangeNotifier {
-  HabitsViewModel();
+  HabitsViewModel({required HabitRepository habitRepository})
+      : _habitRepository = habitRepository;
+
+  final HabitRepository _habitRepository;
 
   List<Task> get tasks => _tasks;
   final _log = Logger('HabitsViewModel');

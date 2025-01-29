@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:yume_kitai/ui/core/ui/app_shell.dart';
 
 import '../ui/analytics/view_models/analytics_viewmodel.dart';
@@ -33,7 +34,9 @@ GoRouter router() => GoRouter(
             GoRoute(
               path: Routes.habits,
               builder: (context, state) {
-                return HabitsScreen(viewModel: HabitsViewModel());
+                final viewModel =
+                    HabitsViewModel(habitRepository: context.read());
+                return HabitsScreen(viewModel: viewModel);
               },
             ),
             GoRoute(
