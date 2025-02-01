@@ -20,16 +20,6 @@ class HabitsScreen extends StatefulWidget {
 }
 
 class _HabitsScreenState extends State<HabitsScreen> {
-  @override
-  void initState() {
-    super.initState();
-    widget.viewModel.loadHabits.execute();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {

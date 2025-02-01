@@ -90,7 +90,7 @@ import '../../../utils/result.dart';
 class HabitsViewModel extends ChangeNotifier {
   HabitsViewModel({required HabitRepository habitRepository})
       : _habitRepository = habitRepository {
-    loadHabits = Command0(_load);
+    loadHabits = Command0(_load)..execute();
   }
 
   final HabitRepository _habitRepository;
@@ -108,7 +108,6 @@ class HabitsViewModel extends ChangeNotifier {
       case Ok<List<Habit>>():
         _log.fine("Loaded list of habits.");
         _habits = result.value;
-        print(_habits);
         notifyListeners();
       case Error<List<Habit>>():
         _log.warning("Failed to load list of habits.");
