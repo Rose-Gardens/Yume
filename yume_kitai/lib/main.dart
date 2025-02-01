@@ -8,7 +8,7 @@ import 'main_development.dart' as development;
 import 'routing/router.dart';
 import 'ui/core/themes/app_theme.dart';
 
-void main() async {
+void main() { 
   WidgetsFlutterBinding.ensureInitialized();
   development.main();
 }
@@ -27,6 +27,7 @@ class MainApp extends StatelessWidget {
   }
 }
 
+// TODO: what even is this
 // class MainAppState extends ChangeNotifier {
 //   ThemeData _currentTheme = AppTheme.getDefaultTheme();
 //   ThemeData get currentTheme => _currentTheme;

@@ -11,7 +11,7 @@ abstract class HabitRepository {
   Future<Result<List<Habit>>> getHabitList();
   
   /// Returns a [Habit] matching the given id.
-  Future<Result<Habit>> getHabit(int habitId);
+  Future<Result<Habit>> getHabitById(int habitId);
 
   /// Returns history list of specific [Habit] by id.
   Future<Result<List<HabitHistory>>> getHabitHistoryById(int habitId);

@@ -24,20 +24,39 @@ class _HabitsScreenState extends State<HabitsScreen> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16),
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          for (var task in widget.viewModel.tasks)
-            Padding(
-              padding: const EdgeInsets.only(bottom: 12),
-              child: BigCard(
-                title: task.title,
-                desc: task.desc,
-                habitIcon: task.icon,
-                colors: task.colors,
-              ),
-            )
-        ],
+      child: ListenableBuilder(
+        // Listen to changes in the loadHabits function
+        listenable: widget.viewModel.loadHabits,
+        builder: (context, child) {
+          // If the function is still running, show a progress indicator.
+          if (widget.viewModel.loadHabits.running) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          // TODO: make an error widget
+          // If the function failed, press to try again.
+          if (widget.viewModel.loadHabits.error) {
+            return const Center(child: Placeholder());
+          }
+          // TODO: this else should be a return child! ? IDK
+
+          return child!;
+        },
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            for (var habit in widget.viewModel.habits!)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: BigCard(
+                  title: habit.habitTitle,
+                  freq: habit.habitFreq,
+                  habitIcon: habit.habitIcon as IconData,
+                  colors: Color(habit.habitColor as int),
+                ),
+              )
+          ],
+        ),
       ),
     );
   }
@@ -47,12 +66,12 @@ class BigCard extends StatefulWidget {
   const BigCard(
       {super.key,
       required this.title,
-      required this.desc,
+      required this.freq,
       required this.habitIcon,
       required this.colors});
 
   final String? title;
-  final String? desc;
+  final String? freq;
   final IconData? habitIcon;
   final Color? colors;
 
@@ -63,6 +82,7 @@ class BigCard extends StatefulWidget {
 class _BigCardState extends State<BigCard> {
   bool isChecked = false;
 
+  // TODO: should clean this up.
   // * This is dynamic height finding, but causes extra re-renders.
   // final GlobalKey _cardKey = GlobalKey(); // Step 1: Add a GlobalKey
   // double _calculatedHeight = 0.0; // To store the height of the card
@@ -92,7 +112,8 @@ class _BigCardState extends State<BigCard> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<AppThemeExtension>()!;
 
-    // * garbage method to detect large boxes
+    // TODO: fix this please
+    // * awful method to detect large boxes
     final isTextTooLong = (widget.title?.length ?? 0) > 23;
     final double newBorderRadius = isTextTooLong ? 32 : 28;
 
@@ -132,7 +153,7 @@ class _BigCardState extends State<BigCard> {
                         overflow: TextOverflow.ellipsis,
                       ),
                       Text(
-                        '${widget.desc}',
+                        '${widget.freq}',
                         style: Theme.of(context)
                             .textTheme
                             .bodyMedium

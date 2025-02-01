@@ -23,11 +23,21 @@ class LocalDataService {
       onCreate: (db, version) async {
         // Creating the habits table. [Contains each unique habit]
         await db.execute(
-            'CREATE TABLE habits (habit_id INTEGER PRIMARY KEY, habit_title TEXT NOT NULL UNIQUE, habit_freq TEXT NOT NULL, habit_desc TEXT, habit_color TEXT, habit_icon TEXT)');
+            'CREATE TABLE habits (habit_id INTEGER PRIMARY KEY, habit_title TEXT NOT NULL UNIQUE, habit_freq TEXT NOT NULL, habit_desc TEXT, habit_color TEXT, habit_icon TEXT);');
         await db.execute(
-            'CREATE TABLE habit_history (h_history_id INTEGER PRIMARY KEY, h_history_datetime_stamp TEXT NOT NULL, h_history_habit_state TEXT NOT NULL, habit_id INTEGER NOT NULL, FOREIGN KEY (habit_id) REFERENCES habits(habit_id) ON UPDATE CASCADE ON DELETE CASCADE)');
+            'CREATE TABLE habit_history (h_history_id INTEGER PRIMARY KEY, h_history_datetime_stamp TEXT NOT NULL, h_history_habit_state TEXT NOT NULL, habit_id INTEGER NOT NULL, FOREIGN KEY (habit_id) REFERENCES habits(habit_id) ON UPDATE CASCADE ON DELETE CASCADE);');
+
+        //TODO*: Remember to remove these
+        await db.execute(
+            "INSERT INTO habits (habit_title, habit_freq, habit_desc, habit_color, habit_icon) VALUES ('Do 15 Leetcode questions', '3 times a week', 'Practice coding', '0xFFA44195', 'Icons.code');");
+        await db.execute(
+            "INSERT INTO habits (habit_title, habit_freq, habit_desc, habit_color, habit_icon) VALUES ('Run 5km a day', '4 times a week', 'Stay fit and healthy', '0xFFC5605F', 'Icons.directions_run');");
+        await db.execute(
+            "INSERT INTO habits (habit_title, habit_freq, habit_desc, habit_color, habit_icon) VALUES ('Drink Water', 'Everyday', 'At least 8 cups', '0xFFC5BB5F', 'Icons.local_drink');");
+        await db.execute(
+            "INSERT INTO habits (habit_title, habit_freq, habit_desc, habit_color, habit_icon) VALUES ('Meditate 10 minutes', 'Daily', 'Relax and focus', '0xFF4197A4', 'Icons.self_improvement');");
       },
-      
+
       // Enabling foreign keys for the habit_history table.
       onConfigure: (db) async {
         await db.execute('PRAGMA foreign_keys = ON');

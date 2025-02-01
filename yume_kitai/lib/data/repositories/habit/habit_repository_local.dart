@@ -142,7 +142,7 @@ class HabitRepositoryLocal implements HabitRepository {
 
   /// Defines a function that returns a [Habit] based on its habit_id.
   @override
-  Future<Result<Habit>> getHabit(int habitId) async {
+  Future<Result<Habit>> getHabitById(int habitId) async {
     try {
       final db = await _localDataService.getDatabaseInstance();
       final List<Map<String, Object?>> habitList =
