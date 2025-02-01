@@ -90,7 +90,7 @@ import '../../../utils/result.dart';
 class HabitsViewModel extends ChangeNotifier {
   HabitsViewModel({required HabitRepository habitRepository})
       : _habitRepository = habitRepository {
-    loadHabits = Command0(_load);
+    loadHabits = Command0(_load)..execute();
   }
 
   final HabitRepository _habitRepository;
