@@ -21,6 +21,17 @@ class HabitsScreen extends StatefulWidget {
 
 class _HabitsScreenState extends State<HabitsScreen> {
   @override
+  void initState() {
+    super.initState();
+    widget.viewModel.loadHabits.execute();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16),
@@ -40,23 +51,22 @@ class _HabitsScreenState extends State<HabitsScreen> {
           }
           // TODO: this else should be a return child! ? IDK
 
-          return child!;
+          return ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              for (var habit in widget.viewModel.habits!)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 12),
+                  child: BigCard(
+                    title: habit.habitTitle,
+                    freq: habit.habitFreq,
+                    habitIcon: habit.habitIcon as IconData,
+                    colors: Color(habit.habitColor as int),
+                  ),
+                )
+            ],
+          );
         },
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            for (var habit in widget.viewModel.habits!)
-              Padding(
-                padding: const EdgeInsets.only(bottom: 12),
-                child: BigCard(
-                  title: habit.habitTitle,
-                  freq: habit.habitFreq,
-                  habitIcon: habit.habitIcon as IconData,
-                  colors: Color(habit.habitColor as int),
-                ),
-              )
-          ],
-        ),
       ),
     );
   }

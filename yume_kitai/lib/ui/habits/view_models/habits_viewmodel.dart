@@ -108,6 +108,7 @@ class HabitsViewModel extends ChangeNotifier {
       case Ok<List<Habit>>():
         _log.fine("Loaded list of habits.");
         _habits = result.value;
+        print(_habits);
         notifyListeners();
       case Error<List<Habit>>():
         _log.warning("Failed to load list of habits.");
