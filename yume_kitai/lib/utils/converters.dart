@@ -4,5 +4,12 @@
 
 /// Converts hex strings e.g. "0xffffff" to a base 16 integer.
 int hexStringToHexInt(String hexString) {
-  return int.parse(hexString, radix: 16);
+  if (hexString.isEmpty) {
+    throw ArgumentError("Hex string cannot be empty.");
+  }
+  try {
+    return int.parse(hexString, radix: 16);
+  } catch (_) {
+    throw ArgumentError("Hex string is invalid");
+  }
 }
