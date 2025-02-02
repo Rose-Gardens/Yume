@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'package:smooth_corner/smooth_corner.dart';
 import 'package:yume_kitai/ui/core/ui/custom_checkbox.dart';
+import 'package:yume_kitai/utils/converters.dart';
 
 import '../../core/themes/theme_extension.dart';
 import '../view_models/habits_viewmodel.dart';
@@ -50,8 +51,8 @@ class _HabitsScreenState extends State<HabitsScreen> {
                   child: BigCard(
                     title: habit.habitTitle,
                     freq: habit.habitFreq,
-                    habitIcon: habit.habitIcon as IconData,
-                    colors: Color(habit.habitColor as int),
+                    habitIconCodePoint: hexStringToHexInt(habit.habitIcon),
+                    color: hexStringToHexInt(habit.habitColor),
                   ),
                 )
             ],
@@ -67,13 +68,13 @@ class BigCard extends StatefulWidget {
       {super.key,
       required this.title,
       required this.freq,
-      required this.habitIcon,
-      required this.colors});
+      required this.habitIconCodePoint,
+      required this.color});
 
   final String? title;
   final String? freq;
-  final IconData? habitIcon;
-  final Color? colors;
+  final int? habitIconCodePoint;
+  final int? color;
 
   @override
   State<BigCard> createState() => _BigCardState();
@@ -130,13 +131,13 @@ class _BigCardState extends State<BigCard> {
               width: 0.5,
             ),
           ),
-          color: widget.colors!.withValues(alpha: 0.4),
+          color: Color(widget.color!).withValues(alpha: 0.4),
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
             child: Row(
               children: [
-                Icon(widget.habitIcon,
-                    size: 36, color: widget.colors!.withValues(alpha: 0.85)),
+                Icon(IconData(widget.habitIconCodePoint!, fontFamily: 'MaterialIcons'),
+                    size: 36, color: Color(widget.color!).withValues(alpha: 0.85)),
                 SizedBox(width: 8),
                 Expanded(
                   child: Column(

@@ -29,13 +29,13 @@ class LocalDataService {
 
         //TODO*: Remember to remove these
         await db.execute(
-            "INSERT INTO habits (habit_title, habit_freq, habit_desc, habit_color, habit_icon) VALUES ('Do 15 Leetcode questions', '3 times a week', 'Practice coding', '0xFFA44195', 'Icons.code');");
+            "INSERT INTO habits (habit_title, habit_freq, habit_desc, habit_color, habit_icon) VALUES ('Do 15 Leetcode questions', '3 times a week', 'Practice coding', 'FFA44195', 'f653');");
         await db.execute(
-            "INSERT INTO habits (habit_title, habit_freq, habit_desc, habit_color, habit_icon) VALUES ('Run 5km a day', '4 times a week', 'Stay fit and healthy', '0xFFC5605F', 'Icons.directions_run');");
+            "INSERT INTO habits (habit_title, habit_freq, habit_desc, habit_color, habit_icon) VALUES ('Run 5km a day', '4 times a week', 'Stay fit and healthy', 'FFC5605F', 'f6b8');");
         await db.execute(
-            "INSERT INTO habits (habit_title, habit_freq, habit_desc, habit_color, habit_icon) VALUES ('Drink Water', 'Everyday', 'At least 8 cups', '0xFFC5BB5F', 'Icons.local_drink');");
+            "INSERT INTO habits (habit_title, habit_freq, habit_desc, habit_color, habit_icon) VALUES ('Drink Water', 'Everyday', 'At least 8 cups', 'FFC5BB5F', 'f86a');");
         await db.execute(
-            "INSERT INTO habits (habit_title, habit_freq, habit_desc, habit_color, habit_icon) VALUES ('Meditate 10 minutes', 'Daily', 'Relax and focus', '0xFF4197A4', 'Icons.self_improvement');");
+            "INSERT INTO habits (habit_title, habit_freq, habit_desc, habit_color, habit_icon) VALUES ('Meditate 10 minutes', 'Daily', 'Relax and focus', 'FF4197A4', 'f0144');");
       },
 
       // Enabling foreign keys for the habit_history table.

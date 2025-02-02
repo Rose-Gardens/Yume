@@ -2,4 +2,7 @@
 // Use of this source code is governed by the Apache 2.0 License that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+/// Converts hex strings e.g. "0xffffff" to a base 16 integer.
+int hexStringToHexInt(String hexString) {
+  return int.parse(hexString, radix: 16);
+}
