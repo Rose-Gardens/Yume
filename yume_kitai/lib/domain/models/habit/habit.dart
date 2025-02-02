@@ -21,10 +21,10 @@ class Habit with _$Habit {
     /// The description of the Habit. e.g. "Running 5km to gain fitness"
     required String habitDesc,
 
-    /// The color hex value of the Habit. e.g. "0xFF7a3dbb"
+    /// The color hex value of the Habit. e.g. "FF7a3dbb"
     required String habitColor,
 
-    /// The icon string value of the Habit. e.g. "Icons.directions_run"
+    /// The IconData hex codepoint value of the Habit. e.g. "f653"
     required String habitIcon,
   }) = _Habit;
 

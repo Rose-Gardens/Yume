@@ -95,7 +95,7 @@ class HabitsViewModel extends ChangeNotifier {
 
   final HabitRepository _habitRepository;
   final _log = Logger('HabitsViewModel');
-  // TODO: Will List<Habit> be nullable?
+  // TODO: Will List<Habit> be nullable? What would happen if it is null?
   List<Habit>? _habits;
   List<Habit>? get habits => _habits;
 
