@@ -23,9 +23,9 @@ class LocalDataService {
       onCreate: (db, version) async {
         // Creating the habits table. [Contains each unique habit]
         await db.execute(
-            'CREATE TABLE habits (habit_id INTEGER PRIMARY KEY, habit_title TEXT NOT NULL UNIQUE, habit_freq TEXT NOT NULL, habit_desc TEXT, habit_color TEXT, habit_icon TEXT);');
+            'CREATE TABLE IF NOT EXISTS habits (habit_id INTEGER PRIMARY KEY, habit_title TEXT NOT NULL UNIQUE, habit_freq TEXT NOT NULL, habit_desc TEXT, habit_color TEXT, habit_icon TEXT);');
         await db.execute(
-            'CREATE TABLE habit_history (h_history_id INTEGER PRIMARY KEY, h_history_datetime_stamp TEXT NOT NULL, h_history_habit_state TEXT NOT NULL, habit_id INTEGER NOT NULL, FOREIGN KEY (habit_id) REFERENCES habits(habit_id) ON UPDATE CASCADE ON DELETE CASCADE);');
+            'CREATE TABLE IF NOT EXISTS habit_history (h_history_id INTEGER PRIMARY KEY, h_history_datetime_stamp TEXT NOT NULL, h_history_habit_state TEXT NOT NULL, habit_id INTEGER NOT NULL, FOREIGN KEY (habit_id) REFERENCES habits(habit_id) ON UPDATE CASCADE ON DELETE CASCADE);');
 
         //TODO*: Remember to remove these
         await db.execute(
