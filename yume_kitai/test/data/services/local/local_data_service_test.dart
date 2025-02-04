@@ -73,12 +73,14 @@ Future main() async {
         },
       );
       test(
-        'Checks that local_data_service is returning the db and the tables created, exist',
+        'Checks that local_data_service is returning the db<Type Database> and the tables created, exist',
         () async {
           LocalDataService localDataService = LocalDataService();
           final db = await localDataService.getDatabaseInstance();
 
           expect(db, isNotNull);
+
+          expect(db, isA<Database>());
 
           expect(
             await db.query(
