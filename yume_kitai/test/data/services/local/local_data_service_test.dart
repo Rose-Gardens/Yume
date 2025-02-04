@@ -3,16 +3,16 @@
 // found in the LICENSE file.
 
 import "package:flutter_test/flutter_test.dart";
+// Allows flutter unit testing on sqflite.
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
-
 import 'package:yume_kitai/data/services/local/local_data_service.dart';
 
 Future main() async {
   setUpAll(
     () {
-      //initialize FFI
+      // Initialize FFI.
       sqfliteFfiInit();
-      // change the default factory
+      // Change the default factory.
       databaseFactory = databaseFactoryFfi;
     },
   );
@@ -73,7 +73,7 @@ Future main() async {
         },
       );
       test(
-        'Checks that local_data_service is returning the db properly and the tables created exist',
+        'Checks that local_data_service is returning the db and the tables created, exist',
         () async {
           LocalDataService localDataService = LocalDataService();
           final db = await localDataService.getDatabaseInstance();
