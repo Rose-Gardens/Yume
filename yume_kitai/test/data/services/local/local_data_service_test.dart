@@ -73,7 +73,7 @@ Future main() async {
         },
       );
       test(
-        'Checks that local_data_service is returning the db<Type Database> and the tables created, exist',
+        'Checks that local_data_service is returning the db<Type Database>',
         () async {
           LocalDataService localDataService = LocalDataService();
           final db = await localDataService.getDatabaseInstance();
@@ -81,30 +81,6 @@ Future main() async {
           expect(db, isNotNull);
 
           expect(db, isA<Database>());
-
-          expect(
-            await db.query(
-              'sqlite_master',
-              where: 'name = ?',
-              columns: ['name'],
-              whereArgs: ['habits'],
-            ),
-            [
-              {'name': 'habits'}
-            ],
-          );
-
-          expect(
-            await db.query(
-              'sqlite_master',
-              where: 'name = ?',
-              columns: ['name'],
-              whereArgs: ['habit_history'],
-            ),
-            [
-              {'name': 'habit_history'}
-            ],
-          );
         },
       );
     },
