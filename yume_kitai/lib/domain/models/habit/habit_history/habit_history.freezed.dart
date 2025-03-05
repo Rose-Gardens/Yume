@@ -24,7 +24,7 @@ mixin _$HabitHistory {
   int get habitHistoryId => throw _privateConstructorUsedError;
 
   /// The date value of when the Habit state was modified. e.g. "2025-12-31"
-  String get createdOn => throw _privateConstructorUsedError;
+  DateTime get createdOn => throw _privateConstructorUsedError;
 
   /// The completion state of the Habit. e.g. "Complete"
   String get completionState => throw _privateConstructorUsedError;
@@ -53,7 +53,7 @@ abstract class $HabitHistoryCopyWith<$Res> {
   @useResult
   $Res call(
       {int habitHistoryId,
-      String createdOn,
+      DateTime createdOn,
       String completionState,
       int habitId,
       int? habitTagId});
@@ -88,7 +88,7 @@ class _$HabitHistoryCopyWithImpl<$Res, $Val extends HabitHistory>
       createdOn: null == createdOn
           ? _value.createdOn
           : createdOn // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       completionState: null == completionState
           ? _value.completionState
           : completionState // ignore: cast_nullable_to_non_nullable
@@ -115,7 +115,7 @@ abstract class _$$HabitHistoryImplCopyWith<$Res>
   @useResult
   $Res call(
       {int habitHistoryId,
-      String createdOn,
+      DateTime createdOn,
       String completionState,
       int habitId,
       int? habitTagId});
@@ -148,7 +148,7 @@ class __$$HabitHistoryImplCopyWithImpl<$Res>
       createdOn: null == createdOn
           ? _value.createdOn
           : createdOn // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       completionState: null == completionState
           ? _value.completionState
           : completionState // ignore: cast_nullable_to_non_nullable
@@ -184,7 +184,7 @@ class _$HabitHistoryImpl implements _HabitHistory {
 
   /// The date value of when the Habit state was modified. e.g. "2025-12-31"
   @override
-  final String createdOn;
+  final DateTime createdOn;
 
   /// The completion state of the Habit. e.g. "Complete"
   @override
@@ -243,7 +243,7 @@ class _$HabitHistoryImpl implements _HabitHistory {
 abstract class _HabitHistory implements HabitHistory {
   const factory _HabitHistory(
       {required final int habitHistoryId,
-      required final String createdOn,
+      required final DateTime createdOn,
       required final String completionState,
       required final int habitId,
       required final int? habitTagId}) = _$HabitHistoryImpl;
@@ -257,7 +257,7 @@ abstract class _HabitHistory implements HabitHistory {
 
   /// The date value of when the Habit state was modified. e.g. "2025-12-31"
   @override
-  String get createdOn;
+  DateTime get createdOn;
 
   /// The completion state of the Habit. e.g. "Complete"
   @override

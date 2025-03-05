@@ -30,4 +30,6 @@ class DbSchema {
     'habit_tag':
         'CREATE TABLE IF NOT EXISTS habit_tag (habit_tag_id INTEGER PRIMARY KEY, title TEXT NOT NULL, color TEXT, habit_id INTEGER NOT NULL, FOREIGN KEY (habit_id) REFERENCES habit(habit_id) ON UPDATE CASCADE ON DELETE CASCADE);',
   };
+
+  // TODO: Make the rest of the schemas
 }

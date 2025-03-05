@@ -9,7 +9,7 @@ part of 'habit_history.dart';
 _$HabitHistoryImpl _$$HabitHistoryImplFromJson(Map<String, dynamic> json) =>
     _$HabitHistoryImpl(
       habitHistoryId: (json['habitHistoryId'] as num).toInt(),
-      createdOn: json['createdOn'] as String,
+      createdOn: DateTime.parse(json['createdOn'] as String),
       completionState: json['completionState'] as String,
       habitId: (json['habitId'] as num).toInt(),
       habitTagId: (json['habitTagId'] as num?)?.toInt(),
@@ -18,7 +18,7 @@ _$HabitHistoryImpl _$$HabitHistoryImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$HabitHistoryImplToJson(_$HabitHistoryImpl instance) =>
     <String, dynamic>{
       'habitHistoryId': instance.habitHistoryId,
-      'createdOn': instance.createdOn,
+      'createdOn': instance.createdOn.toIso8601String(),
       'completionState': instance.completionState,
       'habitId': instance.habitId,
       'habitTagId': instance.habitTagId,

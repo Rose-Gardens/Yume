@@ -16,7 +16,7 @@ class HabitHistory with _$HabitHistory {
     required int habitHistoryId,
 
     /// The date value of when the Habit state was modified. e.g. "2025-12-31"
-    required String createdOn,
+    required DateTime createdOn,
 
     /// The completion state of the Habit. e.g. "Complete"
     required String completionState,
