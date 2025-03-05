@@ -2,8 +2,8 @@
 // Use of this source code is governed by the Apache 2.0 License that can be
 // found in the LICENSE file.
 
-import '../../../domain/models/habit/habit.dart';
-import '../../../domain/models/habit/habit_history.dart';
+import '../../../domain/models/habit/habit/habit.dart';
+import '../../../domain/models/habit/habit_history/habit_history.dart';
 import '../../../utils/result.dart';
 
 abstract class HabitRepository {

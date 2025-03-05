@@ -5,6 +5,7 @@
 import "package:flutter_test/flutter_test.dart";
 // Allows flutter unit testing on sqflite.
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+import 'package:yume_kitai/data/services/local/db_schema.dart';
 import 'package:yume_kitai/data/services/local/local_data_service.dart';
 
 Future main() async {
@@ -18,20 +19,23 @@ Future main() async {
   );
 
   group(
-    "Testing local_data_service",
+    "Testing local_data_service and db_schema",
     () {
       test(
-        'Checks that the QUERIES from local_data_service is working as expected',
+        'Checks that the QUERIES from local_data_service using the schemas from db_schema is working as expected',
         () async {
           var db = await openDatabase(
             inMemoryDatabasePath,
             version: 1,
             onCreate: (db, version) async {
               await db.execute(
-                  'CREATE TABLE IF NOT EXISTS habits (habit_id INTEGER PRIMARY KEY, habit_title TEXT NOT NULL UNIQUE, habit_freq TEXT NOT NULL, habit_desc TEXT, habit_color TEXT, habit_icon TEXT);');
-              await db.execute(
-                  'CREATE TABLE IF NOT EXISTS habit_history (h_history_id INTEGER PRIMARY KEY, h_history_datetime_stamp TEXT NOT NULL, h_history_habit_state TEXT NOT NULL, habit_id INTEGER NOT NULL, FOREIGN KEY (habit_id) REFERENCES habits(habit_id) ON UPDATE CASCADE ON DELETE CASCADE);');
+                DbSchema.habitTables['habit']!,
+              );
 
+              await db.execute(
+                DbSchema.habitTables['habit_history']!,
+              );
+              // TODO: Change this into valid inserts and expects
               await db.execute(
                   "INSERT INTO habits (habit_title, habit_freq, habit_desc, habit_color, habit_icon) VALUES ('Do 15 Leetcode questions', '3 times a week', 'Practice coding', 'FFA44195', 'f653');");
               await db.execute(

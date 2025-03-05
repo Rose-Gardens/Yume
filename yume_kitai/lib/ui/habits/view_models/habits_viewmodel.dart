@@ -8,7 +8,7 @@ import 'package:logging/logging.dart';
 import 'package:yume_kitai/data/repositories/habit/habit_repository.dart';
 import '../../../utils/command.dart';
 
-import '../../../domain/models/habit/habit.dart';
+import '../../../domain/models/habit/habit/habit.dart';
 import '../../../utils/result.dart';
 
 // class Task {
