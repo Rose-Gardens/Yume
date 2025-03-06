@@ -6,7 +6,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'habit_goal.freezed.dart';
 part 'habit_goal.g.dart';
 
-
 // HabitGoal data is only created when the User sets a goal for the Habit.
 @freezed
 class HabitGoal with _$HabitGoal {

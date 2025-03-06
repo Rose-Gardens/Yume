@@ -6,7 +6,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'habit_tag.freezed.dart';
 part 'habit_tag.g.dart';
 
-
 // HabitTag data contains the one or more user-added tags of each Habit.
 @freezed
 class HabitTag with _$HabitTag {

@@ -6,7 +6,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'habit_streak.freezed.dart';
 part 'habit_streak.g.dart';
 
-
 // HabitStreak data contains the streak values for each Habit.
 @freezed
 class HabitStreak with _$HabitStreak {

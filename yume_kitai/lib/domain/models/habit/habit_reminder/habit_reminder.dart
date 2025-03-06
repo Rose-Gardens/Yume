@@ -6,8 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'habit_reminder.freezed.dart';
 part 'habit_reminder.g.dart';
 
-
-// HabitReminder data is only created when the User sets a reminder for the Habit.
+// HabitReminder data is only created when the User sets a reminder for a Habit.
 @freezed
 class HabitReminder with _$HabitReminder {
   const factory HabitReminder({

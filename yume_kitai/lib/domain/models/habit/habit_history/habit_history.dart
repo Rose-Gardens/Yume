@@ -6,7 +6,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'habit_history.freezed.dart';
 part 'habit_history.g.dart';
 
-
 // HabitHistory data is only created when the User interacts with the Habit's
 // completion states; AKA by setting the Habit to "Complete" or "Skipped" etc.
 @freezed

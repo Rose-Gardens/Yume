@@ -6,7 +6,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'habit_freq.freezed.dart';
 part 'habit_freq.g.dart';
 
-
 // HabitFreq data is only created when the User sets a frequency for the Habit.
 @freezed
 class HabitFreq with _$HabitFreq {
