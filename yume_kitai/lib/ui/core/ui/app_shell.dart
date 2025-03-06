@@ -7,83 +7,92 @@ class AppShell extends StatelessWidget {
   const AppShell({super.key, required this.child});
 
   final Widget child;
+  static final double appBarContentSize = 48.0;
+  static final double appBarPadding = 16.0;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<AppThemeExtension>()!;
 
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(appBarContentSize + (2 * appBarPadding)),
+        child: Padding(
+          padding: EdgeInsets.all(appBarPadding),
+          child: AppBar(
+            leadingWidth: appBarContentSize,
+            leading: Image.asset(
+              "assets/images/YumeLogo.png",
+            ),
+            // * Profile Picture
+            actions: [
+              GestureDetector(
+                onTap: () {},
+                child: Container(
+                  width: appBarContentSize,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: theme.foregroundHigh,
+                      width: 2.0,
+                    ),
+                  ),
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage("assets/images/Java.png"),
+                    radius: appBarContentSize / 2,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: theme.surfaceLow,
+        foregroundColor: theme.foregroundHigh,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16.0),
+            side: BorderSide(color: theme.borderMedium)),
+        child: Icon(Icons.add_rounded),
+      ),
       body: Builder(
         builder: (context) {
           return Column(
             children: [
-              SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: AppBar(
-                    leadingWidth: 48,
-                    leading: Image.asset(
-                      "assets/images/YumeLogo.png",
-                    ),
-                    // * Profile Picture
-                    actions: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: Container(
-                          width: 48,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: theme.foregroundHigh,
-                              width: 2.0,
-                            ),
-                          ),
-                          child: CircleAvatar(
-                            backgroundImage:
-                                AssetImage("assets/images/Java.png"),
-                            radius: 24,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
               SizedBox(
                 height: 24,
               ),
               Expanded(child: child),
-              SafeArea(
-                child: NavigationBar(
-                  destinations: [
-                    NavigationDestination(
-                        icon: Icon(
-                          Icons.schedule_rounded,
-                        ),
-                        label: 'Chrono'),
-                    NavigationDestination(
-                        icon: Icon(Icons.dashboard_rounded), label: 'Habits'),
-                    NavigationDestination(
-                        icon: Icon(Icons.area_chart_rounded),
-                        label: 'Analytics'),
-                    NavigationDestination(
-                        icon: Icon(Icons.add_task_rounded), label: 'Tasks'),
-                  ],
-                  selectedIndex: _getSelectedIndex(context),
-                  onDestinationSelected: (index) {
-                    _onTabSelected(context, index);
-                  },
-                ),
-              )
             ],
           );
+        },
+      ),
+      bottomNavigationBar: NavigationBar(
+        destinations: [
+          NavigationDestination(
+              icon: Icon(
+                Icons.schedule_rounded,
+              ),
+              label: 'Chrono'),
+          NavigationDestination(
+              icon: Icon(Icons.dashboard_rounded), label: 'Habits'),
+          NavigationDestination(
+              icon: Icon(Icons.area_chart_rounded), label: 'Analytics'),
+          NavigationDestination(
+              icon: Icon(Icons.add_task_rounded), label: 'Tasks'),
+        ],
+        selectedIndex: _getSelectedIndex(context),
+        onDestinationSelected: (index) {
+          _onTabSelected(context, index);
         },
       ),
     );
   }
 
   int _getSelectedIndex(BuildContext context) {
-    final location = GoRouter.of(context).routeInformationProvider.value.uri.toString();
+    final location =
+        GoRouter.of(context).routeInformationProvider.value.uri.toString();
     switch (location) {
       case Routes.chrono:
         return 0;
