@@ -49,10 +49,10 @@ class _HabitsScreenState extends State<HabitsScreen> {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 12),
                   child: BigCard(
-                    title: habit.habitTitle,
-                    freq: habit.habitFreq,
-                    habitIconCodePoint: hexStringToHexInt(habit.habitIcon),
-                    color: hexStringToHexInt(habit.habitColor),
+                    title: habit.title,
+                    freq: 'Thrice a week',
+                    habitIconCodePoint: hexStringToHexInt(habit.icon),
+                    color: hexStringToHexInt(habit.color),
                   ),
                 )
             ],

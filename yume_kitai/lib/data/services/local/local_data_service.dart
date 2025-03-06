@@ -94,9 +94,9 @@ class LocalDataService {
 
         //TODO*: Remember to remove these
 
-        // await db.execute(
-        //   "INSERT INTO habits (habit_title, habit_freq, habit_desc, habit_color, habit_icon) VALUES ('Do 15 Leetcode questions', '3 times a week', 'Practice coding', 'FFA44195', 'f653');",
-        // );
+        await db.execute(
+          "INSERT INTO habit (title, group_title, desc, color, icon, is_retired, is_negative, habit_conditionally_active_id, chrono_label_id) VALUES ('Do 15 Leetcode questions', 'Coding', 'Practice coding', 'FFA44195', 'f653', 0, 0, NULL, NULL);",
+        );
         // await db.execute(
         //   "INSERT INTO habits (habit_title, habit_freq, habit_desc, habit_color, habit_icon) VALUES ('Run 5km a day', '4 times a week', 'Stay fit and healthy', 'FFC5605F', 'f6b8');",
         // );
