@@ -3,11 +3,14 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'ui/core/themes/app_theme.dart';
-import 'routing/router.dart';
-import 'main_development.dart' as development;
 
-void main() {
+import 'main_development.dart' as development;
+import 'routing/router.dart';
+import 'ui/core/themes/app_theme.dart';
+
+void main() { 
+  // to load assets
+  WidgetsFlutterBinding.ensureInitialized();
   development.main();
 }
 
@@ -25,6 +28,7 @@ class MainApp extends StatelessWidget {
   }
 }
 
+// TODO: what even is this -> future me: this todo is awful
 // class MainAppState extends ChangeNotifier {
 //   ThemeData _currentTheme = AppTheme.getDefaultTheme();
 //   ThemeData get currentTheme => _currentTheme;
