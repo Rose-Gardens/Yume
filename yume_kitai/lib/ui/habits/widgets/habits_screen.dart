@@ -21,7 +21,6 @@ class HabitsScreen extends StatefulWidget {
 }
 
 class _HabitsScreenState extends State<HabitsScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -43,20 +42,20 @@ class _HabitsScreenState extends State<HabitsScreen> {
           // TODO: this else should be a return child! ? IDK
 
           return ListView(
-            padding: EdgeInsets.zero,
-            children: [
-              for (var habit in widget.viewModel.habits!)
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
-                  child: BigCard(
-                    title: habit.title,
-                    freq: 'Thrice a week',
-                    habitIconCodePoint: hexStringToHexInt(habit.icon),
-                    color: hexStringToHexInt(habit.color),
-                  ),
-                )
-            ],
-          );
+              padding: EdgeInsets.zero,
+              children: widget.viewModel.habits!
+                  .where((habit) => !habit.isRetired)
+                  .map((habit) => Padding(
+                        padding: const EdgeInsets.only(bottom: 12),
+                        child: BigCard(
+                          title: habit.title,
+                          freq: 'Thrice a week',
+                          habitIconCodePoint: hexStringToHexInt(habit.icon),
+                          color: hexStringToHexInt(habit.color),
+                          isNegative: habit.isNegative,
+                        ),
+                      ))
+                  .toList());
         },
       ),
     );
@@ -69,12 +68,14 @@ class BigCard extends StatefulWidget {
       required this.title,
       required this.freq,
       required this.habitIconCodePoint,
-      required this.color});
+      required this.color,
+      required this.isNegative});
 
   final String? title;
   final String? freq;
   final int? habitIconCodePoint;
   final int? color;
+  final bool isNegative;
 
   @override
   State<BigCard> createState() => _BigCardState();
@@ -116,7 +117,7 @@ class _BigCardState extends State<BigCard> {
     // TODO: fix this please
     // * awful method to detect large boxes
     final isTextTooLong = (widget.title?.length ?? 0) > 23;
-    final double newBorderRadius = isTextTooLong ? 32 : 28;
+    final double newBorderRadius = isTextTooLong ? 28 : 28; // 32
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -136,14 +137,30 @@ class _BigCardState extends State<BigCard> {
             padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
             child: Row(
               children: [
-                Icon(IconData(widget.habitIconCodePoint!, fontFamily: 'MaterialIcons'),
-                    size: 36, color: Color(widget.color!).withValues(alpha: 0.85)),
+                Icon(
+                    IconData(widget.habitIconCodePoint!,
+                        fontFamily: 'MaterialIcons'),
+                    size: 40,
+                    color: Color(widget.color!).withValues(alpha: 0.85)),
                 SizedBox(width: 8),
                 Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      if (widget.isNegative) ...[
+                        Text(
+                          'Habit to improve from',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium
+                              ?.copyWith(color: theme.foregroundLowMed),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        SizedBox(
+                          height: 2,
+                        )
+                      ],
                       Text(
                         '${widget.title}',
                         style: Theme.of(context)

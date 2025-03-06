@@ -20,7 +20,7 @@ import '../ui/tasks/widgets/tasks_screen.dart';
 import 'routes.dart';
 
 GoRouter router() => GoRouter(
-      initialLocation: Routes.chrono,
+      initialLocation: Routes.habits, // TODO fix to chrono
       routes: [
         ShellRoute(
           builder: (context, state, child) => AppShell(child: child),
