@@ -37,9 +37,8 @@ class _HabitsScreenState extends State<HabitsScreen> {
           // TODO: make an error widget
           // If the function failed, press to try again.
           if (widget.viewModel.loadHabits.error) {
-            return const Center(child: Placeholder());
+            return const SizedBox();
           }
-          // TODO: this else should be a return child! ? IDK
 
           return ListView(
               padding: EdgeInsets.zero,
@@ -84,48 +83,24 @@ class BigCard extends StatefulWidget {
 class _BigCardState extends State<BigCard> {
   bool isChecked = false;
 
-  // TODO: should clean this up.
-  // * This is dynamic height finding, but causes extra re-renders.
-  // final GlobalKey _cardKey = GlobalKey(); // Step 1: Add a GlobalKey
-  // double _calculatedHeight = 0.0; // To store the height of the card
-
-  // @override
-  // void initState() {
-  //   super.initState();
-
-  //   // Step 2: Use addPostFrameCallback to calculate the height after rendering
-  //   WidgetsBinding.instance.addPostFrameCallback((_) {
-  //     final contextSize = _cardKey.currentContext?.size; // Get the size
-  //     if (contextSize != null) {
-  //       setState(() {
-  //         _calculatedHeight = contextSize.height; // Save the height
-  //       });
-  //     }
-  //   });
-  // }
-
-  // double calcBorderRadius(height) {
-  // const double baseBorderRadius = 20.0;
-  // const double scalingFactor = 0.08;
-  // return baseBorderRadius + (scalingFactor * height);
-  // }
+  double getCardBorderRadius() {
+    // If the card is two or three lines high, increase the border radius
+    return widget.isNegative || ((widget.title?.length ?? 0) > 25) ? 36 : 28;
+  }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<AppThemeExtension>()!;
 
-    // TODO: fix this please
-    // * awful method to detect large boxes
-    final isTextTooLong = (widget.title?.length ?? 0) > 23;
-    final double newBorderRadius = isTextTooLong ? 28 : 28; // 32
+    final cardBorderRadius = getCardBorderRadius();
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
+    return Builder(
+      builder: (context) {
         return Card(
           key: ValueKey(widget.title),
           margin: EdgeInsets.zero,
           shape: SmoothRectangleBorder(
-            borderRadius: BorderRadius.circular(newBorderRadius),
+            borderRadius: BorderRadius.circular(cardBorderRadius),
             smoothness: 0.6,
             side: BorderSide(
               color: theme.borderLow,
@@ -176,7 +151,6 @@ class _BigCardState extends State<BigCard> {
                             .textTheme
                             .bodyMedium
                             ?.copyWith(color: theme.foregroundLow),
-                        maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       )
                     ],
