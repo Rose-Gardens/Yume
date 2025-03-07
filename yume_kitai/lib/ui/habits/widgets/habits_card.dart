@@ -46,6 +46,7 @@ class _HabitsCardState extends State<HabitsCard> {
       builder: (context) {
         return Card(
           key: ValueKey(widget.title),
+          elevation: 0,
           margin: EdgeInsets.zero,
           shape: SmoothRectangleBorder(
             borderRadius: BorderRadius.circular(cardBorderRadius),

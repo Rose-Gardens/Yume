@@ -48,6 +48,7 @@ class AppShell extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        elevation: 0,
         onPressed: () {},
         backgroundColor: theme.surfaceLow,
         foregroundColor: theme.foregroundHigh,
