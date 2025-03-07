@@ -32,7 +32,7 @@ class _HabitsCardState extends State<HabitsCard> {
   bool isChecked = false;
 
   double getCardBorderRadius() {
-    // If the card is two or three lines high, increase the border radius
+    // If the card is two (>25ch) or three lines high, increase the border radius
     return widget.isNegative || ((widget.title?.length ?? 0) > 25) ? 36 : 28;
   }
 
