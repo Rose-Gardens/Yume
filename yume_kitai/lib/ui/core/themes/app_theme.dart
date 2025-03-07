@@ -9,12 +9,28 @@ class AppTheme {
       extensions: [defColors],
       fontFamily: 'NunitoSans',
       textTheme: TextTheme(
+        headlineSmall: TextStyle(
+          fontVariations: [
+            FontVariation('wght', 700.0),
+          ],
+        ),
         titleLarge: TextStyle(
-          fontVariations: [FontVariation('wght', 600.0)],
+          fontVariations: [
+            FontVariation('wght', 600.0),
+          ],
+        ),
+        bodyLarge: TextStyle(
+          fontVariations: [
+            FontVariation('wght', 400.0),
+          ],
         ),
         bodyMedium: TextStyle(
-          fontVariations: [FontVariation('wght', 400.0)],
+          fontVariations: [
+            FontVariation('wght', 400.0),
+          ],
         ),
+        labelLarge: TextStyle(
+            fontVariations: [FontVariation('wght', 500)], fontSize: 16),
       ),
       scaffoldBackgroundColor: defColors.surfaceBg,
       appBarTheme: AppBarTheme(backgroundColor: defColors.surfaceBg),
@@ -30,8 +46,8 @@ class AppTheme {
         ),
         labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>(
             (Set<WidgetState> states) {
-          final baseStyle = TextStyle(
-              fontVariations: [FontVariation('wght', 600.0)]);
+          final baseStyle =
+              TextStyle(fontVariations: [FontVariation('wght', 600.0)]);
           return states.contains(WidgetState.selected)
               ? baseStyle.copyWith(color: defColors.foregroundMax) // Selected
               : baseStyle.copyWith(
