@@ -1,7 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:go_router/go_router.dart';
-import '../themes/theme_extension.dart';
+import 'package:yume_kitai/ui/habits/widgets/habits_add_new.dart';
+
 import '../../../routing/routes.dart';
+import '../themes/theme_extension.dart';
 
 class AppShell extends StatelessWidget {
   const AppShell({super.key, required this.child});
@@ -49,7 +53,14 @@ class AppShell extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         elevation: 0,
-        onPressed: () {},
+        onPressed: () {
+          showCupertinoSheet(
+            context: context,
+            pageBuilder: (BuildContext context) {
+              return HabitsAddNew();
+            },
+          );
+        },
         backgroundColor: theme.surfaceLow,
         foregroundColor: theme.foregroundHigh,
         shape: RoundedRectangleBorder(
