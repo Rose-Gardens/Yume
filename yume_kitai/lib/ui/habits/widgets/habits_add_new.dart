@@ -15,7 +15,7 @@ class HabitsAddNew extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          spacing: 36.0,
+          spacing: 32.0,
           children: [
             Container(
               width: 40,
@@ -34,11 +34,17 @@ class HabitsAddNew extends StatelessWidget {
             ),
             Form(
               child: Column(
+                spacing: 20.0,
                 children: [
                   InputField(
-                    label: "Text",
-                    largeFieldSize: false,
-                  )
+                    label: "Title",
+                  ),
+                  InputField(
+                    label: "Description",
+                    largeFieldSize: true,
+                  ),
+                  InputField(label: "Icon"),
+                  InputField(label: "Color")
                 ],
               ),
             ),

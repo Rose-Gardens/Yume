@@ -7,11 +7,12 @@ class InputField extends StatelessWidget {
   final String label;
   final String? placeholder;
   final bool largeFieldSize;
+  // final bool autofocus
   const InputField({
     super.key,
     this.placeholder,
     required this.label,
-    required this.largeFieldSize,
+    this.largeFieldSize = false,
   });
 
   @override
@@ -33,18 +34,24 @@ class InputField extends StatelessWidget {
             ),
           ),
         ),
-        CupertinoTextFormFieldRow(
-          padding: EdgeInsets.zero,
-          style: Theme.of(context)
-              .textTheme
-              .bodyLarge
-              ?.copyWith(color: theme.foregroundHigh),
-          placeholder: placeholder,
-          decoration: BoxDecoration(
-            color: theme.surfaceLow,
-            borderRadius: BorderRadius.circular(largeFieldSize ? 16.0 : 12.0),
-            border: Border.all(color: theme.borderLow, width: 0.5),
-          ),
+        FormField(
+          builder: (FormFieldState<String> field) {
+            return CupertinoTextField.borderless(
+              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyLarge
+                  ?.copyWith(color: theme.foregroundHigh),
+              placeholder: placeholder,
+              maxLines: largeFieldSize ? 5 : 1,
+              decoration: BoxDecoration(
+                color: theme.surfaceLow,
+                borderRadius:
+                    BorderRadius.circular(largeFieldSize ? 24.0 : 16.0),
+                border: Border.all(color: theme.borderLow, width: 0.5),
+              ),
+            );
+          },
         ),
       ],
     );

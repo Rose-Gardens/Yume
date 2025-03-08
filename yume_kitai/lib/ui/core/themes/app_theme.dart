@@ -15,18 +15,26 @@ class AppTheme {
           ],
         ),
         titleLarge: TextStyle(
+          height: 1.1,
+          fontSize: 18,
           fontVariations: [
-            FontVariation('wght', 600.0),
+            FontVariation('wght', 700.0),
           ],
         ),
         bodyLarge: TextStyle(
           fontVariations: [
-            FontVariation('wght', 400.0),
+            FontVariation('wght', 500.0),
           ],
         ),
         bodyMedium: TextStyle(
           fontVariations: [
             FontVariation('wght', 400.0),
+          ],
+        ),
+        bodySmall: TextStyle(
+          letterSpacing: 0.05,
+          fontVariations: [
+            FontVariation('wght', 500.0),
           ],
         ),
         labelLarge: TextStyle(

@@ -11,7 +11,7 @@ class AppShell extends StatelessWidget {
   const AppShell({super.key, required this.child});
 
   final Widget child;
-  static final double appBarContentSize = 48.0;
+  static final double appBarContentSize = 40.0;
   static final double appBarPadding = 16.0;
 
   @override
@@ -54,6 +54,7 @@ class AppShell extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         elevation: 0,
         onPressed: () {
+          // TODO: This should be changing by page
           showCupertinoSheet(
             context: context,
             pageBuilder: (BuildContext context) {
@@ -72,9 +73,6 @@ class AppShell extends StatelessWidget {
         builder: (context) {
           return Column(
             children: [
-              SizedBox(
-                height: 24,
-              ),
               Expanded(child: child),
             ],
           );
