@@ -5,7 +5,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:smooth_corner/smooth_corner.dart';
-import 'package:yume_kitai/ui/core/ui/custom_checkbox.dart';
 
 import '../../core/themes/theme_extension.dart';
 
@@ -33,7 +32,7 @@ class _HabitsCardState extends State<HabitsCard> {
 
   double getCardBorderRadius() {
     // If the card is two (>25ch) or three lines high, increase the border radius
-    return widget.isNegative || ((widget.title?.length ?? 0) > 25) ? 36 : 28;
+    return ((widget.title?.length ?? 0) > 25) ? 26 : 22;
   }
 
   @override
@@ -41,7 +40,7 @@ class _HabitsCardState extends State<HabitsCard> {
     final theme = Theme.of(context).extension<AppThemeExtension>()!;
 
     final cardBorderRadius = getCardBorderRadius();
-
+    // TODO KEY SHOULD BE ID
     return Builder(
       builder: (context) {
         return Card(
@@ -58,7 +57,7 @@ class _HabitsCardState extends State<HabitsCard> {
           ),
           color: Color(widget.color!).withValues(alpha: 0.4),
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+            padding: EdgeInsets.fromLTRB(12, 4, 8, 4),
             child: Row(
               children: [
                 Icon(
@@ -68,41 +67,24 @@ class _HabitsCardState extends State<HabitsCard> {
                     color: Color(widget.color!).withValues(alpha: 0.85)),
                 SizedBox(width: 8),
                 Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      if (widget.isNegative) ...[
+                  child: Padding(
+                    // Text has separate padding from card to even unevenness from icon padding
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
                         Text(
-                          'Habit to improve from',
+                          '${widget.title}',
                           style: Theme.of(context)
                               .textTheme
-                              .bodyMedium
-                              ?.copyWith(color: theme.foregroundLowMed),
+                              .titleLarge
+                              ?.copyWith(color: theme.foregroundHigh),
+                          maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
-                        SizedBox(
-                          height: 2,
-                        )
                       ],
-                      Text(
-                        '${widget.title}',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge
-                            ?.copyWith(color: theme.foregroundHigh),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      Text(
-                        '${widget.freq}',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium
-                            ?.copyWith(color: theme.foregroundLow),
-                        overflow: TextOverflow.ellipsis,
-                      )
-                    ],
+                    ),
                   ),
                 ),
                 IconButton(
@@ -110,19 +92,9 @@ class _HabitsCardState extends State<HabitsCard> {
                   onPressed: () {},
                   icon: Icon(
                     Icons.more_vert,
-                    size: 36,
+                    size: 28,
                   ),
                 ),
-                CustomCheckbox(
-                  value: isChecked,
-                  onChanged: (value) {
-                    setState(
-                      () {
-                        isChecked = value;
-                      },
-                    );
-                  },
-                )
               ],
             ),
           ),
