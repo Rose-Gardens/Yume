@@ -12,7 +12,7 @@
 .swiftpm/
 migrate_working_dir/
 
-# IntelliJ related
+# IntelliJ
 *.iml
 *.ipr
 *.iws
@@ -23,14 +23,12 @@ migrate_working_dir/
 # is commented out by default.
 #.vscode/
 
-# Flutter/Dart/Pub related
+# Flutter/Dart/Pub
 **/doc/api/
 **/ios/Flutter/.last_build_id
 /ios/Pods/
 /ios/Flutter/Flutter.framework
 /ios/Flutter/Flutter.podspec
-/ios/Runner.xcodeproj/
-/ios/Runner.xcworkspace/
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
@@ -38,10 +36,10 @@ migrate_working_dir/
 .pub/
 /build/
 
-# Symbolication related
+# Symbolicatio
 app.*.symbols
 
-# Obfuscation related
+# Obfuscation
 app.*.map.json
 
 # Android Studio will place build artifacts here
@@ -49,4 +47,4 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 /android/app/build/
-/android/app/
+/android/app/.cxx
