@@ -1,7 +1,12 @@
+// Copyright 2025 (c) Roshin Nishad. All rights reserved.
+// Use of this source code is governed by the Apache 2.0 License that can be
+// found in the LICENSE file.
+
+
 import 'package:flutter/material.dart';
-import '../../core/ui/input_field.dart';
 
 import '../../core/themes/theme_extension.dart';
+import '../../core/ui/input_field.dart';
 
 class HabitsAddNew extends StatelessWidget {
   const HabitsAddNew({super.key});

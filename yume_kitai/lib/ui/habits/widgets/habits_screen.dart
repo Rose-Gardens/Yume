@@ -22,7 +22,7 @@ class _HabitsScreenState extends State<HabitsScreen> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: ListenableBuilder(
         // Listen to changes in the loadHabits function
         listenable: widget.viewModel.loadHabits,
@@ -50,8 +50,8 @@ class _HabitsScreenState extends State<HabitsScreen> {
                     (habit) => Padding(
                       padding: const EdgeInsets.only(bottom: 12),
                       child: HabitsCard(
+                        id: habit.habitId,
                         title: habit.title,
-                        freq: 'Thrice a week',
                         habitIconCodePoint: hexStringToHexInt(habit.icon),
                         color: hexStringToHexInt(habit.color),
                         isNegative: habit.isNegative,

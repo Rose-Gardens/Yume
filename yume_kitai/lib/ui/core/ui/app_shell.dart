@@ -1,3 +1,7 @@
+// Copyright 2025 (c) Roshin Nishad. All rights reserved.
+// Use of this source code is governed by the Apache 2.0 License that can be
+// found in the LICENSE file.
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,8 +15,8 @@ class AppShell extends StatelessWidget {
   const AppShell({super.key, required this.child});
 
   final Widget child;
-  static final double appBarContentSize = 40.0;
-  static final double appBarPadding = 16.0;
+  static const double appBarContentSize = 40.0;
+  static const double appBarPadding = 16.0;
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +71,7 @@ class AppShell extends StatelessWidget {
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.0),
             side: BorderSide(color: theme.borderMedium)),
-        child: Icon(Icons.add_rounded),
+        child: const Icon(Icons.add_rounded),
       ),
       body: Builder(
         builder: (context) {
@@ -81,16 +85,16 @@ class AppShell extends StatelessWidget {
       bottomNavigationBar: NavigationBar(
         destinations: [
           NavigationDestination(
-              icon: Icon(
+              icon: const Icon(
                 Icons.schedule_rounded,
               ),
               label: 'Chrono'),
           NavigationDestination(
-              icon: Icon(Icons.dashboard_rounded), label: 'Habits'),
+              icon: const Icon(Icons.dashboard_rounded), label: 'Habits'),
           NavigationDestination(
-              icon: Icon(Icons.area_chart_rounded), label: 'Analytics'),
+              icon: const Icon(Icons.area_chart_rounded), label: 'Analytics'),
           NavigationDestination(
-              icon: Icon(Icons.add_task_rounded), label: 'Tasks'),
+              icon: const Icon(Icons.add_task_rounded), label: 'Tasks'),
         ],
         selectedIndex: _getSelectedIndex(context),
         onDestinationSelected: (index) {

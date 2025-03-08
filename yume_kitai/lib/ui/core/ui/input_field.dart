@@ -1,3 +1,7 @@
+// Copyright 2025 (c) Roshin Nishad. All rights reserved.
+// Use of this source code is governed by the Apache 2.0 License that can be
+// found in the LICENSE file.
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -37,7 +41,7 @@ class InputField extends StatelessWidget {
         FormField(
           builder: (FormFieldState<String> field) {
             return CupertinoTextField.borderless(
-              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
               style: Theme.of(context)
                   .textTheme
                   .bodyLarge

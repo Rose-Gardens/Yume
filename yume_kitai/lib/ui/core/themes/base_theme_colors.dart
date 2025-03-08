@@ -4,7 +4,7 @@ import 'theme_extension.dart';
 class BaseThemeColors {
   static const AppThemeExtension baseColors = AppThemeExtension(
       surfaceBg: Colors.black,
-      surfaceOverlay: Color(0xFF171719), // ? For things like bottom sheets
+      surfaceOverlay: Color.fromRGBO(23, 23, 25, 1), // ? For things like bottom sheets
       surfaceLow: Color.fromRGBO(255, 255, 255, 0.06),
       surfaceMedium: Color.fromRGBO(255, 255, 255, 0.11),
       surfaceHigh: Color.fromRGBO(255, 255, 255, 0.20),

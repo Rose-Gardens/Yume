@@ -28,7 +28,7 @@ class MainApp extends StatelessWidget {
   }
 }
 
-// TODO: what even is this -> future me: this todo is awful
+// TODO: change "theme: AppTheme.getDefaultTheme()" above based on user preference
 // class MainAppState extends ChangeNotifier {
 //   ThemeData _currentTheme = AppTheme.getDefaultTheme();
 //   ThemeData get currentTheme => _currentTheme;
