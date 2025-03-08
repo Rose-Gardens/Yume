@@ -39,20 +39,27 @@ class _HabitsScreenState extends State<HabitsScreen> {
           }
 
           return ListView(
-              padding: EdgeInsets.zero,
-              children: widget.viewModel.habits!
+            padding: EdgeInsets.zero,
+            children: [
+              const SizedBox(
+                height: 24,
+              ),
+              ...widget.viewModel.habits!
                   .where((habit) => !habit.isRetired)
-                  .map((habit) => Padding(
-                        padding: const EdgeInsets.only(bottom: 12),
-                        child: HabitsCard(
-                          title: habit.title,
-                          freq: 'Thrice a week',
-                          habitIconCodePoint: hexStringToHexInt(habit.icon),
-                          color: hexStringToHexInt(habit.color),
-                          isNegative: habit.isNegative,
-                        ),
-                      ))
-                  .toList());
+                  .map(
+                    (habit) => Padding(
+                      padding: const EdgeInsets.only(bottom: 12),
+                      child: HabitsCard(
+                        title: habit.title,
+                        freq: 'Thrice a week',
+                        habitIconCodePoint: hexStringToHexInt(habit.icon),
+                        color: hexStringToHexInt(habit.color),
+                        isNegative: habit.isNegative,
+                      ),
+                    ),
+                  )
+            ],
+          );
         },
       ),
     );
