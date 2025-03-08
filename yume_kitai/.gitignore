@@ -26,9 +26,11 @@ migrate_working_dir/
 # Flutter/Dart/Pub related
 **/doc/api/
 **/ios/Flutter/.last_build_id
-ios/Pods/
-ios/Flutter/Flutter.framework
-ios/Flutter/Flutter.podspec
+/ios/Pods/
+/ios/Flutter/Flutter.framework
+/ios/Flutter/Flutter.podspec
+/ios/Runner.xcodeproj/
+/ios/Runner.xcworkspace/
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
@@ -46,4 +48,5 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-android/app/build/
+/android/app/build/
+/android/app/
