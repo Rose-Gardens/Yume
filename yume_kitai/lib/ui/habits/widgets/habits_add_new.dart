@@ -2,7 +2,6 @@
 // Use of this source code is governed by the Apache 2.0 License that can be
 // found in the LICENSE file.
 
-
 import 'package:flutter/material.dart';
 
 import '../../core/themes/theme_extension.dart';
@@ -16,7 +15,9 @@ class HabitsAddNew extends StatelessWidget {
     final theme = Theme.of(context).extension<AppThemeExtension>()!;
 
     return Container(
-      color: theme.surfaceOverlay,
+      margin: const EdgeInsets.symmetric(horizontal: 8),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(40), color: theme.surfaceOverlay),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -37,7 +38,7 @@ class HabitsAddNew extends StatelessWidget {
                   .headlineSmall
                   ?.copyWith(color: theme.foregroundHigh),
             ),
-            Form(
+            const Form(
               child: Column(
                 spacing: 20.0,
                 children: [

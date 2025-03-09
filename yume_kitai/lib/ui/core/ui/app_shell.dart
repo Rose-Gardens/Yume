@@ -2,7 +2,6 @@
 // Use of this source code is governed by the Apache 2.0 License that can be
 // found in the LICENSE file.
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
@@ -24,9 +23,10 @@ class AppShell extends StatelessWidget {
 
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(appBarContentSize + (2 * appBarPadding)),
+        preferredSize:
+            const Size.fromHeight(appBarContentSize + (2 * appBarPadding)),
         child: Padding(
-          padding: EdgeInsets.all(appBarPadding),
+          padding: const EdgeInsets.all(appBarPadding),
           child: AppBar(
             leadingWidth: appBarContentSize,
             leading: Image.asset(
@@ -45,7 +45,7 @@ class AppShell extends StatelessWidget {
                       width: 2.0,
                     ),
                   ),
-                  child: CircleAvatar(
+                  child: const CircleAvatar(
                     backgroundImage: AssetImage("assets/images/Java.png"),
                     radius: appBarContentSize / 2,
                   ),
@@ -59,10 +59,11 @@ class AppShell extends StatelessWidget {
         elevation: 0,
         onPressed: () {
           // TODO: This should be changing by page
-          showCupertinoSheet(
+          showModalBottomSheet(
+            backgroundColor: Colors.transparent,
             context: context,
-            pageBuilder: (BuildContext context) {
-              return HabitsAddNew();
+            builder: (BuildContext context) {
+              return const HabitsAddNew();
             },
           );
         },
@@ -83,18 +84,18 @@ class AppShell extends StatelessWidget {
         },
       ),
       bottomNavigationBar: NavigationBar(
-        destinations: [
+        destinations: const [
           NavigationDestination(
-              icon: const Icon(
+              icon: Icon(
                 Icons.schedule_rounded,
               ),
               label: 'Chrono'),
           NavigationDestination(
-              icon: const Icon(Icons.dashboard_rounded), label: 'Habits'),
+              icon: Icon(Icons.dashboard_rounded), label: 'Habits'),
           NavigationDestination(
-              icon: const Icon(Icons.area_chart_rounded), label: 'Analytics'),
+              icon: Icon(Icons.area_chart_rounded), label: 'Analytics'),
           NavigationDestination(
-              icon: const Icon(Icons.add_task_rounded), label: 'Tasks'),
+              icon: Icon(Icons.add_task_rounded), label: 'Tasks'),
         ],
         selectedIndex: _getSelectedIndex(context),
         onDestinationSelected: (index) {
@@ -123,7 +124,7 @@ class AppShell extends StatelessWidget {
     }
   }
 
-  void _onTabSelected(BuildContext context, index) {
+  void _onTabSelected(BuildContext context, int index) {
     switch (index) {
       case 0:
         context.go(Routes.chrono);

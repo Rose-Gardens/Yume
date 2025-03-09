@@ -3,12 +3,12 @@ import 'app_theme_colors.dart';
 
 class AppTheme {
   static ThemeData getDefaultTheme() {
-    final defColors = AppThemeColors.defaultColors;
+    const defColors = AppThemeColors.defaultColors;
 
     return ThemeData(
-      extensions: [defColors],
+      extensions: const [defColors],
       fontFamily: 'NunitoSans',
-      textTheme: TextTheme(
+      textTheme: const TextTheme(
         headlineSmall: TextStyle(
           fontVariations: [
             FontVariation('wght', 700.0),
@@ -54,7 +54,7 @@ class AppTheme {
         ),
         labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>(
             (Set<WidgetState> states) {
-          final baseStyle =
+          const baseStyle =
               TextStyle(fontVariations: [FontVariation('wght', 600.0)]);
           return states.contains(WidgetState.selected)
               ? baseStyle.copyWith(color: defColors.foregroundMax) // Selected

@@ -5,7 +5,6 @@
 import 'dart:async';
 
 import 'package:sqflite/sql.dart';
-import 'package:yume_kitai/domain/models/habit/habit_history/habit_history.dart';
 
 import '../../../domain/models/habit/habit/habit.dart';
 import '../../../utils/result.dart';
