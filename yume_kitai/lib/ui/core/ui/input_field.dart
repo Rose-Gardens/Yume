@@ -2,7 +2,6 @@
 // Use of this source code is governed by the Apache 2.0 License that can be
 // found in the LICENSE file.
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../themes/theme_extension.dart';
@@ -40,19 +39,30 @@ class InputField extends StatelessWidget {
         ),
         FormField(
           builder: (FormFieldState<String> field) {
-            return CupertinoTextField.borderless(
-              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+            return TextField(
               style: Theme.of(context)
                   .textTheme
                   .bodyLarge
                   ?.copyWith(color: theme.foregroundHigh),
-              placeholder: placeholder,
               maxLines: largeFieldSize ? 5 : 1,
-              decoration: BoxDecoration(
-                color: theme.surfaceLow,
-                borderRadius:
-                    BorderRadius.circular(largeFieldSize ? 24.0 : 16.0),
-                border: Border.all(color: theme.borderLow, width: 0.5),
+              cursorColor: theme.foregroundHigh,
+              cursorHeight: 20,
+              decoration: InputDecoration(
+                isDense: true,
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                filled: true,
+                fillColor: theme.surfaceLow,
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: theme.borderLow, width: 0.5),
+                  borderRadius:
+                      BorderRadius.circular(largeFieldSize ? 24.0 : 20.0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: theme.borderHigh, width: 2),
+                  borderRadius:
+                      BorderRadius.circular(largeFieldSize ? 24.0 : 16.0),
+                ),
               ),
             );
           },

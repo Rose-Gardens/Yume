@@ -5,7 +5,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
-import 'package:yume_kitai/ui/habits/widgets/habits_add_new.dart';
+import 'package:yume_kitai/ui/habits/widgets/habits_sheet.dart';
 
 import '../../../routing/routes.dart';
 import '../themes/theme_extension.dart';
@@ -60,10 +60,12 @@ class AppShell extends StatelessWidget {
         onPressed: () {
           // TODO: This should be changing by page
           showModalBottomSheet(
+            isScrollControlled: true,
+            useSafeArea: true,
             backgroundColor: Colors.transparent,
             context: context,
             builder: (BuildContext context) {
-              return const HabitsAddNew();
+              return const HabitsSheet();
             },
           );
         },
