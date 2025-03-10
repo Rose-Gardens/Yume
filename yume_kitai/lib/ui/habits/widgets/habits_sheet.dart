@@ -25,7 +25,7 @@ class HabitsSheet extends StatelessWidget {
         color: theme.surfaceOverlay,
       ),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
+        padding: const EdgeInsets.all(16),
         child: Column(
           spacing: 32,
           children: [
@@ -37,33 +37,45 @@ class HabitsSheet extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16.0),
               ),
             ),
-            Text(
-              "New Habit",
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineSmall
-                  ?.copyWith(color: theme.foregroundHigh),
-            ),
-            const Expanded(
+            Expanded(
               child: SingleChildScrollView(
-                child: Form(
-                  child: Column(
-                    spacing: 20,
-                    children: [
-                      InputField(
-                        label: "Title",
+                child: Column(
+                  children: [
+                    Text(
+                      "Create Habit",
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineSmall
+                          ?.copyWith(color: theme.foregroundHigh),
+                    ),
+                    Form(
+                      child: Column(
+                        spacing: 20,
+                        children: [
+                          const InputField(
+                            label: "Title",
+                            autofocus: true,
+                          ),
+                          const InputField(
+                            label: "Description",
+                            largeFieldSize: true,
+                          ),
+                          const InputField(label: "Icon"),
+                          const InputField(label: "Color"),
+                          TextButton(
+                            onPressed: () {
+                              return;
+                            },
+                            child: const Text("Done"),
+                          ),
+                          SizedBox(height: MediaQuery.of(context).viewInsets.bottom + 32.0)
+                        ],
                       ),
-                      InputField(
-                        label: "Description",
-                        largeFieldSize: true,
-                      ),
-                      InputField(label: "Icon"),
-                      InputField(label: "Color"),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-            ),
+            )
           ],
         ),
       ),

@@ -10,12 +10,14 @@ class InputField extends StatelessWidget {
   final String label;
   final String? placeholder;
   final bool largeFieldSize;
-  // final bool autofocus
+  final bool autofocus;
+
   const InputField({
     super.key,
     this.placeholder,
     required this.label,
     this.largeFieldSize = false,
+    this.autofocus = false,
   });
 
   @override
@@ -45,6 +47,7 @@ class InputField extends StatelessWidget {
                   .bodyLarge
                   ?.copyWith(color: theme.foregroundHigh),
               maxLines: largeFieldSize ? 5 : 1,
+              autofocus: autofocus,
               cursorColor: theme.foregroundHigh,
               cursorHeight: 20,
               decoration: InputDecoration(
@@ -61,7 +64,7 @@ class InputField extends StatelessWidget {
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: theme.borderHigh, width: 2),
                   borderRadius:
-                      BorderRadius.circular(largeFieldSize ? 24.0 : 16.0),
+                      BorderRadius.circular(largeFieldSize ? 24.0 : 20.0),
                 ),
               ),
             );

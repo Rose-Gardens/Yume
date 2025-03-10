@@ -28,6 +28,7 @@ class HabitsCard extends StatefulWidget {
 }
 
 class _HabitsCardState extends State<HabitsCard> {
+  // TODO: IF NOT REQUIRED MAKE IT STATELESS
   bool isChecked = false;
 
   double getCardBorderRadius() {

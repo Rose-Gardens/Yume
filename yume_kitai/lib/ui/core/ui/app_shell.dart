@@ -62,6 +62,7 @@ class AppShell extends StatelessWidget {
           showModalBottomSheet(
             isScrollControlled: true,
             useSafeArea: true,
+            barrierColor: Colors.black87,
             backgroundColor: Colors.transparent,
             context: context,
             builder: (BuildContext context) {
