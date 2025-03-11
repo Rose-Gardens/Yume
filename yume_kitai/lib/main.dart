@@ -20,10 +20,10 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
       title: "Yume Kitai",
       theme: AppTheme.getDefaultTheme(),
-      routerConfig: router(),
+      routerConfig: router,
     );
   }
 }
