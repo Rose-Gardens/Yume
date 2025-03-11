@@ -5,7 +5,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
-import 'package:yume_kitai/ui/habits/widgets/habits_sheet.dart';
+import '../../habits/widgets/habits_sheet.dart';
 
 import '../../../routing/routes.dart';
 import '../themes/theme_extension.dart';
@@ -22,39 +22,6 @@ class AppShell extends StatelessWidget {
     final theme = Theme.of(context).extension<AppThemeExtension>()!;
 
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize:
-            const Size.fromHeight(appBarContentSize + (2 * appBarPadding)),
-        child: Padding(
-          padding: const EdgeInsets.all(appBarPadding),
-          child: AppBar(
-            leadingWidth: appBarContentSize,
-            leading: Image.asset(
-              "assets/images/YumeLogo.png",
-            ),
-            // * Profile Picture
-            actions: [
-              GestureDetector(
-                onTap: () {},
-                child: Container(
-                  width: appBarContentSize,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: theme.foregroundHigh,
-                      width: 2.0,
-                    ),
-                  ),
-                  child: const CircleAvatar(
-                    backgroundImage: AssetImage("assets/images/Java.png"),
-                    radius: appBarContentSize / 2,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
       floatingActionButton: FloatingActionButton(
         elevation: 0,
         onPressed: () {
@@ -79,10 +46,12 @@ class AppShell extends StatelessWidget {
       ),
       body: Builder(
         builder: (context) {
-          return Column(
-            children: [
-              Expanded(child: child),
-            ],
+          return SafeArea(
+            child: Column(
+              children: [
+                Expanded(child: child),
+              ],
+            ),
           );
         },
       ),

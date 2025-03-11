@@ -60,15 +60,22 @@ class HabitsSheet extends StatelessWidget {
                             label: "Description",
                             largeFieldSize: true,
                           ),
-                          const InputField(label: "Icon"),
-                          const InputField(label: "Color"),
+                          const InputField(
+                            label: "Icon",
+                          ),
+                          const InputField(
+                            label: "Color",
+                          ),
                           TextButton(
                             onPressed: () {
                               return;
                             },
                             child: const Text("Done"),
                           ),
-                          SizedBox(height: MediaQuery.of(context).viewInsets.bottom + 32.0)
+                          SizedBox(
+                            height:
+                                MediaQuery.viewInsetsOf(context).bottom + 32.0,
+                          ),
                         ],
                       ),
                     ),

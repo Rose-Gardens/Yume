@@ -3,16 +3,16 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:yume_kitai/ui/habits/view_models/habits_viewmodel.dart';
 
 import 'package:yume_kitai/ui/habits/widgets/habits_card.dart';
 import 'package:yume_kitai/utils/converters.dart';
 
-import '../view_models/habits_viewmodel.dart';
-
 class HabitsScreen extends StatefulWidget {
-  const HabitsScreen({super.key, required this.viewModel});
-
-  final HabitsViewModel viewModel;
+  const HabitsScreen({
+    super.key,
+  });
 
   @override
   State<HabitsScreen> createState() => _HabitsScreenState();
@@ -21,30 +21,30 @@ class HabitsScreen extends StatefulWidget {
 class _HabitsScreenState extends State<HabitsScreen> {
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.watch<HabitsViewModel>();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: ListenableBuilder(
         // Listen to changes in the loadHabits function
-        listenable: widget.viewModel.loadHabits,
+        listenable: viewModel.loadHabits,
         builder: (context, child) {
           // If the function is still running, show a progress indicator.
-          if (widget.viewModel.loadHabits.running) {
+          if (viewModel.loadHabits.running) {
             return const Center(child: CircularProgressIndicator());
           }
 
           // TODO: make an error widget
           // If the function failed, press to try again.
-          if (widget.viewModel.loadHabits.error) {
+          if (viewModel.loadHabits.error) {
             return const SizedBox();
           }
-
           return ListView(
             padding: EdgeInsets.zero,
             children: [
               const SizedBox(
                 height: 24,
               ),
-              ...widget.viewModel.habits!
+              ...viewModel.habits!
                   .where((habit) => !habit.isRetired)
                   .map(
                     (habit) => Padding(
