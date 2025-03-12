@@ -3,16 +3,44 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:yume_kitai/ui/habits/view_models/habits_viewmodel.dart';
 
 import '../../core/themes/theme_extension.dart';
 import '../../core/ui/input_field.dart';
 
 // * HabitsSheet is the page where new habits can be created
-class HabitsSheet extends StatelessWidget {
+class HabitsSheet extends StatefulWidget {
   const HabitsSheet({super.key});
 
   @override
+  State<HabitsSheet> createState() => _HabitsSheetState();
+}
+
+class _HabitsSheetState extends State<HabitsSheet> {
+  final TextEditingController titleController = TextEditingController();
+
+  final TextEditingController descController = TextEditingController();
+
+  final TextEditingController iconController = TextEditingController();
+
+  final TextEditingController colorController = TextEditingController();
+
+  late final Map<String, String> habit;
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    titleController.dispose();
+    descController.dispose();
+    iconController.dispose();
+    colorController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final viewModel = context.read<HabitsViewModel>();
     final theme = Theme.of(context).extension<AppThemeExtension>()!;
 
     return Container(
@@ -52,25 +80,51 @@ class HabitsSheet extends StatelessWidget {
                       child: Column(
                         spacing: 20,
                         children: [
-                          const InputField(
+                          InputField(
                             label: "Title",
                             autofocus: true,
+                            controller: titleController,
                           ),
-                          const InputField(
+                          InputField(
                             label: "Description",
                             largeFieldSize: true,
+                            controller: descController,
                           ),
-                          const InputField(
+                          InputField(
                             label: "Icon",
+                            controller: iconController,
                           ),
-                          const InputField(
+                          InputField(
                             label: "Color",
+                            controller: colorController,
                           ),
                           TextButton(
                             onPressed: () {
-                              return;
+                              viewModel.saveHabit.execute(
+                                {
+                                  'title': titleController.text,
+                                  'desc': descController.text,
+                                  'icon': iconController.text,
+                                  'color': colorController.text
+                                },
+                              );
                             },
-                            child: const Text("Done"),
+                            child: ListenableBuilder(
+                                listenable: viewModel.saveHabit,
+                                builder: (context, child) {
+                                  if (viewModel.saveHabit.running) {
+                                    return const CircularProgressIndicator();
+                                  }
+                                  // TODO: make an error widget
+                                  if (viewModel.saveHabit.error) {
+                                    return const Text("Please Try Again");
+                                  }
+                                  if (viewModel.saveHabit.completed) {
+                                    viewModel.saveHabit.clearResult();
+                                    Navigator.of(context).pop();
+                                  }
+                                  return const Text("Done");
+                                }),
                           ),
                           SizedBox(
                             height:

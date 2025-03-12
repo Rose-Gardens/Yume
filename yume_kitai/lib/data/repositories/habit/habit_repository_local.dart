@@ -122,7 +122,7 @@ class HabitRepositoryLocal implements HabitRepository {
         for (final {
               'habit_id': habitId as int,
               'title': title as String,
-              'group_title': groupTitle as String,
+              'group_title': groupTitle as String?,
               'desc': desc as String,
               'color': color as String,
               'icon': icon as String,

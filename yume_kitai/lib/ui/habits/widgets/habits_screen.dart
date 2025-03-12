@@ -50,7 +50,7 @@ class _HabitsScreenState extends State<HabitsScreen> {
                     (habit) => Padding(
                       padding: const EdgeInsets.only(bottom: 12),
                       child: HabitsCard(
-                        id: habit.habitId,
+                        id: habit.habitId!,
                         title: habit.title,
                         habitIconCodePoint: hexStringToHexInt(habit.icon),
                         color: hexStringToHexInt(habit.color),

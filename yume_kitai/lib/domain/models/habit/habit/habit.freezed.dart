@@ -21,13 +21,15 @@ Habit _$HabitFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Habit {
   /// The primary-key / id of the Habit. e.g. "5"
-  int get habitId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'habit_id')
+  int? get habitId => throw _privateConstructorUsedError;
 
   /// The title of the Habit. e.g. "Run 5k"
   String get title => throw _privateConstructorUsedError;
 
   /// The group title of the Habit. e.g. "Exercise (Run 5k, Bike 30m)"
-  String get groupTitle => throw _privateConstructorUsedError;
+  @JsonKey(name: 'group_title')
+  String? get groupTitle => throw _privateConstructorUsedError;
 
   /// The description of the Habit. e.g. "Running 5km to gain fitness"
   String get desc => throw _privateConstructorUsedError;
@@ -39,15 +41,19 @@ mixin _$Habit {
   String get icon => throw _privateConstructorUsedError;
 
   /// The bool value on whether the Habit is retired or not. e.g. "true"
+  @JsonKey(name: 'is_retired')
   bool get isRetired => throw _privateConstructorUsedError;
 
   /// The bool value on whether the Habit is *undesirable* or not. e.g. "true"
+  @JsonKey(name: 'is_negative')
   bool get isNegative => throw _privateConstructorUsedError;
 
   /// Foreign-key / PK id of the habit_conditionally_active table. e.g. "5"
+  @JsonKey(name: 'habit_conditionallY_active_id')
   int? get habitConditionallyActiveId => throw _privateConstructorUsedError;
 
   /// Foreign-key / PK id of the chrono_label table. e.g. "5"
+  @JsonKey(name: 'chrono_label_id')
   int? get chronoLabelId => throw _privateConstructorUsedError;
 
   /// Serializes this Habit to a JSON map.
@@ -65,16 +71,17 @@ abstract class $HabitCopyWith<$Res> {
       _$HabitCopyWithImpl<$Res, Habit>;
   @useResult
   $Res call(
-      {int habitId,
+      {@JsonKey(name: 'habit_id') int? habitId,
       String title,
-      String groupTitle,
+      @JsonKey(name: 'group_title') String? groupTitle,
       String desc,
       String color,
       String icon,
-      bool isRetired,
-      bool isNegative,
+      @JsonKey(name: 'is_retired') bool isRetired,
+      @JsonKey(name: 'is_negative') bool isNegative,
+      @JsonKey(name: 'habit_conditionallY_active_id')
       int? habitConditionallyActiveId,
-      int? chronoLabelId});
+      @JsonKey(name: 'chrono_label_id') int? chronoLabelId});
 }
 
 /// @nodoc
@@ -92,9 +99,9 @@ class _$HabitCopyWithImpl<$Res, $Val extends Habit>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? habitId = null,
+    Object? habitId = freezed,
     Object? title = null,
-    Object? groupTitle = null,
+    Object? groupTitle = freezed,
     Object? desc = null,
     Object? color = null,
     Object? icon = null,
@@ -104,18 +111,18 @@ class _$HabitCopyWithImpl<$Res, $Val extends Habit>
     Object? chronoLabelId = freezed,
   }) {
     return _then(_value.copyWith(
-      habitId: null == habitId
+      habitId: freezed == habitId
           ? _value.habitId
           : habitId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      groupTitle: null == groupTitle
+      groupTitle: freezed == groupTitle
           ? _value.groupTitle
           : groupTitle // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       desc: null == desc
           ? _value.desc
           : desc // ignore: cast_nullable_to_non_nullable
@@ -156,16 +163,17 @@ abstract class _$$HabitImplCopyWith<$Res> implements $HabitCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int habitId,
+      {@JsonKey(name: 'habit_id') int? habitId,
       String title,
-      String groupTitle,
+      @JsonKey(name: 'group_title') String? groupTitle,
       String desc,
       String color,
       String icon,
-      bool isRetired,
-      bool isNegative,
+      @JsonKey(name: 'is_retired') bool isRetired,
+      @JsonKey(name: 'is_negative') bool isNegative,
+      @JsonKey(name: 'habit_conditionallY_active_id')
       int? habitConditionallyActiveId,
-      int? chronoLabelId});
+      @JsonKey(name: 'chrono_label_id') int? chronoLabelId});
 }
 
 /// @nodoc
@@ -181,9 +189,9 @@ class __$$HabitImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? habitId = null,
+    Object? habitId = freezed,
     Object? title = null,
-    Object? groupTitle = null,
+    Object? groupTitle = freezed,
     Object? desc = null,
     Object? color = null,
     Object? icon = null,
@@ -193,18 +201,18 @@ class __$$HabitImplCopyWithImpl<$Res>
     Object? chronoLabelId = freezed,
   }) {
     return _then(_$HabitImpl(
-      habitId: null == habitId
+      habitId: freezed == habitId
           ? _value.habitId
           : habitId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      groupTitle: null == groupTitle
+      groupTitle: freezed == groupTitle
           ? _value.groupTitle
           : groupTitle // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       desc: null == desc
           ? _value.desc
           : desc // ignore: cast_nullable_to_non_nullable
@@ -241,23 +249,25 @@ class __$$HabitImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$HabitImpl implements _Habit {
   const _$HabitImpl(
-      {required this.habitId,
+      {@JsonKey(name: 'habit_id') this.habitId,
       required this.title,
-      required this.groupTitle,
+      @JsonKey(name: 'group_title') required this.groupTitle,
       required this.desc,
       required this.color,
       required this.icon,
-      required this.isRetired,
-      required this.isNegative,
+      @JsonKey(name: 'is_retired') required this.isRetired,
+      @JsonKey(name: 'is_negative') required this.isNegative,
+      @JsonKey(name: 'habit_conditionallY_active_id')
       required this.habitConditionallyActiveId,
-      required this.chronoLabelId});
+      @JsonKey(name: 'chrono_label_id') required this.chronoLabelId});
 
   factory _$HabitImpl.fromJson(Map<String, dynamic> json) =>
       _$$HabitImplFromJson(json);
 
   /// The primary-key / id of the Habit. e.g. "5"
   @override
-  final int habitId;
+  @JsonKey(name: 'habit_id')
+  final int? habitId;
 
   /// The title of the Habit. e.g. "Run 5k"
   @override
@@ -265,7 +275,8 @@ class _$HabitImpl implements _Habit {
 
   /// The group title of the Habit. e.g. "Exercise (Run 5k, Bike 30m)"
   @override
-  final String groupTitle;
+  @JsonKey(name: 'group_title')
+  final String? groupTitle;
 
   /// The description of the Habit. e.g. "Running 5km to gain fitness"
   @override
@@ -281,18 +292,22 @@ class _$HabitImpl implements _Habit {
 
   /// The bool value on whether the Habit is retired or not. e.g. "true"
   @override
+  @JsonKey(name: 'is_retired')
   final bool isRetired;
 
   /// The bool value on whether the Habit is *undesirable* or not. e.g. "true"
   @override
+  @JsonKey(name: 'is_negative')
   final bool isNegative;
 
   /// Foreign-key / PK id of the habit_conditionally_active table. e.g. "5"
   @override
+  @JsonKey(name: 'habit_conditionallY_active_id')
   final int? habitConditionallyActiveId;
 
   /// Foreign-key / PK id of the chrono_label table. e.g. "5"
   @override
+  @JsonKey(name: 'chrono_label_id')
   final int? chronoLabelId;
 
   @override
@@ -357,22 +372,25 @@ class _$HabitImpl implements _Habit {
 
 abstract class _Habit implements Habit {
   const factory _Habit(
-      {required final int habitId,
+      {@JsonKey(name: 'habit_id') final int? habitId,
       required final String title,
-      required final String groupTitle,
+      @JsonKey(name: 'group_title') required final String? groupTitle,
       required final String desc,
       required final String color,
       required final String icon,
-      required final bool isRetired,
-      required final bool isNegative,
+      @JsonKey(name: 'is_retired') required final bool isRetired,
+      @JsonKey(name: 'is_negative') required final bool isNegative,
+      @JsonKey(name: 'habit_conditionallY_active_id')
       required final int? habitConditionallyActiveId,
+      @JsonKey(name: 'chrono_label_id')
       required final int? chronoLabelId}) = _$HabitImpl;
 
   factory _Habit.fromJson(Map<String, dynamic> json) = _$HabitImpl.fromJson;
 
   /// The primary-key / id of the Habit. e.g. "5"
   @override
-  int get habitId;
+  @JsonKey(name: 'habit_id')
+  int? get habitId;
 
   /// The title of the Habit. e.g. "Run 5k"
   @override
@@ -380,7 +398,8 @@ abstract class _Habit implements Habit {
 
   /// The group title of the Habit. e.g. "Exercise (Run 5k, Bike 30m)"
   @override
-  String get groupTitle;
+  @JsonKey(name: 'group_title')
+  String? get groupTitle;
 
   /// The description of the Habit. e.g. "Running 5km to gain fitness"
   @override
@@ -396,18 +415,22 @@ abstract class _Habit implements Habit {
 
   /// The bool value on whether the Habit is retired or not. e.g. "true"
   @override
+  @JsonKey(name: 'is_retired')
   bool get isRetired;
 
   /// The bool value on whether the Habit is *undesirable* or not. e.g. "true"
   @override
+  @JsonKey(name: 'is_negative')
   bool get isNegative;
 
   /// Foreign-key / PK id of the habit_conditionally_active table. e.g. "5"
   @override
+  @JsonKey(name: 'habit_conditionallY_active_id')
   int? get habitConditionallyActiveId;
 
   /// Foreign-key / PK id of the chrono_label table. e.g. "5"
   @override
+  @JsonKey(name: 'chrono_label_id')
   int? get chronoLabelId;
 
   /// Create a copy of Habit
