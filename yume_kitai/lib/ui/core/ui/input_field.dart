@@ -11,6 +11,7 @@ class InputField extends StatelessWidget {
   final String? placeholder;
   final bool largeFieldSize;
   final bool autofocus;
+  final TextEditingController? controller;
 
   const InputField({
     super.key,
@@ -18,6 +19,7 @@ class InputField extends StatelessWidget {
     required this.label,
     this.largeFieldSize = false,
     this.autofocus = false,
+    this.controller,
   });
 
   @override
@@ -42,6 +44,7 @@ class InputField extends StatelessWidget {
         FormField(
           builder: (FormFieldState<String> field) {
             return TextField(
+              controller: controller,
               style: Theme.of(context)
                   .textTheme
                   .bodyLarge

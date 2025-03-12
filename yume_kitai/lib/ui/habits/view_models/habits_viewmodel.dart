@@ -57,11 +57,23 @@ class HabitsViewModel extends ChangeNotifier {
         chronoLabelId: null);
     final result = await _habitRepository.createHabit(createdHabit);
     switch (result) {
-      case Ok<void>():
+      case Ok<int>():
         _log.fine("Created habit successfully.");
-        _load();
+        _habits?.add(
+          Habit(
+              habitId: result.value,
+              title: habit['title']!,
+              groupTitle: null,
+              desc: habit['desc']!,
+              color: habit['color']!,
+              icon: habit['icon']!,
+              isRetired: false,
+              isNegative: false,
+              habitConditionallyActiveId: null,
+              chronoLabelId: null),
+        );
         notifyListeners();
-      case Error<void>():
+      case Error<int>():
         _log.severe("Failed to create habit");
     }
     return result;

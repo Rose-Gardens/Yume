@@ -21,7 +21,7 @@ abstract class HabitRepository {
   //     String startDate, String endDate);
 
   /// Creates a new [Habit].
-  Future<Result<void>> createHabit(Habit habit);
+  Future<Result<int>> createHabit(Habit habit);
 
   /// Updates a [Habit].
   Future<Result<void>> updateHabit(Habit habit);

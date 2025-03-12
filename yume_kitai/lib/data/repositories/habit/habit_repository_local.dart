@@ -20,12 +20,12 @@ class HabitRepositoryLocal implements HabitRepository {
 
   /// Defines a function that inserts or "creates" a [Habit] into the database.
   @override
-  Future<Result<void>> createHabit(Habit habit) async {
+  Future<Result<int>> createHabit(Habit habit) async {
     try {
       final db = await _localDataService.getDatabaseInstance();
-      await db.insert('habit', habit.toJson(),
+      int newId = await db.insert('habit', habit.toJson(),
           conflictAlgorithm: ConflictAlgorithm.replace);
-      return const Result.ok(null);
+      return Result.ok(newId);
     } on Exception catch (e) {
       return Result.error(e);
     }
