@@ -43,34 +43,24 @@ class HabitsViewModel extends ChangeNotifier {
     return result;
   }
 
-  Future<Result<void>> _saveHabit(Map<String, String> habit) async {
-    final createdHabit = Habit(
+  Future<Result<void>> _saveHabit(Map<String, String> habitMap) async {
+    final habit = Habit(
         habitId: null,
-        title: habit['title']!,
+        title: habitMap['title']!,
         groupTitle: null,
-        desc: habit['desc']!,
-        color: habit['color']!,
-        icon: habit['icon']!,
+        desc: habitMap['desc']!,
+        color: habitMap['color']!,
+        icon: habitMap['icon']!,
         isRetired: false,
         isNegative: false,
         habitConditionallyActiveId: null,
         chronoLabelId: null);
-    final result = await _habitRepository.createHabit(createdHabit);
+    final result = await _habitRepository.createHabit(habit);
     switch (result) {
       case Ok<int>():
         _log.fine("Created habit successfully.");
         _habits?.add(
-          Habit(
-              habitId: result.value,
-              title: habit['title']!,
-              groupTitle: null,
-              desc: habit['desc']!,
-              color: habit['color']!,
-              icon: habit['icon']!,
-              isRetired: false,
-              isNegative: false,
-              habitConditionallyActiveId: null,
-              chronoLabelId: null),
+          habit.copyWith(habitId: result.value),
         );
         notifyListeners();
       case Error<int>():
