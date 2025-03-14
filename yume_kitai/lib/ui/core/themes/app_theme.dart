@@ -4,41 +4,33 @@ import 'app_theme_colors.dart';
 class AppTheme {
   static ThemeData getDefaultTheme() {
     const defColors = AppThemeColors.defaultColors;
+    const baseStyle = TextStyle(
+        letterSpacing: 0, fontVariations: [FontVariation('wght', 500.0)]);
 
     return ThemeData(
       extensions: const [defColors],
       fontFamily: 'NunitoSans',
-      textTheme: const TextTheme(
-        headlineSmall: TextStyle(
+      textTheme: TextTheme(
+        headlineSmall: baseStyle.copyWith(
           fontVariations: [
-            FontVariation('wght', 700.0),
+            const FontVariation('wght', 700),
           ],
         ),
-        titleLarge: TextStyle(
-          height: 1.1,
+        titleLarge: baseStyle.copyWith(
           fontSize: 18,
+          height: 1.1,
           fontVariations: [
-            FontVariation('wght', 700.0),
+            const FontVariation('wght', 700),
           ],
         ),
-        bodyLarge: TextStyle(
+        bodyLarge: baseStyle,
+        bodyMedium: baseStyle.copyWith(
           fontVariations: [
-            FontVariation('wght', 500.0),
+            const FontVariation('wght', 400),
           ],
         ),
-        bodyMedium: TextStyle(
-          fontVariations: [
-            FontVariation('wght', 400.0),
-          ],
-        ),
-        bodySmall: TextStyle(
-          letterSpacing: 0.05,
-          fontVariations: [
-            FontVariation('wght', 500.0),
-          ],
-        ),
-        labelLarge: TextStyle(
-            fontVariations: [FontVariation('wght', 500)], fontSize: 16),
+        bodySmall: baseStyle,
+        labelLarge: baseStyle.copyWith(fontSize: 16),
       ),
       scaffoldBackgroundColor: defColors.surfaceBg,
       appBarTheme: AppBarTheme(backgroundColor: defColors.surfaceBg),
@@ -54,11 +46,11 @@ class AppTheme {
         ),
         labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>(
             (Set<WidgetState> states) {
-          const baseStyle =
+          const baseNavStyle =
               TextStyle(fontVariations: [FontVariation('wght', 600.0)]);
           return states.contains(WidgetState.selected)
-              ? baseStyle.copyWith(color: defColors.foregroundMax) // Selected
-              : baseStyle.copyWith(
+              ? baseNavStyle.copyWith(color: defColors.foregroundMax) // Selected
+              : baseNavStyle.copyWith(
                   color: defColors.foregroundMedium); // Unselected
         }),
         iconTheme: WidgetStateProperty.resolveWith<IconThemeData>(
