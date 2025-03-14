@@ -12,6 +12,7 @@ class InputField extends StatelessWidget {
   final bool largeFieldSize;
   final bool autofocus;
   final TextEditingController? controller;
+  final FormFieldValidator<String>? validator;
 
   const InputField({
     super.key,
@@ -20,7 +21,11 @@ class InputField extends StatelessWidget {
     this.largeFieldSize = false,
     this.autofocus = false,
     this.controller,
+    this.validator,
   });
+
+  static OutlineInputBorder baseBorder =
+      OutlineInputBorder(borderRadius: BorderRadius.circular(20.0));
 
   @override
   Widget build(BuildContext context) {
@@ -41,37 +46,37 @@ class InputField extends StatelessWidget {
             ),
           ),
         ),
-        FormField(
-          builder: (FormFieldState<String> field) {
-            return TextField(
-              controller: controller,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyLarge
-                  ?.copyWith(color: theme.foregroundHigh),
-              maxLines: largeFieldSize ? 5 : 1,
-              autofocus: autofocus,
-              cursorColor: theme.foregroundHigh,
-              cursorHeight: 20,
-              decoration: InputDecoration(
-                isDense: true,
-                contentPadding:
-                    const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                filled: true,
-                fillColor: theme.surfaceLow,
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: theme.borderLow, width: 0.5),
-                  borderRadius:
-                      BorderRadius.circular(largeFieldSize ? 24.0 : 20.0),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: theme.borderHigh, width: 2),
-                  borderRadius:
-                      BorderRadius.circular(largeFieldSize ? 24.0 : 20.0),
-                ),
-              ),
-            );
-          },
+        TextFormField(
+          validator: validator,
+          controller: controller,
+          style: Theme.of(context)
+              .textTheme
+              .bodyLarge
+              ?.copyWith(color: theme.foregroundHigh),
+          maxLines: largeFieldSize ? 5 : 1,
+          autofocus: autofocus,
+          cursorColor: theme.foregroundHigh,
+          cursorHeight: 20,
+          decoration: InputDecoration(
+            errorStyle: TextStyle(color: theme.error),
+            isDense: true,
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+            filled: true,
+            fillColor: theme.surfaceLow,
+            enabledBorder: baseBorder.copyWith(
+              borderSide: BorderSide(color: theme.borderLow, width: 0.5),
+            ),
+            focusedBorder: baseBorder.copyWith(
+              borderSide: BorderSide(color: theme.borderHigh, width: 2),
+            ),
+            errorBorder: baseBorder.copyWith(
+              borderSide: BorderSide(color: theme.error, width: 1),
+            ),
+            focusedErrorBorder: baseBorder.copyWith(
+              borderSide: BorderSide(color: theme.error, width: 2),
+            ),
+          ),
         ),
       ],
     );
