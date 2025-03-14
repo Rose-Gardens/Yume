@@ -15,6 +15,7 @@ class HabitsViewModel extends ChangeNotifier {
   HabitsViewModel({required HabitRepository habitRepository})
       : _habitRepository = habitRepository {
     loadHabits = Command0(_load)..execute();
+    saveHabit = Command1(_saveHabit);
   }
 
   final HabitRepository _habitRepository;
@@ -26,6 +27,9 @@ class HabitsViewModel extends ChangeNotifier {
   // loads the complete list of habits.
   late final Command0 loadHabits;
 
+  // Sends a newly created habit to the repostiory.
+  late final Command1<void, Map<String, String>> saveHabit;
+
   Future<Result<void>> _load() async {
     final result = await _habitRepository.getHabitList();
     switch (result) {
@@ -35,6 +39,32 @@ class HabitsViewModel extends ChangeNotifier {
         notifyListeners();
       case Error<List<Habit>>():
         _log.severe("Failed to load list of habits.");
+    }
+    return result;
+  }
+
+  Future<Result<void>> _saveHabit(Map<String, String> habitMap) async {
+    final habit = Habit(
+        habitId: null,
+        title: habitMap['title']!,
+        groupTitle: null,
+        desc: habitMap['desc']!,
+        color: habitMap['color']!,
+        icon: habitMap['icon']!,
+        isRetired: false,
+        isNegative: false,
+        habitConditionallyActiveId: null,
+        chronoLabelId: null);
+    final result = await _habitRepository.createHabit(habit);
+    switch (result) {
+      case Ok<int>():
+        _log.fine("Created habit successfully.");
+        _habits?.add(
+          habit.copyWith(habitId: result.value),
+        );
+        notifyListeners();
+      case Error<int>():
+        _log.severe("Failed to create habit");
     }
     return result;
   }

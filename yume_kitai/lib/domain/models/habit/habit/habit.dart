@@ -2,6 +2,8 @@
 // Use of this source code is governed by the Apache 2.0 License that can be
 // found in the LICENSE file.
 
+// ignore_for_file: invalid_annotation_target
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'habit.freezed.dart';
 part 'habit.g.dart';
@@ -10,13 +12,13 @@ part 'habit.g.dart';
 class Habit with _$Habit {
   const factory Habit({
     /// The primary-key / id of the Habit. e.g. "5"
-    required int habitId,
+    @JsonKey(name: 'habit_id') int? habitId,
 
     /// The title of the Habit. e.g. "Run 5k"
     required String title,
 
     /// The group title of the Habit. e.g. "Exercise (Run 5k, Bike 30m)"
-    required String groupTitle,
+    @JsonKey(name: 'group_title') required String? groupTitle,
 
     /// The description of the Habit. e.g. "Running 5km to gain fitness"
     required String desc,
@@ -28,16 +30,16 @@ class Habit with _$Habit {
     required String icon,
 
     /// The bool value on whether the Habit is retired or not. e.g. "true"
-    required bool isRetired,
+    @JsonKey(name: 'is_retired') required bool isRetired,
 
     /// The bool value on whether the Habit is *undesirable* or not. e.g. "true"
-    required bool isNegative,
+    @JsonKey(name: 'is_negative') required bool isNegative,
 
     /// Foreign-key / PK id of the habit_conditionally_active table. e.g. "5"
-    required int? habitConditionallyActiveId,
+    @JsonKey(name: 'habit_conditionallY_active_id') required int? habitConditionallyActiveId,
 
     /// Foreign-key / PK id of the chrono_label table. e.g. "5"
-    required int? chronoLabelId,
+    @JsonKey(name: 'chrono_label_id') required int? chronoLabelId,
   }) = _Habit;
 
   factory Habit.fromJson(Map<String, Object?> json) => _$HabitFromJson(json);

@@ -3,18 +3,34 @@ import 'app_theme_colors.dart';
 
 class AppTheme {
   static ThemeData getDefaultTheme() {
-    final defColors = AppThemeColors.defaultColors;
+    const defColors = AppThemeColors.defaultColors;
+    const baseStyle = TextStyle(
+        letterSpacing: 0, fontVariations: [FontVariation('wght', 500.0)]);
 
     return ThemeData(
-      extensions: [defColors],
+      extensions: const [defColors],
       fontFamily: 'NunitoSans',
       textTheme: TextTheme(
-        titleLarge: TextStyle(
-          fontVariations: [FontVariation('wght', 600.0)],
+        headlineSmall: baseStyle.copyWith(
+          fontVariations: [
+            const FontVariation('wght', 700),
+          ],
         ),
-        bodyMedium: TextStyle(
-          fontVariations: [FontVariation('wght', 400.0)],
+        titleLarge: baseStyle.copyWith(
+          fontSize: 18,
+          height: 1.1,
+          fontVariations: [
+            const FontVariation('wght', 700),
+          ],
         ),
+        bodyLarge: baseStyle,
+        bodyMedium: baseStyle.copyWith(
+          fontVariations: [
+            const FontVariation('wght', 400),
+          ],
+        ),
+        bodySmall: baseStyle,
+        labelLarge: baseStyle.copyWith(fontSize: 16),
       ),
       scaffoldBackgroundColor: defColors.surfaceBg,
       appBarTheme: AppBarTheme(backgroundColor: defColors.surfaceBg),
@@ -30,11 +46,11 @@ class AppTheme {
         ),
         labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>(
             (Set<WidgetState> states) {
-          final baseStyle = TextStyle(
-              fontVariations: [FontVariation('wght', 600.0)]);
+          const baseNavStyle =
+              TextStyle(fontVariations: [FontVariation('wght', 600.0)]);
           return states.contains(WidgetState.selected)
-              ? baseStyle.copyWith(color: defColors.foregroundMax) // Selected
-              : baseStyle.copyWith(
+              ? baseNavStyle.copyWith(color: defColors.foregroundMax) // Selected
+              : baseNavStyle.copyWith(
                   color: defColors.foregroundMedium); // Unselected
         }),
         iconTheme: WidgetStateProperty.resolveWith<IconThemeData>(

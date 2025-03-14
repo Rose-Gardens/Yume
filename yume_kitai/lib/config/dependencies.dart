@@ -8,6 +8,7 @@ import 'package:provider/single_child_widget.dart';
 import '../data/repositories/habit/habit_repository.dart';
 import '../data/repositories/habit/habit_repository_local.dart';
 import '../data/services/local/local_data_service.dart';
+import '../ui/habits/view_models/habits_viewmodel.dart';
 
 /// Configure dependencies for remote data.
 /// This dependency list uses repositories that connect to a remote server.
@@ -24,6 +25,9 @@ List<SingleChildWidget> get providersLocal {
       create: (context) =>
           HabitRepositoryLocal(localDataService: context.read())
               as HabitRepository,
+    ),
+    ChangeNotifierProvider<HabitsViewModel>(
+      create: (context) => HabitsViewModel(habitRepository: context.read()),
     )
   ];
 }

@@ -22,7 +22,7 @@ class CustomCheckbox extends StatelessWidget {
 
     return GestureDetector(
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 100),
+        duration: const Duration(milliseconds: 100),
         width: 40,
         height: 40,
         decoration: ShapeDecoration(
@@ -32,7 +32,7 @@ class CustomCheckbox extends StatelessWidget {
         ),
         child: AnimatedOpacity(
           opacity: opacityLevel,
-          duration: Duration(milliseconds: 100),
+          duration: const Duration(milliseconds: 100),
           child: Icon(
             icon,
             color: theme.foregroundHigh,

@@ -3,7 +3,6 @@
 // found in the LICENSE file.
 
 import '../../../domain/models/habit/habit/habit.dart';
-import '../../../domain/models/habit/habit_history/habit_history.dart';
 import '../../../utils/result.dart';
 
 abstract class HabitRepository {
@@ -22,7 +21,7 @@ abstract class HabitRepository {
   //     String startDate, String endDate);
 
   /// Creates a new [Habit].
-  Future<Result<void>> createHabit(Habit habit);
+  Future<Result<int>> createHabit(Habit habit);
 
   /// Updates a [Habit].
   Future<Result<void>> updateHabit(Habit habit);

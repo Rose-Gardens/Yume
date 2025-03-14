@@ -29,7 +29,7 @@ class SmoothRectangleBorder extends OutlinedBorder {
   final double smoothness;
 
   @override
-  EdgeInsetsGeometry get dimensions => EdgeInsets.all(0);
+  EdgeInsetsGeometry get dimensions => const EdgeInsets.all(0);
 
   @override
   Path getInnerPath(Rect rect, {TextDirection? textDirection}) {

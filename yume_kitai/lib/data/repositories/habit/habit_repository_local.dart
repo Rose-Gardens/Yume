@@ -5,7 +5,6 @@
 import 'dart:async';
 
 import 'package:sqflite/sql.dart';
-import 'package:yume_kitai/domain/models/habit/habit_history/habit_history.dart';
 
 import '../../../domain/models/habit/habit/habit.dart';
 import '../../../utils/result.dart';
@@ -21,12 +20,12 @@ class HabitRepositoryLocal implements HabitRepository {
 
   /// Defines a function that inserts or "creates" a [Habit] into the database.
   @override
-  Future<Result<void>> createHabit(Habit habit) async {
+  Future<Result<int>> createHabit(Habit habit) async {
     try {
       final db = await _localDataService.getDatabaseInstance();
-      await db.insert('habit', habit.toJson(),
+      int newId = await db.insert('habit', habit.toJson(),
           conflictAlgorithm: ConflictAlgorithm.replace);
-      return const Result.ok(null);
+      return Result.ok(newId);
     } on Exception catch (e) {
       return Result.error(e);
     }
@@ -123,7 +122,7 @@ class HabitRepositoryLocal implements HabitRepository {
         for (final {
               'habit_id': habitId as int,
               'title': title as String,
-              'group_title': groupTitle as String,
+              'group_title': groupTitle as String?,
               'desc': desc as String,
               'color': color as String,
               'icon': icon as String,
