@@ -18,23 +18,20 @@ class HabitsSheet extends StatefulWidget {
 }
 
 class _HabitsSheetState extends State<HabitsSheet> {
-  final TextEditingController titleController = TextEditingController();
-
-  final TextEditingController descController = TextEditingController();
-
-  final TextEditingController iconController = TextEditingController();
-
-  final TextEditingController colorController = TextEditingController();
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _descController = TextEditingController();
+  final TextEditingController _iconController = TextEditingController();
+  final TextEditingController _colorController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   late final Map<String, String> habit;
 
   @override
   void dispose() {
-    // Clean up the controller when the widget is disposed.
-    titleController.dispose();
-    descController.dispose();
-    iconController.dispose();
-    colorController.dispose();
+    _titleController.dispose();
+    _descController.dispose();
+    _iconController.dispose();
+    _colorController.dispose();
     super.dispose();
   }
 
@@ -77,37 +74,78 @@ class _HabitsSheetState extends State<HabitsSheet> {
                           ?.copyWith(color: theme.foregroundHigh),
                     ),
                     Form(
+                      key: _formKey,
                       child: Column(
                         spacing: 20,
                         children: [
                           InputField(
                             label: "Title",
                             autofocus: true,
-                            controller: titleController,
+                            controller: _titleController,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter a title.';
+                              } else if (value.length > 50) {
+                                return 'Title is longer than 50 characters.';
+                              }
+                              return null;
+                            },
                           ),
                           InputField(
                             label: "Description",
                             largeFieldSize: true,
-                            controller: descController,
+                            controller: _descController,
                           ),
                           InputField(
                             label: "Icon",
-                            controller: iconController,
+                            controller: _iconController,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return null;
+                              }
+                              else if (value.length != 4) {
+                                return 'Icon value should be 4 characters.';
+                              }
+                              else if (int.tryParse(value, radix: 16) == null) {
+                                return 'Icon value is not a valid hexadecimal.';
+                              }
+                              return null;
+                            },
                           ),
                           InputField(
                             label: "Color",
-                            controller: colorController,
+                            controller: _colorController,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return null;
+                              }
+                              else if (value.length != 8) {
+                                return 'Color value should be 8 characters.';
+                              }
+                              else if (int.tryParse(value, radix: 16) == null) {
+                                return 'Color value is not a valid hexadecimal.';
+                              }
+                              return null;
+                            },
                           ),
                           TextButton(
                             onPressed: () {
-                              viewModel.saveHabit.execute(
-                                {
-                                  'title': titleController.text,
-                                  'desc': descController.text,
-                                  'icon': iconController.text,
-                                  'color': colorController.text
-                                },
-                              );
+                              if (_formKey.currentState!.validate()) {
+                                viewModel.saveHabit.execute(
+                                  {
+                                    'title': _titleController.text,
+                                    'desc': _descController.text,
+                                    'icon': _iconController.text,
+                                    'color': _colorController.text
+                                  },
+                                );
+                                // TODO: This is not pretty
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text('Success!'),
+                                  ),
+                                );
+                              }
                             },
                             child: ListenableBuilder(
                                 listenable: viewModel.saveHabit,
@@ -115,9 +153,9 @@ class _HabitsSheetState extends State<HabitsSheet> {
                                   if (viewModel.saveHabit.running) {
                                     return const CircularProgressIndicator();
                                   }
-                                  // TODO: make an error widget
+                                  // TODO: make an error widget neat snackbar
                                   if (viewModel.saveHabit.error) {
-                                    return const Text("Please Try Again");
+                                    viewModel.saveHabit.clearResult();
                                   }
                                   if (viewModel.saveHabit.completed) {
                                     viewModel.saveHabit.clearResult();
