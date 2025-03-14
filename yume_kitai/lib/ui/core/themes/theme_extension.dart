@@ -27,6 +27,8 @@ class AppThemeExtension extends ThemeExtension<AppThemeExtension> {
   final Color foregroundInverseLow;
   final Color foregroundInverseHigh;
 
+  final Color error;
+
   const AppThemeExtension({
     required this.surfaceBg,
     required this.surfaceOverlay,
@@ -50,6 +52,7 @@ class AppThemeExtension extends ThemeExtension<AppThemeExtension> {
     required this.foregroundMax,
     required this.foregroundInverseLow,
     required this.foregroundInverseHigh,
+    required this.error,
   });
 
   @override
@@ -76,31 +79,34 @@ class AppThemeExtension extends ThemeExtension<AppThemeExtension> {
     Color? foregroundMax,
     Color? foregroundInverseLow,
     Color? foregroundInverseHigh,
+    Color? error,
   }) {
     return AppThemeExtension(
-        surfaceBg: surfaceBg ?? this.surfaceBg,
-        surfaceOverlay: surfaceOverlay ?? this.surfaceOverlay,
-        surfaceLow: surfaceLow ?? this.surfaceLow,
-        surfaceMedium: surfaceMedium ?? this.surfaceMedium,
-        surfaceHigh: surfaceHigh ?? this.surfaceHigh,
-        surfaceInverse: surfaceInverse ?? this.surfaceInverse,
-        overlayLow: overlayLow ?? this.overlayLow,
-        overlayHigh: overlayHigh ?? this.overlayHigh,
-        borderLow: borderLow ?? this.borderLow,
-        borderMedium: borderMedium ?? this.borderMedium,
-        borderHigh: borderHigh ?? this.borderHigh,
-        foregroundDim: foregroundDim ?? this.foregroundDim,
-        foregroundVeryLow: foregroundVeryLow ?? this.foregroundVeryLow,
-        foregroundLow: foregroundLow ?? this.foregroundLow,
-        foregroundLowMed: foregroundLowMed ?? this.foregroundLowMed,
-        foregroundMedium: foregroundMedium ?? this.foregroundMedium,
-        foregroundMedHigh: foregroundMedHigh ?? this.foregroundMedHigh,
-        foregroundHigh: foregroundHigh ?? this.foregroundHigh,
-        foregroundBright: foregroundBright ?? this.foregroundBright,
-        foregroundMax: foregroundMax ?? this.foregroundMax,
-        foregroundInverseLow: foregroundInverseLow ?? this.foregroundInverseLow,
-        foregroundInverseHigh:
-            foregroundInverseHigh ?? this.foregroundInverseHigh);
+      surfaceBg: surfaceBg ?? this.surfaceBg,
+      surfaceOverlay: surfaceOverlay ?? this.surfaceOverlay,
+      surfaceLow: surfaceLow ?? this.surfaceLow,
+      surfaceMedium: surfaceMedium ?? this.surfaceMedium,
+      surfaceHigh: surfaceHigh ?? this.surfaceHigh,
+      surfaceInverse: surfaceInverse ?? this.surfaceInverse,
+      overlayLow: overlayLow ?? this.overlayLow,
+      overlayHigh: overlayHigh ?? this.overlayHigh,
+      borderLow: borderLow ?? this.borderLow,
+      borderMedium: borderMedium ?? this.borderMedium,
+      borderHigh: borderHigh ?? this.borderHigh,
+      foregroundDim: foregroundDim ?? this.foregroundDim,
+      foregroundVeryLow: foregroundVeryLow ?? this.foregroundVeryLow,
+      foregroundLow: foregroundLow ?? this.foregroundLow,
+      foregroundLowMed: foregroundLowMed ?? this.foregroundLowMed,
+      foregroundMedium: foregroundMedium ?? this.foregroundMedium,
+      foregroundMedHigh: foregroundMedHigh ?? this.foregroundMedHigh,
+      foregroundHigh: foregroundHigh ?? this.foregroundHigh,
+      foregroundBright: foregroundBright ?? this.foregroundBright,
+      foregroundMax: foregroundMax ?? this.foregroundMax,
+      foregroundInverseLow: foregroundInverseLow ?? this.foregroundInverseLow,
+      foregroundInverseHigh:
+          foregroundInverseHigh ?? this.foregroundInverseHigh,
+      error: error ?? this.error,
+    );
   }
 
   @override
@@ -133,12 +139,12 @@ class AppThemeExtension extends ThemeExtension<AppThemeExtension> {
       foregroundHigh: Color.lerp(foregroundHigh, other.foregroundHigh, t)!,
       foregroundBright:
           Color.lerp(foregroundBright, other.foregroundBright, t)!,
-      foregroundMax:
-          Color.lerp(foregroundMax, other.foregroundMax, t)!,
+      foregroundMax: Color.lerp(foregroundMax, other.foregroundMax, t)!,
       foregroundInverseLow:
           Color.lerp(foregroundInverseLow, other.foregroundInverseLow, t)!,
       foregroundInverseHigh:
           Color.lerp(foregroundInverseHigh, other.foregroundInverseHigh, t)!,
+      error: Color.lerp(error, other.error, t)!,
     );
   }
 }
