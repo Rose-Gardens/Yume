@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 import 'package:yume_kitai/ui/habits/view_models/habits_viewmodel.dart';
 
 import 'package:yume_kitai/ui/habits/widgets/habits_card.dart';
-import 'package:yume_kitai/utils/converters.dart';
 
 class HabitsScreen extends StatefulWidget {
   const HabitsScreen({
@@ -22,6 +21,7 @@ class _HabitsScreenState extends State<HabitsScreen> {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<HabitsViewModel>();
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: ListenableBuilder(
@@ -29,7 +29,7 @@ class _HabitsScreenState extends State<HabitsScreen> {
         listenable: viewModel.loadHabits,
         builder: (context, child) {
           // If the function is still running, show a progress indicator.
-          if (viewModel.loadHabits.running) {
+          if (viewModel.loadHabits.running || viewModel.habits == null) {
             return const Center(child: CircularProgressIndicator());
           }
 
@@ -38,27 +38,26 @@ class _HabitsScreenState extends State<HabitsScreen> {
           if (viewModel.loadHabits.error) {
             return const SizedBox();
           }
-          return ListView(
-            padding: EdgeInsets.zero,
-            children: [
-              const SizedBox(
-                height: 24,
-              ),
-              ...viewModel.habits!
-                  .where((habit) => !habit.isRetired)
-                  .map(
-                    (habit) => Padding(
-                      padding: const EdgeInsets.only(bottom: 12),
-                      child: HabitsCard(
-                        id: habit.habitId!,
-                        title: habit.title,
-                        habitIconCodePoint: hexStringToHexInt(habit.icon),
-                        color: hexStringToHexInt(habit.color),
-                        isNegative: habit.isNegative,
-                      ),
-                    ),
-                  )
-            ],
+          // * If not error, or running, filter habits and build list.
+          final filteredHabits =
+              viewModel.habits!.where((habit) => !habit.isRetired).toList();
+
+          return ListView.builder(
+            padding: const EdgeInsets.only(top: 24),
+            itemCount: filteredHabits.length,
+            itemBuilder: (context, index) {
+              final habit = filteredHabits[index];
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: HabitsCard(
+                  id: habit.habitId!,
+                  title: habit.title,
+                  icon: habit.icon,
+                  color: habit.color,
+                  isNegative: habit.isNegative,
+                ),
+              );
+            },
           );
         },
       ),

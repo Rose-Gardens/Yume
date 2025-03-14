@@ -33,7 +33,7 @@ class AppShell extends StatelessWidget {
             backgroundColor: Colors.transparent,
             context: context,
             builder: (BuildContext context) {
-              return HabitsSheet();
+              return const HabitsSheet();
             },
           );
         },
