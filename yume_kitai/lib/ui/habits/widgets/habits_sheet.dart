@@ -139,6 +139,7 @@ class _HabitsSheetState extends State<HabitsSheet> {
                                     'color': _colorController.text
                                   },
                                 );
+                                
                                 // TODO: This is not pretty
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(

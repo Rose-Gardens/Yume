@@ -49,6 +49,7 @@ class InputField extends StatelessWidget {
         TextFormField(
           validator: validator,
           controller: controller,
+          textCapitalization: TextCapitalization.words,
           style: Theme.of(context)
               .textTheme
               .bodyLarge
