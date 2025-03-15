@@ -7,20 +7,21 @@ import 'package:flutter/material.dart';
 import 'package:smooth_corner/smooth_corner.dart';
 
 import '../../core/themes/theme_extension.dart';
+import 'package:yume_kitai/utils/converters.dart';
 
 class HabitsCard extends StatefulWidget {
   const HabitsCard(
       {super.key,
       required this.id,
       required this.title,
-      required this.habitIconCodePoint,
+      required this.icon,
       required this.color,
       required this.isNegative});
 
   final int id;
   final String title;
-  final int? habitIconCodePoint; // TODO: handle the null
-  final int color;
+  final String icon;
+  final String color;
   final bool isNegative;
 
   @override
@@ -28,22 +29,83 @@ class HabitsCard extends StatefulWidget {
 }
 
 class _HabitsCardState extends State<HabitsCard> {
-  // TODO: IF NOT REQUIRED MAKE IT STATELESS
-  bool isChecked = false;
-
-  double getCardBorderRadius() {
-    // If the card is two (>25ch) lines high, increase the border radius
-    return (widget.title.length > 25) ? 26 : 22;
-  }
+  final MenuController _cardMenuController = MenuController();
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<AppThemeExtension>()!;
 
-    final cardBorderRadius = getCardBorderRadius();
-    return Builder(
-      builder: (context) {
-        return Card(
+    final Color cardColor = widget.color.isEmpty
+        ? theme.surfaceMedium
+        : Color(hexStringToHexInt(widget.color)).withValues(alpha: 0.4);
+
+    final Color iconColor = widget.color.isEmpty
+        ? theme.foregroundHigh
+        : Color(hexStringToHexInt(widget.color)).withValues(alpha: 0.85);
+
+    final Widget iconWidget = widget.icon.isNotEmpty
+        ? Icon(
+            IconData(hexStringToHexInt(widget.icon),
+                fontFamily: 'MaterialIcons'),
+            size: 40,
+            color: iconColor)
+        : const SizedBox.shrink();
+
+    final cardBorderRadius =
+        (widget.title.length > 25) ? 26.0 : 22.0; // Bigger vs. smaller card
+
+    return GestureDetector(
+      onTap: () {},
+      onLongPressStart: (LongPressStartDetails details) {
+        _cardMenuController.open(position: details.localPosition);
+      },
+      child: MenuAnchor(
+        controller: _cardMenuController,
+        menuChildren: const [
+          MenuItemButton(
+            leadingIcon: Icon(Icons.check_circle_outline_rounded),
+            child: Text(
+              "Complete",
+              textAlign: TextAlign.center,
+            ),
+          ),
+          MenuItemButton(
+            leadingIcon: Icon(Icons.skip_next_rounded),
+            child: Text(
+              "Skip",
+              textAlign: TextAlign.center,
+            ),
+          ),
+          MenuItemButton(
+            leadingIcon: Icon(Icons.houseboat_rounded),
+            child: Text(
+              "Vacation",
+              textAlign: TextAlign.center,
+            ),
+          ),
+          MenuItemButton(
+            leadingIcon: Icon(Icons.tag_rounded),
+            child: Text(
+              "Set Tag",
+              textAlign: TextAlign.center,
+            ),
+          ),
+          MenuItemButton(
+            leadingIcon: Icon(Icons.elderly_rounded),
+            child: Text(
+              "Retire",
+              textAlign: TextAlign.center,
+            ),
+          ),
+          MenuItemButton(
+            leadingIcon: Icon(Icons.delete_outline_rounded),
+            child: Text(
+              "Delete",
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
+        child: Card(
           key: ValueKey(widget.id),
           elevation: 0,
           margin: EdgeInsets.zero,
@@ -55,16 +117,12 @@ class _HabitsCardState extends State<HabitsCard> {
               width: 0.5,
             ),
           ),
-          color: Color(widget.color).withValues(alpha: 0.4),
+          color: cardColor,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(12, 4, 8, 4),
             child: Row(
               children: [
-                Icon(
-                    IconData(widget.habitIconCodePoint!,
-                        fontFamily: 'MaterialIcons'),
-                    size: 40,
-                    color: Color(widget.color).withValues(alpha: 0.85)),
+                iconWidget,
                 const SizedBox(width: 8),
                 Expanded(
                   child: Padding(
@@ -87,19 +145,11 @@ class _HabitsCardState extends State<HabitsCard> {
                     ),
                   ),
                 ),
-                IconButton(
-                  color: theme.foregroundMedium,
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.more_vert,
-                    size: 28,
-                  ),
-                ),
               ],
             ),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }
