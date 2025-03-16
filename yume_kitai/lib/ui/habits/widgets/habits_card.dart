@@ -29,8 +29,6 @@ class HabitsCard extends StatefulWidget {
 }
 
 class _HabitsCardState extends State<HabitsCard> {
-  final MenuController _cardMenuController = MenuController();
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<AppThemeExtension>()!;
@@ -52,101 +50,52 @@ class _HabitsCardState extends State<HabitsCard> {
         : const SizedBox.shrink();
 
     final cardBorderRadius =
-        (widget.title.length > 25) ? 26.0 : 22.0; // Bigger vs. smaller card
+        (widget.title.length > 25) ? 26.0 : 18.0; // Bigger vs. smaller card
 
     return GestureDetector(
       onTap: () {},
-      onLongPressStart: (LongPressStartDetails details) {
-        _cardMenuController.open(position: details.localPosition);
-      },
-      child: MenuAnchor(
-        controller: _cardMenuController,
-        menuChildren: const [
-          MenuItemButton(
-            leadingIcon: Icon(Icons.check_circle_outline_rounded),
-            child: Text(
-              "Complete",
-              textAlign: TextAlign.center,
-            ),
+      onLongPressStart: (LongPressStartDetails details) {},
+      child: Card(
+        key: ValueKey(widget.id),
+        elevation: 0,
+        margin: EdgeInsets.zero,
+        shape: SmoothRectangleBorder(
+          borderRadius: BorderRadius.circular(cardBorderRadius),
+          smoothness: 0.6,
+          side: BorderSide(
+            color: theme.borderLow,
+            width: 0.5,
           ),
-          MenuItemButton(
-            leadingIcon: Icon(Icons.skip_next_rounded),
-            child: Text(
-              "Skip",
-              textAlign: TextAlign.center,
-            ),
-          ),
-          MenuItemButton(
-            leadingIcon: Icon(Icons.houseboat_rounded),
-            child: Text(
-              "Vacation",
-              textAlign: TextAlign.center,
-            ),
-          ),
-          MenuItemButton(
-            leadingIcon: Icon(Icons.tag_rounded),
-            child: Text(
-              "Set Tag",
-              textAlign: TextAlign.center,
-            ),
-          ),
-          MenuItemButton(
-            leadingIcon: Icon(Icons.elderly_rounded),
-            child: Text(
-              "Retire",
-              textAlign: TextAlign.center,
-            ),
-          ),
-          MenuItemButton(
-            leadingIcon: Icon(Icons.delete_outline_rounded),
-            child: Text(
-              "Delete",
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ],
-        child: Card(
-          key: ValueKey(widget.id),
-          elevation: 0,
-          margin: EdgeInsets.zero,
-          shape: SmoothRectangleBorder(
-            borderRadius: BorderRadius.circular(cardBorderRadius),
-            smoothness: 0.6,
-            side: BorderSide(
-              color: theme.borderLow,
-              width: 0.5,
-            ),
-          ),
-          color: cardColor,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(12, 4, 8, 4),
-            child: Row(
-              children: [
-                iconWidget,
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Padding(
-                    // Text has separate padding from card to even unevenness from icon padding
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.title,
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleLarge
-                              ?.copyWith(color: theme.foregroundHigh),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
-                    ),
+        ),
+        color: cardColor,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(12, 4, 8, 4),
+          child: Row(
+            children: [
+              iconWidget,
+              const SizedBox(width: 8),
+              Expanded(
+                child: Padding(
+                  // Text has separate padding from card to even unevenness from icon padding
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.title,
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleLarge
+                            ?.copyWith(color: theme.foregroundHigh),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

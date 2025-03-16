@@ -5,7 +5,7 @@ class AppTheme {
   static ThemeData getDefaultTheme() {
     const defColors = AppThemeColors.defaultColors;
     const baseStyle = TextStyle(
-        letterSpacing: 0, fontVariations: [FontVariation('wght', 500.0)]);
+        letterSpacing: 0, fontVariations: [FontVariation('wght', 400.0)]);
 
     return ThemeData(
       extensions: const [defColors],
@@ -24,12 +24,12 @@ class AppTheme {
           ],
         ),
         bodyLarge: baseStyle,
-        bodyMedium: baseStyle.copyWith(
+        bodyMedium: baseStyle,
+        bodySmall: baseStyle.copyWith(
           fontVariations: [
-            const FontVariation('wght', 400),
+            const FontVariation('wght', 500),
           ],
         ),
-        bodySmall: baseStyle,
         labelLarge: baseStyle.copyWith(fontSize: 16),
       ),
       scaffoldBackgroundColor: defColors.surfaceBg,
@@ -49,7 +49,8 @@ class AppTheme {
           const baseNavStyle =
               TextStyle(fontVariations: [FontVariation('wght', 600.0)]);
           return states.contains(WidgetState.selected)
-              ? baseNavStyle.copyWith(color: defColors.foregroundMax) // Selected
+              ? baseNavStyle.copyWith(
+                  color: defColors.foregroundMax) // Selected
               : baseNavStyle.copyWith(
                   color: defColors.foregroundMedium); // Unselected
         }),
