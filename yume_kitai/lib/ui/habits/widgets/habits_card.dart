@@ -29,6 +29,8 @@ class HabitsCard extends StatefulWidget {
 }
 
 class _HabitsCardState extends State<HabitsCard> {
+  bool isPressed = false;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).extension<AppThemeExtension>()!;
@@ -54,48 +56,67 @@ class _HabitsCardState extends State<HabitsCard> {
 
     return GestureDetector(
       onTap: () {},
-      onLongPressStart: (LongPressStartDetails details) {},
-      child: Card(
-        key: ValueKey(widget.id),
-        elevation: 0,
-        margin: EdgeInsets.zero,
-        shape: SmoothRectangleBorder(
-          borderRadius: BorderRadius.circular(cardBorderRadius),
-          smoothness: 0.6,
-          side: BorderSide(
-            color: theme.borderLow,
-            width: 0.5,
+      onTapDown: (details) {
+        setState(() {
+          isPressed = true;
+        });
+      },
+      onLongPressStart: (LongPressStartDetails details) {
+        setState(() {
+          isPressed = false;
+        });
+      },
+      onTapUp: (details) {
+        setState(() {
+          isPressed = false;
+        });
+      },
+      child: AnimatedScale(
+        scale: isPressed ? 0.95 : 1.0,
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeInOut,
+        child: Card(
+          key: ValueKey(widget.id),
+          elevation: 0,
+          margin: EdgeInsets.zero,
+          shape: SmoothRectangleBorder(
+            borderRadius: BorderRadius.circular(cardBorderRadius),
+            smoothness: 0.6,
+            side: BorderSide(
+              color: theme.borderLow,
+              width: 0.5,
+            ),
           ),
-        ),
-        color: cardColor,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(12, 4, 8, 4),
-          child: Row(
-            children: [
-              iconWidget,
-              const SizedBox(width: 8),
-              Expanded(
-                child: Padding(
-                  // Text has separate padding from card to even unevenness from icon padding
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        widget.title,
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge
-                            ?.copyWith(color: theme.foregroundHigh),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
+          color: cardColor,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(12, 4, 8, 4),
+            child: Row(
+              children: [
+                iconWidget,
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Padding(
+                    // Text has separate padding from card to even unevenness from icon padding
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.title,
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge
+                              ?.copyWith(color: theme.foregroundHigh),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
