@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:smooth_corner/smooth_corner.dart';
 
@@ -65,6 +66,7 @@ class _HabitsCardState extends State<HabitsCard> {
         setState(() {
           isPressed = false;
         });
+        HapticFeedback.mediumImpact();
       },
       onTapUp: (details) {
         setState(() {
@@ -73,8 +75,8 @@ class _HabitsCardState extends State<HabitsCard> {
       },
       child: AnimatedScale(
         scale: isPressed ? 0.95 : 1.0,
-        duration: const Duration(milliseconds: 200),
-        curve: Curves.easeInOut,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeOutQuint, // Apple Spring Curve
         child: Card(
           key: ValueKey(widget.id),
           elevation: 0,
