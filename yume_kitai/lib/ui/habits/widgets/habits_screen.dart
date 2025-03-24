@@ -4,9 +4,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:yume_kitai/ui/core/ui/popup_menu.dart';
 import 'package:yume_kitai/ui/habits/view_models/habits_viewmodel.dart';
 
-import 'package:yume_kitai/ui/habits/widgets/habits_card.dart';
+import 'package:yume_kitai/ui/habits/widgets/habits_shrinkable_card.dart';
 
 class HabitsScreen extends StatefulWidget {
   const HabitsScreen({
@@ -21,6 +22,7 @@ class _HabitsScreenState extends State<HabitsScreen> {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<HabitsViewModel>();
+    final overlayKey = context.read<GlobalKey<PopupMenuState>>();
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -42,22 +44,26 @@ class _HabitsScreenState extends State<HabitsScreen> {
           final filteredHabits =
               viewModel.habits!.where((habit) => !habit.isRetired).toList();
 
-          return ListView.builder(
-            padding: const EdgeInsets.only(top: 24),
-            itemCount: filteredHabits.length,
-            itemBuilder: (context, index) {
-              final habit = filteredHabits[index];
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 12),
-                child: HabitsCard(
-                  id: habit.habitId!,
-                  title: habit.title,
-                  icon: habit.icon,
-                  color: habit.color,
-                  isNegative: habit.isNegative,
-                ),
-              );
-            },
+          return Stack(
+            children: [
+              ListView.builder(
+                padding: const EdgeInsets.only(top: 24),
+                itemCount: filteredHabits.length,
+                itemBuilder: (context, index) {
+                  final habit = filteredHabits[index];
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: HabitsShrinkableCard(
+                      habit: habit,
+                      overlayKey: overlayKey,
+                    ),
+                  );
+                },
+              ),
+              PopupMenu(
+                key: overlayKey,
+              )
+            ],
           );
         },
       ),

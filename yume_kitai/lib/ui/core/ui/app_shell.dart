@@ -5,9 +5,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
-import '../../habits/widgets/habits_sheet.dart';
 
 import '../../../routing/routes.dart';
+import '../../habits/widgets/habits_sheet.dart';
 import '../themes/theme_extension.dart';
 
 class AppShell extends StatelessWidget {
@@ -47,10 +47,8 @@ class AppShell extends StatelessWidget {
       body: Builder(
         builder: (context) {
           return SafeArea(
-            child: Column(
-              children: [
-                Expanded(child: child),
-              ],
+            child: SizedBox.expand(
+              child: child,
             ),
           );
         },
