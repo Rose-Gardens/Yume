@@ -4,7 +4,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 import 'package:yume_kitai/config/dependencies.dart';
 
 import '../../../domain/models/habit/habit/habit.dart';
@@ -40,7 +39,7 @@ class _HabitsShrinkableCardState extends State<HabitsShrinkableCard> {
         setState(() {
           isPressed = false;
         });
-        HapticFeedback.mediumImpact();
+        HapticFeedback.lightImpact();
         overlayKey.currentState!.showOverlay(details.globalPosition);
       },
       onTapUp: (details) {

@@ -10,8 +10,8 @@ class BaseThemeColors {
     surfaceMedium: Color.fromRGBO(255, 255, 255, 0.11),
     surfaceHigh: Color.fromRGBO(255, 255, 255, 0.20),
     surfaceInverse: Color.fromRGBO(255, 255, 255, 0.80),
-    overlayLow: Color.fromRGBO(0, 0, 0, 0.25),
-    overlayHigh: Color.fromRGBO(0, 0, 0, 0.75),
+    overlayLow: Color.fromRGBO(0, 0, 0, 0.25), // ? high transparency scrim
+    overlayHigh: Color.fromRGBO(0, 0, 0, 0.75), // ? low transparency scrim
     borderLow: Color.fromRGBO(255, 255, 255, 0.20),
     borderMedium: Color.fromRGBO(255, 255, 255, 0.30),
     borderHigh: Color.fromRGBO(255, 255, 255, 0.40),
