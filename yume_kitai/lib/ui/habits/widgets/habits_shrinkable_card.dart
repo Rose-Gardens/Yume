@@ -24,35 +24,72 @@ class HabitsShrinkableCard extends StatefulWidget {
 
 class _HabitsShrinkableCardState extends State<HabitsShrinkableCard> {
   bool isPressed = false;
+  bool isSwipedRight = false;
+  bool isSwipedLeft = false;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       key: ValueKey(widget.habit.habitId),
-      onTap: () {},
       onTapDown: (details) {
         setState(() {
           isPressed = true;
         });
       },
-      onLongPressStart: (LongPressStartDetails details) {
+      onTapUp: (details) {
+        setState(() {
+          isPressed = false;
+        });
+        // TODO: Open Habit Page
+      },
+      onTapCancel: () {
+        setState(() {
+          isPressed = false;
+        });
+      },
+      onLongPressStart: (details) {
         setState(() {
           isPressed = false;
         });
         HapticFeedback.lightImpact();
         overlayKey.currentState!.showOverlay(details.globalPosition);
       },
-      onTapUp: (details) {
+      onLongPressCancel: () {
         setState(() {
           isPressed = false;
+        });
+      },
+      onHorizontalDragUpdate: (details) {
+        if (details.delta.dx > 0) {
+          setState(() {
+            isSwipedRight = true;
+          });
+        }
+        if (details.delta.dx < 0) {
+          setState(() {
+            isSwipedLeft = true;
+          });
+        }
+      },
+      onHorizontalDragEnd: (details) {
+        setState(() {
+          isSwipedRight = false;
+          isSwipedLeft = false;
         });
       },
       child: AnimatedScale(
         scale: isPressed ? 0.95 : 1.0,
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeOutQuint, // Apple Spring Curve
-        child: HabitsCard(
-          widget: widget,
+        child: Align(
+          alignment:
+              isSwipedRight ? Alignment.centerRight : Alignment.centerLeft,
+          child: HabitsCard(
+            habit: widget.habit.copyWith(
+                title:
+                    isSwipedRight ? 'slide to complete' : widget.habit.title,
+                    ),
+          ),
         ),
       ),
     );
