@@ -17,10 +17,10 @@ class AppTheme {
           ],
         ),
         titleLarge: baseStyle.copyWith(
-          fontSize: 18,
+          fontSize: 17,
           height: 1.1,
           fontVariations: [
-            const FontVariation('wght', 700),
+            const FontVariation('wght', 650),
           ],
         ),
         bodyLarge: baseStyle,
