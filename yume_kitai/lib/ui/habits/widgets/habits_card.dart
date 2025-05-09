@@ -10,9 +10,11 @@ class HabitsCard extends StatelessWidget {
   const HabitsCard({
     super.key,
     required this.habit,
+    required this.swipeDistance,
   });
 
   final Habit habit;
+  final double swipeDistance;
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +58,9 @@ class HabitsCard extends StatelessWidget {
 
     return AnimatedContainer(
       // TODO: Figure out how to do swipe
-      width: MediaQuery.of(context).size.width,
-      duration: const Duration(milliseconds: 500),
+      width: MediaQuery.of(context).size.width - swipeDistance - 32, 
+      curve: Curves.easeOutQuint,
+      duration: const Duration(milliseconds: 0),
       constraints: BoxConstraints(
           minHeight: 56,
           maxHeight: 96,

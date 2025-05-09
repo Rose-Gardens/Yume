@@ -26,6 +26,7 @@ class _HabitsShrinkableCardState extends State<HabitsShrinkableCard> {
   bool isPressed = false;
   bool isSwipedRight = false;
   bool isSwipedLeft = false;
+  double swipeDist = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +66,12 @@ class _HabitsShrinkableCardState extends State<HabitsShrinkableCard> {
             isSwipedRight = true;
           });
         }
+        if (isSwipedRight) {
+          setState(() {
+            swipeDist += details.delta.dx * 1.1;
+          });
+          print(swipeDist);
+        }
         if (details.delta.dx < 0) {
           setState(() {
             isSwipedLeft = true;
@@ -75,20 +82,24 @@ class _HabitsShrinkableCardState extends State<HabitsShrinkableCard> {
         setState(() {
           isSwipedRight = false;
           isSwipedLeft = false;
+          swipeDist = 0;
         });
       },
-      child: AnimatedScale(
+      child: AnimatedScale( 
         scale: isPressed ? 0.95 : 1.0,
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeOutQuint, // Apple Spring Curve
         child: Align(
-          alignment:
-              isSwipedRight ? Alignment.centerRight : Alignment.centerLeft,
+          alignment: isSwipedRight
+              ? Alignment.centerRight
+              : isSwipedLeft
+                  ? Alignment.centerLeft
+                  : Alignment.centerRight,
           child: HabitsCard(
             habit: widget.habit.copyWith(
-                title:
-                    isSwipedRight ? 'slide to complete' : widget.habit.title,
-                    ),
+              title: isSwipedRight ? 'slide to complete' : widget.habit.title,
+            ),
+            swipeDistance: swipeDist,
           ),
         ),
       ),
