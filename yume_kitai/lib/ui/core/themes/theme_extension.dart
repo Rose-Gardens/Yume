@@ -8,6 +8,7 @@ class AppThemeExtension extends ThemeExtension<AppThemeExtension> {
   final Color surfaceHigh;
   final Color surfaceInverse;
 
+  final Color overlayVeryLow;
   final Color overlayLow;
   final Color overlayHigh;
 
@@ -27,7 +28,7 @@ class AppThemeExtension extends ThemeExtension<AppThemeExtension> {
   final Color foregroundInverseLow;
   final Color foregroundInverseHigh;
 
-  final Color error;
+  final Color danger;
 
   const AppThemeExtension({
     required this.surfaceBg,
@@ -36,6 +37,7 @@ class AppThemeExtension extends ThemeExtension<AppThemeExtension> {
     required this.surfaceMedium,
     required this.surfaceHigh,
     required this.surfaceInverse,
+    required this.overlayVeryLow,
     required this.overlayLow,
     required this.overlayHigh,
     required this.borderLow,
@@ -52,7 +54,7 @@ class AppThemeExtension extends ThemeExtension<AppThemeExtension> {
     required this.foregroundMax,
     required this.foregroundInverseLow,
     required this.foregroundInverseHigh,
-    required this.error,
+    required this.danger,
   });
 
   @override
@@ -63,6 +65,7 @@ class AppThemeExtension extends ThemeExtension<AppThemeExtension> {
     Color? surfaceMedium,
     Color? surfaceHigh,
     Color? surfaceInverse,
+    Color? overlayVeryLow,
     Color? overlayLow,
     Color? overlayHigh,
     Color? borderLow,
@@ -79,7 +82,7 @@ class AppThemeExtension extends ThemeExtension<AppThemeExtension> {
     Color? foregroundMax,
     Color? foregroundInverseLow,
     Color? foregroundInverseHigh,
-    Color? error,
+    Color? danger,
   }) {
     return AppThemeExtension(
       surfaceBg: surfaceBg ?? this.surfaceBg,
@@ -88,6 +91,7 @@ class AppThemeExtension extends ThemeExtension<AppThemeExtension> {
       surfaceMedium: surfaceMedium ?? this.surfaceMedium,
       surfaceHigh: surfaceHigh ?? this.surfaceHigh,
       surfaceInverse: surfaceInverse ?? this.surfaceInverse,
+      overlayVeryLow: overlayVeryLow ?? this.overlayVeryLow,
       overlayLow: overlayLow ?? this.overlayLow,
       overlayHigh: overlayHigh ?? this.overlayHigh,
       borderLow: borderLow ?? this.borderLow,
@@ -105,7 +109,7 @@ class AppThemeExtension extends ThemeExtension<AppThemeExtension> {
       foregroundInverseLow: foregroundInverseLow ?? this.foregroundInverseLow,
       foregroundInverseHigh:
           foregroundInverseHigh ?? this.foregroundInverseHigh,
-      error: error ?? this.error,
+      danger: danger ?? this.danger,
     );
   }
 
@@ -121,6 +125,7 @@ class AppThemeExtension extends ThemeExtension<AppThemeExtension> {
       surfaceMedium: Color.lerp(surfaceMedium, other.surfaceMedium, t)!,
       surfaceHigh: Color.lerp(surfaceHigh, other.surfaceHigh, t)!,
       surfaceInverse: Color.lerp(surfaceInverse, other.surfaceInverse, t)!,
+      overlayVeryLow: Color.lerp(overlayVeryLow, other.overlayVeryLow, t)!,
       overlayLow: Color.lerp(overlayLow, other.overlayLow, t)!,
       overlayHigh: Color.lerp(overlayHigh, other.overlayHigh, t)!,
       borderLow: Color.lerp(borderLow, other.borderLow, t)!,
@@ -144,7 +149,7 @@ class AppThemeExtension extends ThemeExtension<AppThemeExtension> {
           Color.lerp(foregroundInverseLow, other.foregroundInverseLow, t)!,
       foregroundInverseHigh:
           Color.lerp(foregroundInverseHigh, other.foregroundInverseHigh, t)!,
-      error: Color.lerp(error, other.error, t)!,
+      danger: Color.lerp(danger, other.danger, t)!,
     );
   }
 }

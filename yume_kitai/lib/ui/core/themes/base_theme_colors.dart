@@ -5,11 +5,12 @@ class BaseThemeColors {
   static const AppThemeExtension baseColors = AppThemeExtension(
     surfaceBg: Colors.black,
     surfaceOverlay:
-        Color.fromRGBO(23, 23, 25, 1), // ? For things like bottom sheets
+        Color.fromRGBO(32, 32, 32, 1), // ? For things like bottom sheets
     surfaceLow: Color.fromRGBO(255, 255, 255, 0.06),
     surfaceMedium: Color.fromRGBO(255, 255, 255, 0.11),
     surfaceHigh: Color.fromRGBO(255, 255, 255, 0.20),
     surfaceInverse: Color.fromRGBO(255, 255, 255, 0.80),
+    overlayVeryLow: Color.fromRGBO(0, 0, 0, 0.03), // ? very high transparency scrim
     overlayLow: Color.fromRGBO(0, 0, 0, 0.25), // ? high transparency scrim
     overlayHigh: Color.fromRGBO(0, 0, 0, 0.75), // ? low transparency scrim
     borderLow: Color.fromRGBO(255, 255, 255, 0.20),
@@ -26,6 +27,6 @@ class BaseThemeColors {
     foregroundMax: Color.fromRGBO(255, 255, 255, 1.00),
     foregroundInverseLow: Color.fromRGBO(43, 43, 43, 0.80),
     foregroundInverseHigh: Color.fromRGBO(43, 43, 43, 0.60),
-    error: Color.fromRGBO(255, 105, 143, 1),
+    danger: Color.fromRGBO(226, 46, 91, 1),
   );
 }
