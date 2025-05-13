@@ -10,7 +10,7 @@ import 'package:provider/single_child_widget.dart';
 import '../data/repositories/habit/habit_repository.dart';
 import '../data/repositories/habit/habit_repository_local.dart';
 import '../data/services/local/local_data_service.dart';
-import '../ui/core/ui/popup_menu.dart';
+import '../ui/core/ui/popup_menu/popup_menu.dart';
 import '../ui/habits/view_models/habits_viewmodel.dart';
 
 final GlobalKey<PopupMenuState> overlayKey = GlobalKey<PopupMenuState>();
