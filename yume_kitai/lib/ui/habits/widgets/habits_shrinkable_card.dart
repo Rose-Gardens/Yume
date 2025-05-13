@@ -2,13 +2,13 @@
 // Use of this source code is governed by the Apache 2.0 License that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:yume_kitai/config/dependencies.dart';
 
 import '../../../domain/models/habit/habit/habit.dart';
 
-import '../../core/ui/popup_menu.dart';
+import '../../core/ui/popup_menu/popup_menu.dart';
 import 'habits_card.dart';
 
 class HabitsShrinkableCard extends StatefulWidget {
@@ -27,6 +27,15 @@ class _HabitsShrinkableCardState extends State<HabitsShrinkableCard> {
   bool isSwipedRight = false;
   bool isSwipedLeft = false;
   double swipeDist = 0;
+
+  static const List<({String title, IconData icon, bool isDanger})> menuData = [
+    (title: "Complete", icon: CupertinoIcons.check_mark, isDanger: false),
+    (title: "Skip", icon: CupertinoIcons.arrow_right_to_line, isDanger: false),
+    (title: "Vacation", icon: CupertinoIcons.bed_double, isDanger: false),
+    (title: "Set Tag", icon: CupertinoIcons.tag, isDanger: false),
+    (title: "Retire", icon: CupertinoIcons.escape, isDanger: false),
+    (title: "Delete", icon: CupertinoIcons.delete, isDanger: true),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +62,7 @@ class _HabitsShrinkableCardState extends State<HabitsShrinkableCard> {
           isPressed = false;
         });
         HapticFeedback.lightImpact();
-        overlayKey.currentState!.showOverlay(details.globalPosition);
+        overlayKey.currentState!.showOverlay(details.globalPosition, menuData);
       },
       onLongPressCancel: () {
         setState(() {
@@ -70,7 +79,6 @@ class _HabitsShrinkableCardState extends State<HabitsShrinkableCard> {
           setState(() {
             swipeDist += details.delta.dx * 1.1;
           });
-          print(swipeDist);
         }
         if (details.delta.dx < 0) {
           setState(() {
@@ -85,7 +93,7 @@ class _HabitsShrinkableCardState extends State<HabitsShrinkableCard> {
           swipeDist = 0;
         });
       },
-      child: AnimatedScale( 
+      child: AnimatedScale(
         scale: isPressed ? 0.95 : 1.0,
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeOutQuint, // Apple Spring Curve
