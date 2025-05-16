@@ -57,7 +57,7 @@ class HabitsCard extends StatelessWidget {
           );
 
     return AnimatedContainer(
-      // TODO: Figure out how to do swipe
+      // TODO: This swipe technique sucks
       width: MediaQuery.of(context).size.width - swipeDistance - 32, 
       curve: Curves.easeOutQuint,
       duration: const Duration(milliseconds: 0),

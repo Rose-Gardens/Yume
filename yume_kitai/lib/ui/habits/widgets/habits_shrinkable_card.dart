@@ -2,13 +2,15 @@
 // Use of this source code is governed by the Apache 2.0 License that can be
 // found in the LICENSE file.
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'package:flutter_sficon/flutter_sficon.dart';
 import 'package:yume_kitai/config/dependencies.dart';
 
 import '../../../domain/models/habit/habit/habit.dart';
-
 import '../../core/ui/popup_menu/popup_menu.dart';
+
 import 'habits_card.dart';
 
 class HabitsShrinkableCard extends StatefulWidget {
@@ -29,12 +31,12 @@ class _HabitsShrinkableCardState extends State<HabitsShrinkableCard> {
   double swipeDist = 0;
 
   static const List<({String title, IconData icon, bool isDanger})> menuData = [
-    (title: "Complete", icon: CupertinoIcons.check_mark, isDanger: false),
-    (title: "Skip", icon: CupertinoIcons.arrow_right_to_line, isDanger: false),
-    (title: "Vacation", icon: CupertinoIcons.bed_double, isDanger: false),
-    (title: "Set Tag", icon: CupertinoIcons.tag, isDanger: false),
-    (title: "Retire", icon: CupertinoIcons.escape, isDanger: false),
-    (title: "Delete", icon: CupertinoIcons.delete, isDanger: true),
+    (title: "Complete", icon: SFIcons.sf_checkmark, isDanger: false),
+    (title: "Skip", icon: SFIcons.sf_arrow_right_to_line, isDanger: false),
+    (title: "Vacation", icon: SFIcons.sf_airplane_departure, isDanger: false),
+    (title: "Set Tag", icon: SFIcons.sf_tag, isDanger: false),
+    (title: "Retire", icon: SFIcons.sf_escape, isDanger: false),
+    (title: "Delete", icon: SFIcons.sf_trash, isDanger: true),
   ];
 
   @override
@@ -77,7 +79,7 @@ class _HabitsShrinkableCardState extends State<HabitsShrinkableCard> {
         }
         if (isSwipedRight) {
           setState(() {
-            swipeDist += details.delta.dx * 1.1;
+            swipeDist += details.delta.dx;
           });
         }
         if (details.delta.dx < 0) {
