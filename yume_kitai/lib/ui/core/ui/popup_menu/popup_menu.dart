@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../themes/theme_extension.dart';
+
 import 'popup_menu_content.dart';
 
 class PopupMenu extends StatefulWidget {
@@ -13,6 +14,8 @@ class PopupMenu extends StatefulWidget {
 class PopupMenuState extends State<PopupMenu>
     with SingleTickerProviderStateMixin {
   OverlayEntry? _overlayEntry;
+  double? menuHeight;
+  final GlobalKey _menuKey = GlobalKey();
   late final AnimationController _animationController;
 
   @override
@@ -34,6 +37,16 @@ class PopupMenuState extends State<PopupMenu>
       List<({String title, IconData icon, bool isDanger})> menuData) {
     _hideOverlay(); // ? Avoids multiple overlays
 
+    // ? Gets the menuHeight, then caches it
+    if (menuHeight == null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        final box = _menuKey.currentContext!.findRenderObject() as RenderBox;
+        menuHeight = box.size.height;
+        // ? Rebuilds menuContent with non-null height
+        _overlayEntry?.markNeedsBuild();
+      });
+    }
+
     // > Part of showOverlay
     _overlayEntry = OverlayEntry(
       builder: (context) {
@@ -52,17 +65,19 @@ class PopupMenuState extends State<PopupMenu>
                 },
               ),
               PopupMenuContent(
-                theme: theme,
                 animationController: _animationController,
                 globalPos: globalPos,
                 menuData: menuData,
+                menuKey: _menuKey,
+                menuHeight: menuHeight,
               ),
             ],
           ),
         );
       },
     );
-    Overlay.of(context).insert(_overlayEntry!);
+    // ? Opens overlay, always above appshell
+    Navigator.of(context, rootNavigator: true).overlay!.insert(_overlayEntry!);
   }
 
   void _hideOverlay() {
