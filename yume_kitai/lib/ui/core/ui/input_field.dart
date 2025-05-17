@@ -59,7 +59,7 @@ class InputField extends StatelessWidget {
           cursorColor: theme.foregroundHigh,
           cursorHeight: 20,
           decoration: InputDecoration(
-            errorStyle: TextStyle(color: theme.error),
+            errorStyle: TextStyle(color: theme.danger),
             isDense: true,
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
@@ -72,10 +72,10 @@ class InputField extends StatelessWidget {
               borderSide: BorderSide(color: theme.borderHigh, width: 2),
             ),
             errorBorder: baseBorder.copyWith(
-              borderSide: BorderSide(color: theme.error, width: 1),
+              borderSide: BorderSide(color: theme.danger, width: 1),
             ),
             focusedErrorBorder: baseBorder.copyWith(
-              borderSide: BorderSide(color: theme.error, width: 2),
+              borderSide: BorderSide(color: theme.danger, width: 2),
             ),
           ),
         ),

@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:yume_kitai/ui/core/ui/popup_menu.dart';
+import 'package:yume_kitai/ui/core/ui/popup_menu/popup_menu.dart';
 import 'package:yume_kitai/ui/habits/view_models/habits_viewmodel.dart';
 
 import 'package:yume_kitai/ui/habits/widgets/habits_shrinkable_card.dart';
