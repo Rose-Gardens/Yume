@@ -30,6 +30,7 @@ class _HabitsShrinkableCardState extends State<HabitsShrinkableCard> {
   bool isSwipedLeft = false;
   double swipeDist = 0;
 
+  // TODO: this icon pack is 19783640bytes long! see notion
   static const List<({String title, IconData icon, bool isDanger})> menuData = [
     (title: "Complete", icon: SFIcons.sf_checkmark, isDanger: false),
     (title: "Skip", icon: SFIcons.sf_arrow_right_to_line, isDanger: false),

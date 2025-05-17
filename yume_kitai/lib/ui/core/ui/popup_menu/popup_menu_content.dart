@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:yume_kitai/ui/core/ui/blur_saturate_filter.dart';
@@ -29,8 +30,11 @@ class PopupMenuContent extends StatefulWidget {
 
 class _PopupMenuContentState extends State<PopupMenuContent> {
   static const double menuWidth = 175;
-  double get topPosition => widget.globalPos.dy - 50;
-  double get leftPosition => widget.globalPos.dx - 50;
+  late final double topPosition = widget.globalPos.dy - 50;
+  late final double leftPosition = widget.globalPos.dx - 50;
+  late final double noOfDividers = widget.menuData.length - 1;
+  late final double rowHeight =
+      ((widget.menuHeight! - noOfDividers) / widget.menuData.length) + 1;
   int? selectedIndex;
 
   @override
@@ -46,43 +50,63 @@ class _PopupMenuContentState extends State<PopupMenuContent> {
           filter: blurSaturateFilterPerformance,
           child: GestureDetector(
             onPanUpdate: (details) {
-              if (details.localPosition.dx >= 0 &&
-                  details.localPosition.dx <= menuWidth) {
-                if (details.localPosition.dy >= 0 &&
-                    details.localPosition.dy <=
-                        ((widget.menuHeight! - 5) / 6)) {
-                  setState(() {
-                    selectedIndex = 0;
-                  });
+              final dx = details.localPosition.dx;
+              final dy = details.localPosition.dy;
+
+              if (dx >= 0 && dx <= menuWidth) {
+                int? index = (dy / rowHeight).floor();
+                if (dy < 0 || dy > widget.menuHeight!) {
+                  index = null;
                 }
+                if (selectedIndex != index) {
+                  HapticFeedback.selectionClick();
+                }
+                setState(
+                  () {
+                    selectedIndex = index;
+                  },
+                );
+              } else {
+                setState(
+                  () {
+                    selectedIndex = null;
+                  },
+                );
               }
             },
+            onPanEnd: (details) => setState(
+              () {
+                selectedIndex = null;
+              },
+            ),
             child: Container(
               key: widget._menuKey,
               width: menuWidth,
               decoration: BoxDecoration(
                 color: theme.surfaceOverlay.withValues(alpha: 0.8),
               ),
-              child: ListView.separated(
-                shrinkWrap: true,
-                itemCount: widget.menuData.length,
-                separatorBuilder: (BuildContext context, int index) => Divider(
-                  height: 1,
-                  thickness: 1,
-                  color: theme.surfaceMedium,
-                ),
-                itemBuilder: (BuildContext context, int index) {
-                  final menuItem = widget.menuData[index];
-                  final textColor = menuItem.isDanger
-                      ? theme.danger
-                      : theme.foregroundBright;
-                  return PopupMenuItemTile(
-                    menuItem: menuItem,
-                    textColor: textColor,
-                    currentIndex: index,
-                    selectedIndex: selectedIndex,
-                  );
-                },
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  for (int index = 0;
+                      index < widget.menuData.length;
+                      index++) ...[
+                    PopupMenuItemTile(
+                      menuItem: widget.menuData[index],
+                      textColor: widget.menuData[index].isDanger
+                          ? theme.danger
+                          : theme.foregroundBright,
+                      currentIndex: index,
+                      selectedIndex: selectedIndex,
+                    ),
+                    if (index != widget.menuData.length - 1)
+                      Divider(
+                        height: 0,
+                        thickness: 0,
+                        color: theme.foregroundVeryLow,
+                      ),
+                  ],
+                ],
               ),
             ),
           ),
