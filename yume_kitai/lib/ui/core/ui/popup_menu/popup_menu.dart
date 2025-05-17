@@ -51,28 +51,23 @@ class PopupMenuState extends State<PopupMenu>
     _overlayEntry = OverlayEntry(
       builder: (context) {
         final theme = Theme.of(context).extension<AppThemeExtension>()!;
-        final screenSize = MediaQuery.of(context).size;
 
-        return SizedBox(
-          width: screenSize.width,
-          height: screenSize.height,
-          child: Stack(
-            children: [
-              ModalBarrier(
-                color: theme.overlayVeryLow,
-                onDismiss: () {
-                  _hideOverlay();
-                },
-              ),
-              PopupMenuContent(
-                animationController: _animationController,
-                globalPos: globalPos,
-                menuData: menuData,
-                menuKey: _menuKey,
-                menuHeight: menuHeight,
-              ),
-            ],
-          ),
+        return Stack(
+          children: [
+            ModalBarrier(
+              color: theme.overlayVeryLow,
+              onDismiss: () {
+                _hideOverlay();
+              },
+            ),
+            PopupMenuContent(
+              animationController: _animationController,
+              menuKey: _menuKey,
+              menuHeight: menuHeight,
+              globalPos: globalPos,
+              menuData: menuData,
+            ),
+          ],
         );
       },
     );
