@@ -11,7 +11,8 @@ void main() {
     () {
       expect(hexStringToHexInt("FFC5BB5F"), 4291148639);
       expect(() => hexStringToHexInt(''), throwsA(isA<ArgumentError>()));
-      expect(() => hexStringToHexInt('notAHexString'), throwsA(isA<ArgumentError>()));
+      expect(() => hexStringToHexInt('notAHexString'),
+          throwsA(isA<ArgumentError>()));
     },
   );
 }

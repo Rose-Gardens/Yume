@@ -8,7 +8,7 @@ import '../../../utils/result.dart';
 abstract class HabitRepository {
   /// Returns the full list of [Habit] for the user.
   Future<Result<List<Habit>>> getHabitList();
-  
+
   // TODO FIX THIS - HabitRepo
   // /// Returns a [Habit] matching the given id.
   // Future<Result<Habit>> getHabitById(int habitId);

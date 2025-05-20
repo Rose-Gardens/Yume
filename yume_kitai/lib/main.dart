@@ -8,7 +8,7 @@ import 'main_development.dart' as development;
 import 'routing/router.dart';
 import 'ui/core/themes/app_theme.dart';
 
-void main() { 
+void main() {
   // to load assets
   WidgetsFlutterBinding.ensureInitialized();
   development.main();

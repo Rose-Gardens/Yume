@@ -117,7 +117,8 @@ class HabitRepositoryLocal implements HabitRepository {
   Future<Result<List<Habit>>> getHabitList() async {
     try {
       final db = await _localDataService.getDatabaseInstance();
-      final List<Map<String, Object?>> habitList = await db.rawQuery('SELECT * from habit');
+      final List<Map<String, Object?>> habitList =
+          await db.rawQuery('SELECT * from habit');
       return Result.ok([
         for (final {
               'habit_id': habitId as int,
@@ -128,20 +129,22 @@ class HabitRepositoryLocal implements HabitRepository {
               'icon': icon as String,
               'is_retired': isRetired as int,
               'is_negative': isNegative as int,
-              'habit_conditionally_active_id': habitConditionallyActiveId as int?,
+              'habit_conditionally_active_id':
+                  habitConditionallyActiveId as int?,
               'chrono_label_id': chronoLabelId as int?,
             } in habitList)
           Habit(
-              habitId: habitId,
-              title: title,
-              groupTitle: groupTitle,
-              desc: desc,
-              color: color,
-              icon: icon,
-              isRetired: isRetired == 0 ? false : true,
-              isNegative: isNegative == 0 ? false : true,
-              habitConditionallyActiveId: habitConditionallyActiveId,
-              chronoLabelId: chronoLabelId,)
+            habitId: habitId,
+            title: title,
+            groupTitle: groupTitle,
+            desc: desc,
+            color: color,
+            icon: icon,
+            isRetired: isRetired == 0 ? false : true,
+            isNegative: isNegative == 0 ? false : true,
+            habitConditionallyActiveId: habitConditionallyActiveId,
+            chronoLabelId: chronoLabelId,
+          )
       ]);
     } on Exception catch (e) {
       return Result.error(e);

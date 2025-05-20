@@ -20,6 +20,7 @@ dependencies:
     path: smooth_corner/
   sqflite: ^2.4.1
   flutter_sficon: ^1.1.2
+  dart_style: ^3.1.0
 
 dev_dependencies:
   build_runner: ^2.4.14
