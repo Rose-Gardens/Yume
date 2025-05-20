@@ -13,7 +13,7 @@ class DbSchema {
     'chrono_label_goal':
         'CREATE TABLE IF NOT EXISTS chrono_label_goal (chrono_label_goal_id INTEGER PRIMARY KEY, created_on TEXT NOT NULL, target TEXT NOT NULL, chrono_label_id INTEGER NOT NULL, FOREIGN KEY (chrono_label_id) REFERENCES chrono_label(chrono_label_id) ON UPDATE CASCADE ON DELETE CASCADE);',
     'chrono_label_autostart':
-        'CREATE TABLE IF NOT EXISTS chrono_label_autostart (chrono_label_autostart_id INTEGER PRIMARY KEY, start_at TEXT, end_at TEXT, start_vacation_on TEXT, end_vacation_on TEXT, chrono_label_id INTEGER NOT NULL, FOREIGN KEY (chrono_label_id) REFERENCES chrono_label(chrono_label_id) ON UPDATE CASCADE ON DELETE CASCADE);'
+        'CREATE TABLE IF NOT EXISTS chrono_label_autostart (chrono_label_autostart_id INTEGER PRIMARY KEY, start_at TEXT, end_at TEXT, start_vacation_on TEXT, end_vacation_on TEXT, chrono_label_id INTEGER NOT NULL, FOREIGN KEY (chrono_label_id) REFERENCES chrono_label(chrono_label_id) ON UPDATE CASCADE ON DELETE CASCADE);',
   };
 
   static Map<String, String> habitTables = {

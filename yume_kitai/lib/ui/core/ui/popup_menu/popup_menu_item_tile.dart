@@ -29,10 +29,9 @@ class PopupMenuItemTile extends StatelessWidget {
         children: [
           Text(
             menuItem.title,
-            style: Theme.of(context)
-                .textTheme
-                .bodyLarge
-                ?.copyWith(color: textColor),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyLarge?.copyWith(color: textColor),
           ),
           const Spacer(),
           // ? centers the icons across all rows
@@ -40,11 +39,7 @@ class PopupMenuItemTile extends StatelessWidget {
             width: 24,
             height: 24,
             child: Center(
-              child: SFIcon(
-                menuItem.icon,
-                fontSize: 16,
-                color: textColor,
-              ),
+              child: SFIcon(menuItem.icon, fontSize: 16, color: textColor),
             ),
           ),
         ],

@@ -33,8 +33,10 @@ class PopupMenuState extends State<PopupMenu>
     super.dispose();
   }
 
-  void showOverlay(Offset globalPos,
-      List<({String title, IconData icon, bool isDanger})> menuData) {
+  void showOverlay(
+    Offset globalPos,
+    List<({String title, IconData icon, bool isDanger})> menuData,
+  ) {
     _hideOverlay(); // ? Avoids multiple overlays
 
     // ? Gets the menuHeight, then caches it
@@ -77,12 +79,10 @@ class PopupMenuState extends State<PopupMenu>
 
   void _hideOverlay() {
     if (_overlayEntry != null) {
-      _animationController.reverse().whenCompleteOrCancel(
-        () {
-          _overlayEntry!.remove();
-          _overlayEntry = null;
-        },
-      );
+      _animationController.reverse().whenCompleteOrCancel(() {
+        _overlayEntry!.remove();
+        _overlayEntry = null;
+      });
     }
   }
 

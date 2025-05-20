@@ -12,7 +12,8 @@ part of 'habit_tag.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 HabitTag _$HabitTagFromJson(Map<String, dynamic> json) {
   return _HabitTag.fromJson(json);
@@ -70,24 +71,27 @@ class _$HabitTagCopyWithImpl<$Res, $Val extends HabitTag>
     Object? color = freezed,
     Object? habitId = null,
   }) {
-    return _then(_value.copyWith(
-      habitTagId: null == habitTagId
-          ? _value.habitTagId
-          : habitTagId // ignore: cast_nullable_to_non_nullable
-              as int,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      color: freezed == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as String?,
-      habitId: null == habitId
-          ? _value.habitId
-          : habitId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            habitTagId: null == habitTagId
+                ? _value.habitTagId
+                : habitTagId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            title: null == title
+                ? _value.title
+                : title // ignore: cast_nullable_to_non_nullable
+                      as String,
+            color: freezed == color
+                ? _value.color
+                : color // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            habitId: null == habitId
+                ? _value.habitId
+                : habitId // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -95,8 +99,9 @@ class _$HabitTagCopyWithImpl<$Res, $Val extends HabitTag>
 abstract class _$$HabitTagImplCopyWith<$Res>
     implements $HabitTagCopyWith<$Res> {
   factory _$$HabitTagImplCopyWith(
-          _$HabitTagImpl value, $Res Function(_$HabitTagImpl) then) =
-      __$$HabitTagImplCopyWithImpl<$Res>;
+    _$HabitTagImpl value,
+    $Res Function(_$HabitTagImpl) then,
+  ) = __$$HabitTagImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int habitTagId, String title, String? color, int habitId});
@@ -107,8 +112,9 @@ class __$$HabitTagImplCopyWithImpl<$Res>
     extends _$HabitTagCopyWithImpl<$Res, _$HabitTagImpl>
     implements _$$HabitTagImplCopyWith<$Res> {
   __$$HabitTagImplCopyWithImpl(
-      _$HabitTagImpl _value, $Res Function(_$HabitTagImpl) _then)
-      : super(_value, _then);
+    _$HabitTagImpl _value,
+    $Res Function(_$HabitTagImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of HabitTag
   /// with the given fields replaced by the non-null parameter values.
@@ -120,35 +126,38 @@ class __$$HabitTagImplCopyWithImpl<$Res>
     Object? color = freezed,
     Object? habitId = null,
   }) {
-    return _then(_$HabitTagImpl(
-      habitTagId: null == habitTagId
-          ? _value.habitTagId
-          : habitTagId // ignore: cast_nullable_to_non_nullable
-              as int,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      color: freezed == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as String?,
-      habitId: null == habitId
-          ? _value.habitId
-          : habitId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$HabitTagImpl(
+        habitTagId: null == habitTagId
+            ? _value.habitTagId
+            : habitTagId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        title: null == title
+            ? _value.title
+            : title // ignore: cast_nullable_to_non_nullable
+                  as String,
+        color: freezed == color
+            ? _value.color
+            : color // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        habitId: null == habitId
+            ? _value.habitId
+            : habitId // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$HabitTagImpl implements _HabitTag {
-  const _$HabitTagImpl(
-      {required this.habitTagId,
-      required this.title,
-      required this.color,
-      required this.habitId});
+  const _$HabitTagImpl({
+    required this.habitTagId,
+    required this.title,
+    required this.color,
+    required this.habitId,
+  });
 
   factory _$HabitTagImpl.fromJson(Map<String, dynamic> json) =>
       _$$HabitTagImplFromJson(json);
@@ -201,18 +210,17 @@ class _$HabitTagImpl implements _HabitTag {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$HabitTagImplToJson(
-      this,
-    );
+    return _$$HabitTagImplToJson(this);
   }
 }
 
 abstract class _HabitTag implements HabitTag {
-  const factory _HabitTag(
-      {required final int habitTagId,
-      required final String title,
-      required final String? color,
-      required final int habitId}) = _$HabitTagImpl;
+  const factory _HabitTag({
+    required final int habitTagId,
+    required final String title,
+    required final String? color,
+    required final int habitId,
+  }) = _$HabitTagImpl;
 
   factory _HabitTag.fromJson(Map<String, dynamic> json) =
       _$HabitTagImpl.fromJson;

@@ -12,7 +12,8 @@ part of 'chrono_label_history.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ChronoLabelHistory _$ChronoLabelHistoryFromJson(Map<String, dynamic> json) {
   return _ChronoLabelHistory.fromJson(json);
@@ -48,15 +49,17 @@ mixin _$ChronoLabelHistory {
 /// @nodoc
 abstract class $ChronoLabelHistoryCopyWith<$Res> {
   factory $ChronoLabelHistoryCopyWith(
-          ChronoLabelHistory value, $Res Function(ChronoLabelHistory) then) =
-      _$ChronoLabelHistoryCopyWithImpl<$Res, ChronoLabelHistory>;
+    ChronoLabelHistory value,
+    $Res Function(ChronoLabelHistory) then,
+  ) = _$ChronoLabelHistoryCopyWithImpl<$Res, ChronoLabelHistory>;
   @useResult
-  $Res call(
-      {int chronoLabelHistoryId,
-      DateTime? startedAt,
-      DateTime? endedAt,
-      String timeTracked,
-      int chronoLabelId});
+  $Res call({
+    int chronoLabelHistoryId,
+    DateTime? startedAt,
+    DateTime? endedAt,
+    String timeTracked,
+    int chronoLabelId,
+  });
 }
 
 /// @nodoc
@@ -80,54 +83,60 @@ class _$ChronoLabelHistoryCopyWithImpl<$Res, $Val extends ChronoLabelHistory>
     Object? timeTracked = null,
     Object? chronoLabelId = null,
   }) {
-    return _then(_value.copyWith(
-      chronoLabelHistoryId: null == chronoLabelHistoryId
-          ? _value.chronoLabelHistoryId
-          : chronoLabelHistoryId // ignore: cast_nullable_to_non_nullable
-              as int,
-      startedAt: freezed == startedAt
-          ? _value.startedAt
-          : startedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      endedAt: freezed == endedAt
-          ? _value.endedAt
-          : endedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      timeTracked: null == timeTracked
-          ? _value.timeTracked
-          : timeTracked // ignore: cast_nullable_to_non_nullable
-              as String,
-      chronoLabelId: null == chronoLabelId
-          ? _value.chronoLabelId
-          : chronoLabelId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            chronoLabelHistoryId: null == chronoLabelHistoryId
+                ? _value.chronoLabelHistoryId
+                : chronoLabelHistoryId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            startedAt: freezed == startedAt
+                ? _value.startedAt
+                : startedAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            endedAt: freezed == endedAt
+                ? _value.endedAt
+                : endedAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            timeTracked: null == timeTracked
+                ? _value.timeTracked
+                : timeTracked // ignore: cast_nullable_to_non_nullable
+                      as String,
+            chronoLabelId: null == chronoLabelId
+                ? _value.chronoLabelId
+                : chronoLabelId // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ChronoLabelHistoryImplCopyWith<$Res>
     implements $ChronoLabelHistoryCopyWith<$Res> {
-  factory _$$ChronoLabelHistoryImplCopyWith(_$ChronoLabelHistoryImpl value,
-          $Res Function(_$ChronoLabelHistoryImpl) then) =
-      __$$ChronoLabelHistoryImplCopyWithImpl<$Res>;
+  factory _$$ChronoLabelHistoryImplCopyWith(
+    _$ChronoLabelHistoryImpl value,
+    $Res Function(_$ChronoLabelHistoryImpl) then,
+  ) = __$$ChronoLabelHistoryImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int chronoLabelHistoryId,
-      DateTime? startedAt,
-      DateTime? endedAt,
-      String timeTracked,
-      int chronoLabelId});
+  $Res call({
+    int chronoLabelHistoryId,
+    DateTime? startedAt,
+    DateTime? endedAt,
+    String timeTracked,
+    int chronoLabelId,
+  });
 }
 
 /// @nodoc
 class __$$ChronoLabelHistoryImplCopyWithImpl<$Res>
     extends _$ChronoLabelHistoryCopyWithImpl<$Res, _$ChronoLabelHistoryImpl>
     implements _$$ChronoLabelHistoryImplCopyWith<$Res> {
-  __$$ChronoLabelHistoryImplCopyWithImpl(_$ChronoLabelHistoryImpl _value,
-      $Res Function(_$ChronoLabelHistoryImpl) _then)
-      : super(_value, _then);
+  __$$ChronoLabelHistoryImplCopyWithImpl(
+    _$ChronoLabelHistoryImpl _value,
+    $Res Function(_$ChronoLabelHistoryImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ChronoLabelHistory
   /// with the given fields replaced by the non-null parameter values.
@@ -140,40 +149,43 @@ class __$$ChronoLabelHistoryImplCopyWithImpl<$Res>
     Object? timeTracked = null,
     Object? chronoLabelId = null,
   }) {
-    return _then(_$ChronoLabelHistoryImpl(
-      chronoLabelHistoryId: null == chronoLabelHistoryId
-          ? _value.chronoLabelHistoryId
-          : chronoLabelHistoryId // ignore: cast_nullable_to_non_nullable
-              as int,
-      startedAt: freezed == startedAt
-          ? _value.startedAt
-          : startedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      endedAt: freezed == endedAt
-          ? _value.endedAt
-          : endedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      timeTracked: null == timeTracked
-          ? _value.timeTracked
-          : timeTracked // ignore: cast_nullable_to_non_nullable
-              as String,
-      chronoLabelId: null == chronoLabelId
-          ? _value.chronoLabelId
-          : chronoLabelId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$ChronoLabelHistoryImpl(
+        chronoLabelHistoryId: null == chronoLabelHistoryId
+            ? _value.chronoLabelHistoryId
+            : chronoLabelHistoryId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        startedAt: freezed == startedAt
+            ? _value.startedAt
+            : startedAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        endedAt: freezed == endedAt
+            ? _value.endedAt
+            : endedAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        timeTracked: null == timeTracked
+            ? _value.timeTracked
+            : timeTracked // ignore: cast_nullable_to_non_nullable
+                  as String,
+        chronoLabelId: null == chronoLabelId
+            ? _value.chronoLabelId
+            : chronoLabelId // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ChronoLabelHistoryImpl implements _ChronoLabelHistory {
-  const _$ChronoLabelHistoryImpl(
-      {required this.chronoLabelHistoryId,
-      required this.startedAt,
-      required this.endedAt,
-      required this.timeTracked,
-      required this.chronoLabelId});
+  const _$ChronoLabelHistoryImpl({
+    required this.chronoLabelHistoryId,
+    required this.startedAt,
+    required this.endedAt,
+    required this.timeTracked,
+    required this.chronoLabelId,
+  });
 
   factory _$ChronoLabelHistoryImpl.fromJson(Map<String, dynamic> json) =>
       _$$ChronoLabelHistoryImplFromJson(json);
@@ -221,8 +233,14 @@ class _$ChronoLabelHistoryImpl implements _ChronoLabelHistory {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, chronoLabelHistoryId, startedAt,
-      endedAt, timeTracked, chronoLabelId);
+  int get hashCode => Object.hash(
+    runtimeType,
+    chronoLabelHistoryId,
+    startedAt,
+    endedAt,
+    timeTracked,
+    chronoLabelId,
+  );
 
   /// Create a copy of ChronoLabelHistory
   /// with the given fields replaced by the non-null parameter values.
@@ -231,23 +249,24 @@ class _$ChronoLabelHistoryImpl implements _ChronoLabelHistory {
   @pragma('vm:prefer-inline')
   _$$ChronoLabelHistoryImplCopyWith<_$ChronoLabelHistoryImpl> get copyWith =>
       __$$ChronoLabelHistoryImplCopyWithImpl<_$ChronoLabelHistoryImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ChronoLabelHistoryImplToJson(
-      this,
-    );
+    return _$$ChronoLabelHistoryImplToJson(this);
   }
 }
 
 abstract class _ChronoLabelHistory implements ChronoLabelHistory {
-  const factory _ChronoLabelHistory(
-      {required final int chronoLabelHistoryId,
-      required final DateTime? startedAt,
-      required final DateTime? endedAt,
-      required final String timeTracked,
-      required final int chronoLabelId}) = _$ChronoLabelHistoryImpl;
+  const factory _ChronoLabelHistory({
+    required final int chronoLabelHistoryId,
+    required final DateTime? startedAt,
+    required final DateTime? endedAt,
+    required final String timeTracked,
+    required final int chronoLabelId,
+  }) = _$ChronoLabelHistoryImpl;
 
   factory _ChronoLabelHistory.fromJson(Map<String, dynamic> json) =
       _$ChronoLabelHistoryImpl.fromJson;

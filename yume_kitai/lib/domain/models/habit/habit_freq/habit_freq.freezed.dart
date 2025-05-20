@@ -12,7 +12,8 @@ part of 'habit_freq.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 HabitFreq _$HabitFreqFromJson(Map<String, dynamic> json) {
   return _HabitFreq.fromJson(json);
@@ -70,24 +71,27 @@ class _$HabitFreqCopyWithImpl<$Res, $Val extends HabitFreq>
     Object? repeatValue = null,
     Object? habitId = null,
   }) {
-    return _then(_value.copyWith(
-      habitFreqId: null == habitFreqId
-          ? _value.habitFreqId
-          : habitFreqId // ignore: cast_nullable_to_non_nullable
-              as int,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      repeatValue: null == repeatValue
-          ? _value.repeatValue
-          : repeatValue // ignore: cast_nullable_to_non_nullable
-              as String,
-      habitId: null == habitId
-          ? _value.habitId
-          : habitId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            habitFreqId: null == habitFreqId
+                ? _value.habitFreqId
+                : habitFreqId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            type: null == type
+                ? _value.type
+                : type // ignore: cast_nullable_to_non_nullable
+                      as String,
+            repeatValue: null == repeatValue
+                ? _value.repeatValue
+                : repeatValue // ignore: cast_nullable_to_non_nullable
+                      as String,
+            habitId: null == habitId
+                ? _value.habitId
+                : habitId // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -95,8 +99,9 @@ class _$HabitFreqCopyWithImpl<$Res, $Val extends HabitFreq>
 abstract class _$$HabitFreqImplCopyWith<$Res>
     implements $HabitFreqCopyWith<$Res> {
   factory _$$HabitFreqImplCopyWith(
-          _$HabitFreqImpl value, $Res Function(_$HabitFreqImpl) then) =
-      __$$HabitFreqImplCopyWithImpl<$Res>;
+    _$HabitFreqImpl value,
+    $Res Function(_$HabitFreqImpl) then,
+  ) = __$$HabitFreqImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int habitFreqId, String type, String repeatValue, int habitId});
@@ -107,8 +112,9 @@ class __$$HabitFreqImplCopyWithImpl<$Res>
     extends _$HabitFreqCopyWithImpl<$Res, _$HabitFreqImpl>
     implements _$$HabitFreqImplCopyWith<$Res> {
   __$$HabitFreqImplCopyWithImpl(
-      _$HabitFreqImpl _value, $Res Function(_$HabitFreqImpl) _then)
-      : super(_value, _then);
+    _$HabitFreqImpl _value,
+    $Res Function(_$HabitFreqImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of HabitFreq
   /// with the given fields replaced by the non-null parameter values.
@@ -120,35 +126,38 @@ class __$$HabitFreqImplCopyWithImpl<$Res>
     Object? repeatValue = null,
     Object? habitId = null,
   }) {
-    return _then(_$HabitFreqImpl(
-      habitFreqId: null == habitFreqId
-          ? _value.habitFreqId
-          : habitFreqId // ignore: cast_nullable_to_non_nullable
-              as int,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      repeatValue: null == repeatValue
-          ? _value.repeatValue
-          : repeatValue // ignore: cast_nullable_to_non_nullable
-              as String,
-      habitId: null == habitId
-          ? _value.habitId
-          : habitId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$HabitFreqImpl(
+        habitFreqId: null == habitFreqId
+            ? _value.habitFreqId
+            : habitFreqId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        type: null == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as String,
+        repeatValue: null == repeatValue
+            ? _value.repeatValue
+            : repeatValue // ignore: cast_nullable_to_non_nullable
+                  as String,
+        habitId: null == habitId
+            ? _value.habitId
+            : habitId // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$HabitFreqImpl implements _HabitFreq {
-  const _$HabitFreqImpl(
-      {required this.habitFreqId,
-      required this.type,
-      required this.repeatValue,
-      required this.habitId});
+  const _$HabitFreqImpl({
+    required this.habitFreqId,
+    required this.type,
+    required this.repeatValue,
+    required this.habitId,
+  });
 
   factory _$HabitFreqImpl.fromJson(Map<String, dynamic> json) =>
       _$$HabitFreqImplFromJson(json);
@@ -202,18 +211,17 @@ class _$HabitFreqImpl implements _HabitFreq {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$HabitFreqImplToJson(
-      this,
-    );
+    return _$$HabitFreqImplToJson(this);
   }
 }
 
 abstract class _HabitFreq implements HabitFreq {
-  const factory _HabitFreq(
-      {required final int habitFreqId,
-      required final String type,
-      required final String repeatValue,
-      required final int habitId}) = _$HabitFreqImpl;
+  const factory _HabitFreq({
+    required final int habitFreqId,
+    required final String type,
+    required final String repeatValue,
+    required final int habitId,
+  }) = _$HabitFreqImpl;
 
   factory _HabitFreq.fromJson(Map<String, dynamic> json) =
       _$HabitFreqImpl.fromJson;

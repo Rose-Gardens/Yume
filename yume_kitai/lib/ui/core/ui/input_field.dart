@@ -24,8 +24,9 @@ class InputField extends StatelessWidget {
     this.validator,
   });
 
-  static OutlineInputBorder baseBorder =
-      OutlineInputBorder(borderRadius: BorderRadius.circular(20.0));
+  static OutlineInputBorder baseBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(20.0),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +40,9 @@ class InputField extends StatelessWidget {
             padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
             child: Text(
               label,
-              style: Theme.of(context)
-                  .textTheme
-                  .labelLarge
-                  ?.copyWith(color: theme.foregroundLow),
+              style: Theme.of(
+                context,
+              ).textTheme.labelLarge?.copyWith(color: theme.foregroundLow),
             ),
           ),
         ),
@@ -50,10 +50,9 @@ class InputField extends StatelessWidget {
           validator: validator,
           controller: controller,
           textCapitalization: TextCapitalization.words,
-          style: Theme.of(context)
-              .textTheme
-              .bodyLarge
-              ?.copyWith(color: theme.foregroundHigh),
+          style: Theme.of(
+            context,
+          ).textTheme.bodyLarge?.copyWith(color: theme.foregroundHigh),
           maxLines: largeFieldSize ? 5 : 1,
           autofocus: autofocus,
           cursorColor: theme.foregroundHigh,
@@ -61,8 +60,10 @@ class InputField extends StatelessWidget {
           decoration: InputDecoration(
             errorStyle: TextStyle(color: theme.danger),
             isDense: true,
-            contentPadding:
-                const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+            contentPadding: const EdgeInsets.symmetric(
+              vertical: 12,
+              horizontal: 16,
+            ),
             filled: true,
             fillColor: theme.surfaceLow,
             enabledBorder: baseBorder.copyWith(

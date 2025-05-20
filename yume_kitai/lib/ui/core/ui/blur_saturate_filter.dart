@@ -9,14 +9,14 @@ const List<double> darkMatrixHyperSaturate = <double>[
   2.2, -0.76, -0.212, 0.0, 0.3, // red row
   -0.715, 1.8, -0.212, 0.0, 0.3, // green row
   -0.515, -0.56, 2.4, 0.0, 0.3, // blue row
-  0.0, 0.0, 0.0, 1.0, 0.0 // alpha row
+  0.0, 0.0, 0.0, 1.0, 0.0, // alpha row
 ];
 
 const List<double> darkMatrixOriginalSaturate = <double>[
   1.385, -0.56, -0.112, 0.0, 0.3, //
   -0.315, 1.14, -0.112, 0.0, 0.3, //
   -0.315, -0.56, 1.588, 0.0, 0.3, //
-  0.0, 0.0, 0.0, 1.0, 0.0 //
+  0.0, 0.0, 0.0, 1.0, 0.0, //
 ];
 
 final ImageFilter blurSaturateFilter = ImageFilter.compose(

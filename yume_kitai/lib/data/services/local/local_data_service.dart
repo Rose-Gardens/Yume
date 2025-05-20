@@ -25,72 +25,46 @@ class LocalDataService {
       onCreate: (db, version) async {
         // > **[Habits] data**
         // - Creating the habit table. [Contains each unique habit]
-        await db.execute(
-          DbSchema.habitTables['habit']!,
-        );
+        await db.execute(DbSchema.habitTables['habit']!);
 
         // - Creating the habit history table. [Contains the history of each habit on each date]
-        await db.execute(
-          DbSchema.habitTables['habit_history']!,
-        );
+        await db.execute(DbSchema.habitTables['habit_history']!);
 
         // - Creating the habit frequency table. [Contains info on when the habit repeats]
-        await db.execute(
-          DbSchema.habitTables['habit_freq']!,
-        );
+        await db.execute(DbSchema.habitTables['habit_freq']!);
 
         // - Creating the habit reminder table. [Contains the reminder datetime for a habit]
-        await db.execute(
-          DbSchema.habitTables['habit_reminder']!,
-        );
+        await db.execute(DbSchema.habitTables['habit_reminder']!);
 
         // - Creating the habit goal table. [Contains info on the goals for a habit]
-        await db.execute(
-          DbSchema.habitTables['habit_goal']!,
-        );
+        await db.execute(DbSchema.habitTables['habit_goal']!);
 
         // - Creating the habit conditionally active table. [Contains info on whether the habit should be active or not]
-        await db.execute(
-          DbSchema.habitTables['habit_conditionally_active']!,
-        );
+        await db.execute(DbSchema.habitTables['habit_conditionally_active']!);
 
         // - Creating the habit streak table. [Contains the streak info for a habit]
-        await db.execute(
-          DbSchema.habitTables['habit_streak']!,
-        );
+        await db.execute(DbSchema.habitTables['habit_streak']!);
 
         // - Creating the habit tag table. [Contains the tags info for a habit]
-        await db.execute(
-          DbSchema.habitTables['habit_tag']!,
-        );
+        await db.execute(DbSchema.habitTables['habit_tag']!);
 
         // * --------------------------------------------------------------
 
         // > **[Chrono] data**
         // - Creating the chrono label table. [Contains each unique label]
-        await db.execute(
-          DbSchema.chronoTables['chrono_label']!,
-        );
+        await db.execute(DbSchema.chronoTables['chrono_label']!);
 
         // - Creating the chrono label history table. [Contains the history of each label]
-        await db.execute(
-          DbSchema.chronoTables['chrono_label_history']!,
-        );
+        await db.execute(DbSchema.chronoTables['chrono_label_history']!);
 
         // - Creating the chrono label reminder table. [Contains the reminder datetime for a label]
-        await db.execute(
-          DbSchema.chronoTables['chrono_label_reminder']!,
-        );
+        await db.execute(DbSchema.chronoTables['chrono_label_reminder']!);
 
         // - Creating the chrono label goal table. [Contains info on the goals for a label]
-        await db.execute(
-          DbSchema.chronoTables['chrono_label_goal']!,
-        );
+        await db.execute(DbSchema.chronoTables['chrono_label_goal']!);
 
         // - Creating the chrono label autostart table. [Contains info on whether/when a label should autostart]
-        await db.execute(
-          DbSchema.chronoTables['chrono_label_autostart']!,
-        );
+        await db.execute(DbSchema.chronoTables['chrono_label_autostart']!);
 
         //TODO*: Remember to remove these
 

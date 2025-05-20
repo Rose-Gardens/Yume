@@ -10,9 +10,7 @@ import 'package:yume_kitai/ui/habits/view_models/habits_viewmodel.dart';
 import 'package:yume_kitai/ui/habits/widgets/habits_shrinkable_card.dart';
 
 class HabitsScreen extends StatefulWidget {
-  const HabitsScreen({
-    super.key,
-  });
+  const HabitsScreen({super.key});
 
   @override
   State<HabitsScreen> createState() => _HabitsScreenState();
@@ -41,8 +39,9 @@ class _HabitsScreenState extends State<HabitsScreen> {
             return const SizedBox();
           }
           // * If not error, or running, filter habits and build list.
-          final filteredHabits =
-              viewModel.habits!.where((habit) => !habit.isRetired).toList();
+          final filteredHabits = viewModel.habits!
+              .where((habit) => !habit.isRetired)
+              .toList();
 
           return Stack(
             children: [
@@ -60,9 +59,7 @@ class _HabitsScreenState extends State<HabitsScreen> {
                   );
                 },
               ),
-              PopupMenu(
-                key: overlayKey,
-              )
+              PopupMenu(key: overlayKey),
             ],
           );
         },

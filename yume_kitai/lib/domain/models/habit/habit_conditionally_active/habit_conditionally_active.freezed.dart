@@ -12,10 +12,12 @@ part of 'habit_conditionally_active.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 HabitConditionallyActive _$HabitConditionallyActiveFromJson(
-    Map<String, dynamic> json) {
+  Map<String, dynamic> json,
+) {
   return _HabitConditionallyActive.fromJson(json);
 }
 
@@ -54,23 +56,27 @@ mixin _$HabitConditionallyActive {
 
 /// @nodoc
 abstract class $HabitConditionallyActiveCopyWith<$Res> {
-  factory $HabitConditionallyActiveCopyWith(HabitConditionallyActive value,
-          $Res Function(HabitConditionallyActive) then) =
-      _$HabitConditionallyActiveCopyWithImpl<$Res, HabitConditionallyActive>;
+  factory $HabitConditionallyActiveCopyWith(
+    HabitConditionallyActive value,
+    $Res Function(HabitConditionallyActive) then,
+  ) = _$HabitConditionallyActiveCopyWithImpl<$Res, HabitConditionallyActive>;
   @useResult
-  $Res call(
-      {int habitConditionallyActiveId,
-      DateTime? startOn,
-      DateTime? endOn,
-      DateTime? startVacationOn,
-      DateTime? endVacationOn,
-      bool isDeferredToTomorrow,
-      int habitId});
+  $Res call({
+    int habitConditionallyActiveId,
+    DateTime? startOn,
+    DateTime? endOn,
+    DateTime? startVacationOn,
+    DateTime? endVacationOn,
+    bool isDeferredToTomorrow,
+    int habitId,
+  });
 }
 
 /// @nodoc
-class _$HabitConditionallyActiveCopyWithImpl<$Res,
-        $Val extends HabitConditionallyActive>
+class _$HabitConditionallyActiveCopyWithImpl<
+  $Res,
+  $Val extends HabitConditionallyActive
+>
     implements $HabitConditionallyActiveCopyWith<$Res> {
   _$HabitConditionallyActiveCopyWithImpl(this._value, this._then);
 
@@ -92,36 +98,39 @@ class _$HabitConditionallyActiveCopyWithImpl<$Res,
     Object? isDeferredToTomorrow = null,
     Object? habitId = null,
   }) {
-    return _then(_value.copyWith(
-      habitConditionallyActiveId: null == habitConditionallyActiveId
-          ? _value.habitConditionallyActiveId
-          : habitConditionallyActiveId // ignore: cast_nullable_to_non_nullable
-              as int,
-      startOn: freezed == startOn
-          ? _value.startOn
-          : startOn // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      endOn: freezed == endOn
-          ? _value.endOn
-          : endOn // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      startVacationOn: freezed == startVacationOn
-          ? _value.startVacationOn
-          : startVacationOn // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      endVacationOn: freezed == endVacationOn
-          ? _value.endVacationOn
-          : endVacationOn // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      isDeferredToTomorrow: null == isDeferredToTomorrow
-          ? _value.isDeferredToTomorrow
-          : isDeferredToTomorrow // ignore: cast_nullable_to_non_nullable
-              as bool,
-      habitId: null == habitId
-          ? _value.habitId
-          : habitId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            habitConditionallyActiveId: null == habitConditionallyActiveId
+                ? _value.habitConditionallyActiveId
+                : habitConditionallyActiveId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            startOn: freezed == startOn
+                ? _value.startOn
+                : startOn // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            endOn: freezed == endOn
+                ? _value.endOn
+                : endOn // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            startVacationOn: freezed == startVacationOn
+                ? _value.startVacationOn
+                : startVacationOn // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            endVacationOn: freezed == endVacationOn
+                ? _value.endVacationOn
+                : endVacationOn // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            isDeferredToTomorrow: null == isDeferredToTomorrow
+                ? _value.isDeferredToTomorrow
+                : isDeferredToTomorrow // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            habitId: null == habitId
+                ? _value.habitId
+                : habitId // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -129,30 +138,34 @@ class _$HabitConditionallyActiveCopyWithImpl<$Res,
 abstract class _$$HabitConditionallyActiveImplCopyWith<$Res>
     implements $HabitConditionallyActiveCopyWith<$Res> {
   factory _$$HabitConditionallyActiveImplCopyWith(
-          _$HabitConditionallyActiveImpl value,
-          $Res Function(_$HabitConditionallyActiveImpl) then) =
-      __$$HabitConditionallyActiveImplCopyWithImpl<$Res>;
+    _$HabitConditionallyActiveImpl value,
+    $Res Function(_$HabitConditionallyActiveImpl) then,
+  ) = __$$HabitConditionallyActiveImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int habitConditionallyActiveId,
-      DateTime? startOn,
-      DateTime? endOn,
-      DateTime? startVacationOn,
-      DateTime? endVacationOn,
-      bool isDeferredToTomorrow,
-      int habitId});
+  $Res call({
+    int habitConditionallyActiveId,
+    DateTime? startOn,
+    DateTime? endOn,
+    DateTime? startVacationOn,
+    DateTime? endVacationOn,
+    bool isDeferredToTomorrow,
+    int habitId,
+  });
 }
 
 /// @nodoc
 class __$$HabitConditionallyActiveImplCopyWithImpl<$Res>
-    extends _$HabitConditionallyActiveCopyWithImpl<$Res,
-        _$HabitConditionallyActiveImpl>
+    extends
+        _$HabitConditionallyActiveCopyWithImpl<
+          $Res,
+          _$HabitConditionallyActiveImpl
+        >
     implements _$$HabitConditionallyActiveImplCopyWith<$Res> {
   __$$HabitConditionallyActiveImplCopyWithImpl(
-      _$HabitConditionallyActiveImpl _value,
-      $Res Function(_$HabitConditionallyActiveImpl) _then)
-      : super(_value, _then);
+    _$HabitConditionallyActiveImpl _value,
+    $Res Function(_$HabitConditionallyActiveImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of HabitConditionallyActive
   /// with the given fields replaced by the non-null parameter values.
@@ -167,50 +180,53 @@ class __$$HabitConditionallyActiveImplCopyWithImpl<$Res>
     Object? isDeferredToTomorrow = null,
     Object? habitId = null,
   }) {
-    return _then(_$HabitConditionallyActiveImpl(
-      habitConditionallyActiveId: null == habitConditionallyActiveId
-          ? _value.habitConditionallyActiveId
-          : habitConditionallyActiveId // ignore: cast_nullable_to_non_nullable
-              as int,
-      startOn: freezed == startOn
-          ? _value.startOn
-          : startOn // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      endOn: freezed == endOn
-          ? _value.endOn
-          : endOn // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      startVacationOn: freezed == startVacationOn
-          ? _value.startVacationOn
-          : startVacationOn // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      endVacationOn: freezed == endVacationOn
-          ? _value.endVacationOn
-          : endVacationOn // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      isDeferredToTomorrow: null == isDeferredToTomorrow
-          ? _value.isDeferredToTomorrow
-          : isDeferredToTomorrow // ignore: cast_nullable_to_non_nullable
-              as bool,
-      habitId: null == habitId
-          ? _value.habitId
-          : habitId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$HabitConditionallyActiveImpl(
+        habitConditionallyActiveId: null == habitConditionallyActiveId
+            ? _value.habitConditionallyActiveId
+            : habitConditionallyActiveId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        startOn: freezed == startOn
+            ? _value.startOn
+            : startOn // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        endOn: freezed == endOn
+            ? _value.endOn
+            : endOn // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        startVacationOn: freezed == startVacationOn
+            ? _value.startVacationOn
+            : startVacationOn // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        endVacationOn: freezed == endVacationOn
+            ? _value.endVacationOn
+            : endVacationOn // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        isDeferredToTomorrow: null == isDeferredToTomorrow
+            ? _value.isDeferredToTomorrow
+            : isDeferredToTomorrow // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        habitId: null == habitId
+            ? _value.habitId
+            : habitId // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$HabitConditionallyActiveImpl implements _HabitConditionallyActive {
-  const _$HabitConditionallyActiveImpl(
-      {required this.habitConditionallyActiveId,
-      required this.startOn,
-      required this.endOn,
-      required this.startVacationOn,
-      required this.endVacationOn,
-      required this.isDeferredToTomorrow,
-      required this.habitId});
+  const _$HabitConditionallyActiveImpl({
+    required this.habitConditionallyActiveId,
+    required this.startOn,
+    required this.endOn,
+    required this.startVacationOn,
+    required this.endVacationOn,
+    required this.isDeferredToTomorrow,
+    required this.habitId,
+  });
 
   factory _$HabitConditionallyActiveImpl.fromJson(Map<String, dynamic> json) =>
       _$$HabitConditionallyActiveImplFromJson(json);
@@ -253,8 +269,10 @@ class _$HabitConditionallyActiveImpl implements _HabitConditionallyActive {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HabitConditionallyActiveImpl &&
-            (identical(other.habitConditionallyActiveId,
-                    habitConditionallyActiveId) ||
+            (identical(
+                  other.habitConditionallyActiveId,
+                  habitConditionallyActiveId,
+                ) ||
                 other.habitConditionallyActiveId ==
                     habitConditionallyActiveId) &&
             (identical(other.startOn, startOn) || other.startOn == startOn) &&
@@ -271,14 +289,15 @@ class _$HabitConditionallyActiveImpl implements _HabitConditionallyActive {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      habitConditionallyActiveId,
-      startOn,
-      endOn,
-      startVacationOn,
-      endVacationOn,
-      isDeferredToTomorrow,
-      habitId);
+    runtimeType,
+    habitConditionallyActiveId,
+    startOn,
+    endOn,
+    startVacationOn,
+    endVacationOn,
+    isDeferredToTomorrow,
+    habitId,
+  );
 
   /// Create a copy of HabitConditionallyActive
   /// with the given fields replaced by the non-null parameter values.
@@ -286,26 +305,27 @@ class _$HabitConditionallyActiveImpl implements _HabitConditionallyActive {
   @override
   @pragma('vm:prefer-inline')
   _$$HabitConditionallyActiveImplCopyWith<_$HabitConditionallyActiveImpl>
-      get copyWith => __$$HabitConditionallyActiveImplCopyWithImpl<
-          _$HabitConditionallyActiveImpl>(this, _$identity);
+  get copyWith =>
+      __$$HabitConditionallyActiveImplCopyWithImpl<
+        _$HabitConditionallyActiveImpl
+      >(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$HabitConditionallyActiveImplToJson(
-      this,
-    );
+    return _$$HabitConditionallyActiveImplToJson(this);
   }
 }
 
 abstract class _HabitConditionallyActive implements HabitConditionallyActive {
-  const factory _HabitConditionallyActive(
-      {required final int habitConditionallyActiveId,
-      required final DateTime? startOn,
-      required final DateTime? endOn,
-      required final DateTime? startVacationOn,
-      required final DateTime? endVacationOn,
-      required final bool isDeferredToTomorrow,
-      required final int habitId}) = _$HabitConditionallyActiveImpl;
+  const factory _HabitConditionallyActive({
+    required final int habitConditionallyActiveId,
+    required final DateTime? startOn,
+    required final DateTime? endOn,
+    required final DateTime? startVacationOn,
+    required final DateTime? endVacationOn,
+    required final bool isDeferredToTomorrow,
+    required final int habitId,
+  }) = _$HabitConditionallyActiveImpl;
 
   factory _HabitConditionallyActive.fromJson(Map<String, dynamic> json) =
       _$HabitConditionallyActiveImpl.fromJson;
@@ -343,5 +363,5 @@ abstract class _HabitConditionallyActive implements HabitConditionallyActive {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$HabitConditionallyActiveImplCopyWith<_$HabitConditionallyActiveImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
