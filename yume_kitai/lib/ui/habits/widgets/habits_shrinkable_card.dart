@@ -9,13 +9,17 @@ import 'package:flutter_sficon/flutter_sficon.dart';
 import 'package:yume_kitai/config/dependencies.dart';
 
 import '../../../domain/models/habit/habit/habit.dart';
+import '../../../utils/swipe_direction.dart';
 import '../../core/ui/popup_menu/popup_menu.dart';
 
 import 'habits_card.dart';
 
 class HabitsShrinkableCard extends StatefulWidget {
-  const HabitsShrinkableCard(
-      {super.key, required this.habit, required this.overlayKey});
+  const HabitsShrinkableCard({
+    super.key,
+    required this.habit,
+    required this.overlayKey,
+  });
 
   final Habit habit;
   final GlobalKey<PopupMenuState> overlayKey;
@@ -25,10 +29,9 @@ class HabitsShrinkableCard extends StatefulWidget {
 }
 
 class _HabitsShrinkableCardState extends State<HabitsShrinkableCard> {
-  bool isPressed = false;
-  bool isSwipedRight = false;
-  bool isSwipedLeft = false;
   double swipeDist = 0;
+  bool isPressed = false;
+  SwipeDirection swipeDirection = SwipeDirection.none;
 
   // TODO: this icon pack is 19783640bytes long! see notion
   static const List<({String title, IconData icon, bool isDanger})> menuData = [
@@ -40,10 +43,22 @@ class _HabitsShrinkableCardState extends State<HabitsShrinkableCard> {
     (title: "Delete", icon: SFIcons.sf_trash, isDanger: true),
   ];
 
+  Alignment getSwipeAlignment(SwipeDirection swipeDir) {
+    if (swipeDir == SwipeDirection.left) {
+      return Alignment.centerLeft;
+    } else if (swipeDir == SwipeDirection.right) {
+      return Alignment.centerRight;
+    } else {
+      return Alignment.center;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       key: ValueKey(widget.habit.habitId),
+
+      // > To detect shrinking
       onTapDown: (details) {
         setState(() {
           isPressed = true;
@@ -72,45 +87,35 @@ class _HabitsShrinkableCardState extends State<HabitsShrinkableCard> {
           isPressed = false;
         });
       },
+
+      // > To detect swiping
       onHorizontalDragUpdate: (details) {
         if (details.delta.dx > 0) {
           setState(() {
-            isSwipedRight = true;
-          });
-        }
-        if (isSwipedRight) {
-          setState(() {
-            swipeDist += details.delta.dx;
+            swipeDirection = SwipeDirection.right;
           });
         }
         if (details.delta.dx < 0) {
           setState(() {
-            isSwipedLeft = true;
+            swipeDirection = SwipeDirection.left;
           });
         }
       },
       onHorizontalDragEnd: (details) {
         setState(() {
-          isSwipedRight = false;
-          isSwipedLeft = false;
-          swipeDist = 0;
+          swipeDirection = SwipeDirection.none;
         });
       },
+
       child: AnimatedScale(
         scale: isPressed ? 0.95 : 1.0,
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeOutQuint, // Apple Spring Curve
         child: Align(
-          alignment: isSwipedRight
-              ? Alignment.centerRight
-              : isSwipedLeft
-                  ? Alignment.centerLeft
-                  : Alignment.centerRight,
+          alignment: getSwipeAlignment(swipeDirection),
           child: HabitsCard(
-            habit: widget.habit.copyWith(
-              title: isSwipedRight ? 'slide to complete' : widget.habit.title,
-            ),
-            swipeDistance: swipeDist,
+            habit: widget.habit,
+            swipeDirection: swipeDirection,
           ),
         ),
       ),
