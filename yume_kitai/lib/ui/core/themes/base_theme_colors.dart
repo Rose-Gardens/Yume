@@ -4,13 +4,23 @@ import 'theme_extension.dart';
 class BaseThemeColors {
   static const AppThemeExtension baseColors = AppThemeExtension(
     surfaceBg: Colors.black,
-    surfaceOverlay:
-        Color.fromRGBO(32, 32, 32, 1), // ? For things like bottom sheets
+    surfaceOverlay: Color.fromRGBO(
+      32,
+      32,
+      32,
+      1,
+    ), // ? For things like bottom sheets
     surfaceLow: Color.fromRGBO(255, 255, 255, 0.06),
     surfaceMedium: Color.fromRGBO(255, 255, 255, 0.11),
     surfaceHigh: Color.fromRGBO(255, 255, 255, 0.20),
+    surfaceVeryHigh: Color.fromRGBO(255, 255, 255, 0.30),
     surfaceInverse: Color.fromRGBO(255, 255, 255, 0.80),
-    overlayVeryLow: Color.fromRGBO(0, 0, 0, 0.03), // ? very high transparency scrim
+    overlayVeryLow: Color.fromRGBO(
+      0,
+      0,
+      0,
+      0.03,
+    ), // ? very high transparency scrim
     overlayLow: Color.fromRGBO(0, 0, 0, 0.25), // ? high transparency scrim
     overlayHigh: Color.fromRGBO(0, 0, 0, 0.75), // ? low transparency scrim
     borderLow: Color.fromRGBO(255, 255, 255, 0.20),
