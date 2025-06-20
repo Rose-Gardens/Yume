@@ -9,15 +9,14 @@ import 'package:yume_kitai/ui/habits/view_models/habits_viewmodel.dart';
 import '../../core/themes/theme_extension.dart';
 import '../../core/ui/input_field.dart';
 
-// * HabitsSheet is the page where new habits can be created
-class HabitsSheet extends StatefulWidget {
-  const HabitsSheet({super.key});
+class HabitsCreateSheet extends StatefulWidget {
+  const HabitsCreateSheet({super.key});
 
   @override
-  State<HabitsSheet> createState() => _HabitsSheetState();
+  State<HabitsCreateSheet> createState() => _HabitsCreateSheetState();
 }
 
-class _HabitsSheetState extends State<HabitsSheet> {
+class _HabitsCreateSheetState extends State<HabitsCreateSheet> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descController = TextEditingController();
   final TextEditingController _iconController = TextEditingController();
@@ -68,9 +67,7 @@ class _HabitsSheetState extends State<HabitsSheet> {
                   children: [
                     Text(
                       "Create Habit",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineSmall
+                      style: Theme.of(context).textTheme.headlineSmall
                           ?.copyWith(color: theme.foregroundHigh),
                     ),
                     Form(
@@ -102,11 +99,10 @@ class _HabitsSheetState extends State<HabitsSheet> {
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return null;
-                              }
-                              else if (value.length != 4) {
+                              } else if (value.length != 4) {
                                 return 'Icon value should be 4 characters.';
-                              }
-                              else if (int.tryParse(value, radix: 16) == null) {
+                              } else if (int.tryParse(value, radix: 16) ==
+                                  null) {
                                 return 'Icon value is not a valid hexadecimal.';
                               }
                               return null;
@@ -118,11 +114,10 @@ class _HabitsSheetState extends State<HabitsSheet> {
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return null;
-                              }
-                              else if (value.length != 8) {
+                              } else if (value.length != 8) {
                                 return 'Color value should be 8 characters.';
-                              }
-                              else if (int.tryParse(value, radix: 16) == null) {
+                              } else if (int.tryParse(value, radix: 16) ==
+                                  null) {
                                 return 'Color value is not a valid hexadecimal.';
                               }
                               return null;
@@ -131,39 +126,36 @@ class _HabitsSheetState extends State<HabitsSheet> {
                           TextButton(
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
-                                viewModel.saveHabit.execute(
-                                  {
-                                    'title': _titleController.text,
-                                    'desc': _descController.text,
-                                    'icon': _iconController.text,
-                                    'color': _colorController.text
-                                  },
-                                );
-                                
+                                viewModel.saveHabit.execute({
+                                  'title': _titleController.text,
+                                  'desc': _descController.text,
+                                  'icon': _iconController.text,
+                                  'color': _colorController.text,
+                                });
+
                                 // TODO: This is not pretty
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text('Success!'),
-                                  ),
+                                  const SnackBar(content: Text('Success!')),
                                 );
                               }
                             },
                             child: ListenableBuilder(
-                                listenable: viewModel.saveHabit,
-                                builder: (context, child) {
-                                  if (viewModel.saveHabit.running) {
-                                    return const CircularProgressIndicator();
-                                  }
-                                  // TODO: make an error widget neat snackbar
-                                  if (viewModel.saveHabit.error) {
-                                    viewModel.saveHabit.clearResult();
-                                  }
-                                  if (viewModel.saveHabit.completed) {
-                                    viewModel.saveHabit.clearResult();
-                                    Navigator.of(context).pop();
-                                  }
-                                  return const Text("Done");
-                                }),
+                              listenable: viewModel.saveHabit,
+                              builder: (context, child) {
+                                if (viewModel.saveHabit.running) {
+                                  return const CircularProgressIndicator();
+                                }
+                                // TODO: make an error widget neat snackbar
+                                if (viewModel.saveHabit.error) {
+                                  viewModel.saveHabit.clearResult();
+                                }
+                                if (viewModel.saveHabit.completed) {
+                                  viewModel.saveHabit.clearResult();
+                                  Navigator.of(context).pop();
+                                }
+                                return const Text("Done");
+                              },
+                            ),
                           ),
                           SizedBox(
                             height:
@@ -175,7 +167,7 @@ class _HabitsSheetState extends State<HabitsSheet> {
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
