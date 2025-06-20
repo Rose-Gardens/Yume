@@ -15,8 +15,8 @@ class PopupMenuContent extends StatefulWidget {
     required this.menuHeight,
     required GlobalKey menuKey,
     required AnimationController animationController,
-  })  : _animationController = animationController,
-        _menuKey = menuKey;
+  }) : _animationController = animationController,
+       _menuKey = menuKey;
 
   final Offset globalPos;
   final GlobalKey _menuKey;
@@ -32,9 +32,9 @@ class _PopupMenuContentState extends State<PopupMenuContent> {
   static const double menuWidth = 175;
   late final double topPosition = widget.globalPos.dy - 50;
   late final double leftPosition = widget.globalPos.dx - 50;
-  late final double noOfDividers = widget.menuData.length - 1;
+  // > Adding in 1 so that the entire rowHeight is one index
   late final double rowHeight =
-      ((widget.menuHeight! - noOfDividers) / widget.menuData.length) + 1;
+      (widget.menuHeight! / widget.menuData.length) + 1;
   int? selectedIndex;
 
   @override
@@ -44,87 +44,78 @@ class _PopupMenuContentState extends State<PopupMenuContent> {
     return Positioned(
       top: topPosition,
       left: leftPosition,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(16.0),
-        child: BackdropFilter(
-          filter: blurSaturateFilterPerformance,
-          child: GestureDetector(
-            onPanUpdate: (details) {
-              final dx = details.localPosition.dx;
-              final dy = details.localPosition.dy;
+      child:
+          ClipRRect(
+                borderRadius: BorderRadius.circular(16.0),
+                child: BackdropFilter(
+                  filter: blurSaturateFilterPerformance,
+                  child: GestureDetector(
+                    onPanUpdate: (details) {
+                      final dx = details.localPosition.dx;
+                      final dy = details.localPosition.dy;
 
-              if (dx >= 0 && dx <= menuWidth) {
-                int? index = (dy / rowHeight).floor();
-                if (dy < 0 || dy > widget.menuHeight!) {
-                  index = null;
-                }
-                if (selectedIndex != index) {
-                  HapticFeedback.selectionClick();
-                }
-                setState(
-                  () {
-                    selectedIndex = index;
-                  },
-                );
-              } else {
-                setState(
-                  () {
-                    selectedIndex = null;
-                  },
-                );
-              }
-            },
-            onPanEnd: (details) => setState(
-              () {
-                selectedIndex = null;
-              },
-            ),
-            child: Container(
-              key: widget._menuKey,
-              width: menuWidth,
-              decoration: BoxDecoration(
-                color: theme.surfaceOverlay.withValues(alpha: 0.8),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  for (int index = 0;
-                      index < widget.menuData.length;
-                      index++) ...[
-                    PopupMenuItemTile(
-                      menuItem: widget.menuData[index],
-                      textColor: widget.menuData[index].isDanger
-                          ? theme.danger
-                          : theme.foregroundBright,
-                      currentIndex: index,
-                      selectedIndex: selectedIndex,
-                    ),
-                    if (index != widget.menuData.length - 1)
-                      Divider(
-                        height: 0,
-                        thickness: 0,
-                        color: theme.foregroundVeryLow,
+                      if (dx >= 0 && dx <= menuWidth) {
+                        int? index = (dy / rowHeight).floor();
+                        if (dy < 0 || dy > widget.menuHeight!) {
+                          index = null;
+                        }
+                        if (selectedIndex != index) {
+                          HapticFeedback.selectionClick();
+                        }
+                        setState(() {
+                          selectedIndex = index;
+                        });
+                      } else {
+                        setState(() {
+                          selectedIndex = null;
+                        });
+                      }
+                    },
+                    onPanEnd: (details) => setState(() {
+                      selectedIndex = null;
+                    }),
+                    child: Container(
+                      key: widget._menuKey,
+                      width: menuWidth,
+                      decoration: BoxDecoration(
+                        color: theme.surfaceOverlay.withValues(alpha: 0.8),
                       ),
-                  ],
-                ],
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          for (
+                            int index = 0;
+                            index < widget.menuData.length;
+                            index++
+                          ) ...[
+                            PopupMenuItemTile(
+                              menuItem: widget.menuData[index],
+                              textColor: widget.menuData[index].isDanger
+                                  ? theme.danger
+                                  : theme.foregroundBright,
+                              currentIndex: index,
+                              selectedIndex: selectedIndex,
+                            ),
+                            if (index != widget.menuData.length - 1)
+                              Divider(
+                                height: 0,
+                                thickness: 0,
+                                color: theme.foregroundVeryLow,
+                              ),
+                          ],
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              )
+              .animate(controller: widget._animationController)
+              .fadeIn(duration: 300.ms, curve: Curves.easeOutQuint, begin: 0)
+              .scale(
+                duration: 300.ms,
+                curve: Curves.easeOutBack,
+                begin: const Offset(0.6, 0.6),
               ),
-            ),
-          ),
-        ),
-      )
-          .animate(
-            controller: widget._animationController,
-          )
-          .fadeIn(
-            duration: 300.ms,
-            curve: Curves.easeOutQuint,
-            begin: 0,
-          )
-          .scale(
-            duration: 300.ms,
-            curve: Curves.easeOutBack,
-            begin: const Offset(0.6, 0.6),
-          ),
     );
   }
 }
