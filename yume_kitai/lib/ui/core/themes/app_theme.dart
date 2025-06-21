@@ -7,18 +7,24 @@ class AppTheme {
     const baseStyle = TextStyle(
       letterSpacing: 0,
       fontVariations: [FontVariation('wght', 400.0)],
+      // ? lnum Lining Numbers, ss09 Connected W, ss02 rounded a
+      fontFeatures: <FontFeature>[
+        FontFeature.enable('lnum'),
+        FontFeature.enable('ss09'),
+        FontFeature.enable('ss02'),
+      ],
     );
 
     return ThemeData(
       extensions: const [defColors],
-      fontFamily: 'NunitoSans',
+      fontFamily: 'Raleway',
       textTheme: TextTheme(
         headlineSmall: baseStyle.copyWith(
           fontVariations: [const FontVariation('wght', 700)],
         ),
         titleLarge: baseStyle.copyWith(
-          fontSize: 17,
-          height: 1.1,
+          fontSize: 16,
+          height: 1.05,
           fontVariations: [const FontVariation('wght', 600)],
         ),
         bodyLarge: baseStyle,

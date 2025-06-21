@@ -33,9 +33,9 @@ dev_dependencies:
 
 flutter:
   fonts:
-    - family: NunitoSans
+    - family: Raleway
       fonts:
-        - asset: assets/fonts/NunitoSans.ttf
+        - asset: assets/fonts/Raleway.ttf
   assets:
     - assets/images/YumeLogo.png
     - assets/images/Java.png
