@@ -7,11 +7,10 @@ class AppTheme {
     const baseStyle = TextStyle(
       letterSpacing: 0,
       fontVariations: [FontVariation('wght', 400.0)],
-      // ? lnum Lining Numbers, ss09 Connected W, ss02 rounded a
+      // ? lnum Lining Numbers, ss09 Connected W
       fontFeatures: <FontFeature>[
         FontFeature.enable('lnum'),
         FontFeature.enable('ss09'),
-        FontFeature.enable('ss02'),
       ],
     );
 
@@ -28,7 +27,7 @@ class AppTheme {
           fontVariations: [const FontVariation('wght', 600)],
         ),
         bodyLarge: baseStyle,
-        bodyMedium: baseStyle,
+        bodyMedium: baseStyle.copyWith(fontSize: 15),
         bodySmall: baseStyle.copyWith(
           fontVariations: [const FontVariation('wght', 500)],
         ),

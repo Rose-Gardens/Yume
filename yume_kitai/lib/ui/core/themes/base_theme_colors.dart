@@ -5,9 +5,9 @@ class BaseThemeColors {
   static const AppThemeExtension baseColors = AppThemeExtension(
     surfaceBg: Colors.black,
     surfaceOverlay: Color.fromRGBO(
-      32,
-      32,
-      32,
+      34,
+      35,
+      37,
       1,
     ), // ? For things like bottom sheets
     surfaceLow: Color.fromRGBO(255, 255, 255, 0.06),
