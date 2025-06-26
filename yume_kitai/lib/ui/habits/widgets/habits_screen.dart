@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:yume_kitai/ui/core/ui/popup_menu/popup_menu.dart';
 import 'package:yume_kitai/ui/habits/view_models/habits_viewmodel.dart';
 
-import 'package:yume_kitai/ui/habits/widgets/habits_shrinkable_card.dart';
+import 'package:yume_kitai/ui/habits/widgets/habits_gesturable_card.dart';
 
 class HabitsScreen extends StatefulWidget {
   const HabitsScreen({super.key});
@@ -52,7 +52,7 @@ class _HabitsScreenState extends State<HabitsScreen> {
                   final habit = filteredHabits[index];
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 12),
-                    child: HabitsShrinkableCard(
+                    child: HabitsGesturableCard(
                       habit: habit,
                       overlayKey: overlayKey,
                     ),
