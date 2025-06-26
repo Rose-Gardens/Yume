@@ -31,7 +31,7 @@ class PopupMenuItemTile extends StatelessWidget {
             menuItem.title,
             style: Theme.of(
               context,
-            ).textTheme.bodyLarge?.copyWith(color: textColor),
+            ).textTheme.bodyMedium?.copyWith(color: textColor, fontVariations: [const FontVariation('wght', 550)]),
           ),
           const Spacer(),
           // ? centers the icons across all rows

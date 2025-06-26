@@ -30,6 +30,7 @@ class PopupMenuContent extends StatefulWidget {
 
 class _PopupMenuContentState extends State<PopupMenuContent> {
   static const double menuWidth = 175;
+  static const double menuBorderRadius = 16.0;
   late final double topPosition = widget.globalPos.dy - 50;
   late final double leftPosition = widget.globalPos.dx - 50;
   // > Adding in 1 so that the entire rowHeight is one index
@@ -46,7 +47,7 @@ class _PopupMenuContentState extends State<PopupMenuContent> {
       left: leftPosition,
       child:
           ClipRRect(
-                borderRadius: BorderRadius.circular(16.0),
+                borderRadius: BorderRadius.circular(menuBorderRadius),
                 child: BackdropFilter(
                   filter: blurSaturateFilterPerformance,
                   child: GestureDetector(
@@ -79,6 +80,8 @@ class _PopupMenuContentState extends State<PopupMenuContent> {
                       width: menuWidth,
                       decoration: BoxDecoration(
                         color: theme.surfaceOverlay.withValues(alpha: 0.8),
+                        borderRadius: BorderRadius.circular(menuBorderRadius),
+                        border: Border.all(color: theme.borderMedium)
                       ),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -98,6 +101,8 @@ class _PopupMenuContentState extends State<PopupMenuContent> {
                             ),
                             if (index != widget.menuData.length - 1)
                               Divider(
+                                indent: 12,
+                                endIndent: 12,
                                 height: 0,
                                 thickness: 0,
                                 color: theme.foregroundVeryLow,
