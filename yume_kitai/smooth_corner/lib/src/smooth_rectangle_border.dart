@@ -19,7 +19,7 @@ class SmoothRectangleBorder extends OutlinedBorder {
   /// [getOuterPath].
   ///
   /// If radiuses of X and Y from one corner are not equal, the smallest one will be used.
-  final BorderRadiusGeometry borderRadius;
+  final BorderRadius borderRadius;
 
   /// The smoothness of corners.
   ///
@@ -216,7 +216,7 @@ class SmoothRectangleBorder extends OutlinedBorder {
       return SmoothRectangleBorder(
         side: BorderSide.lerp(a.side, side, t),
         borderRadius:
-            BorderRadiusGeometry.lerp(a.borderRadius, borderRadius, t)!,
+            BorderRadius.lerp(a.borderRadius, borderRadius, t)!,
         smoothness: lerpDouble(a.smoothness, smoothness, t)!,
       );
     }
@@ -229,7 +229,7 @@ class SmoothRectangleBorder extends OutlinedBorder {
       return SmoothRectangleBorder(
         side: BorderSide.lerp(side, b.side, t),
         borderRadius:
-            BorderRadiusGeometry.lerp(borderRadius, b.borderRadius, t)!,
+            BorderRadius.lerp(borderRadius, b.borderRadius, t)!,
         smoothness: lerpDouble(smoothness, b.smoothness, t)!,
       );
     }
@@ -239,7 +239,7 @@ class SmoothRectangleBorder extends OutlinedBorder {
   @override
   SmoothRectangleBorder copyWith(
       {BorderSide? side,
-      BorderRadiusGeometry? borderRadius,
+      BorderRadius? borderRadius,
       double? smoothness}) {
     return SmoothRectangleBorder(
       borderRadius: borderRadius ?? this.borderRadius,
