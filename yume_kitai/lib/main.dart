@@ -21,7 +21,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: true,
-      title: "Yume Kitai",
+      title: "Yume",
       theme: AppTheme.getDefaultTheme(),
       routerConfig: router,
     );

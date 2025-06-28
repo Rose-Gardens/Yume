@@ -79,7 +79,7 @@ class _PopupMenuContentState extends State<PopupMenuContent> {
                       key: widget._menuKey,
                       width: menuWidth,
                       decoration: BoxDecoration(
-                        color: theme.surfaceOverlay.withValues(alpha: 0.8),
+                        color: theme.surfaceOverlay.withValues(alpha: 0.5),
                         borderRadius: BorderRadius.circular(menuBorderRadius),
                         border: Border.all(color: theme.borderMedium)
                       ),

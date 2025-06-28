@@ -95,7 +95,6 @@ class _HabitsCardState extends State<HabitsCard> {
       dynamicTextStyle = Theme.of(
         context,
       ).textTheme.titleLarge?.copyWith(color: theme.foregroundHigh);
-      ;
     }
 
     // * TODO: Widget Tree Starts Here. Clean that up lol
