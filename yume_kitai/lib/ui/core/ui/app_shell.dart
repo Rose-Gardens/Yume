@@ -45,10 +45,27 @@ class AppShell extends StatelessWidget {
         ),
         child: const Icon(Icons.add_rounded),
       ),
-      body: Builder(
-        builder: (context) {
-          return SafeArea(child: SizedBox.expand(child: child));
-        },
+      body: Stack(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/Dust.jpg'),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          const SizedBox.expand(
+            child: DecoratedBox(
+              decoration: BoxDecoration(color: Color.fromARGB(85, 0, 0, 0)),
+            ),
+          ),
+          Builder(
+            builder: (context) {
+              return SafeArea(child: SizedBox.expand(child: child));
+            },
+          ),
+        ],
       ),
       bottomNavigationBar: NavigationBar(
         destinations: const [

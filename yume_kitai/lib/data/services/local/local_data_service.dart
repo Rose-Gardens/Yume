@@ -69,16 +69,16 @@ class LocalDataService {
         //TODO*: Remember to remove these
 
         await db.execute(
-          "INSERT INTO habit (title, group_title, desc, color, icon, is_retired, is_negative, habit_conditionally_active_id, chrono_label_id) VALUES ('Do 15 Leetcode questions every hour', 'Coding', 'Practice coding', 'FFA44195', 'f653', 0, 1, NULL, NULL);",
+          "INSERT INTO habit (title, group_title, desc, color, icon, is_retired, is_negative, habit_conditionally_active_id, chrono_label_id) VALUES ('Do 15 Leetcode questions every hour', 'Coding', 'Practice coding', '', 'f653', 0, 1, NULL, NULL);",
         );
         await db.execute(
-          "INSERT INTO habit (title, group_title, desc, color, icon, is_retired, is_negative, habit_conditionally_active_id, chrono_label_id) VALUES ('Run 5km a day and dodge laser bullets', 'Running', 'Stay fit and healthy', 'FFC5605F', 'f6b8', 0, 0, NULL, NULL);",
+          "INSERT INTO habit (title, group_title, desc, color, icon, is_retired, is_negative, habit_conditionally_active_id, chrono_label_id) VALUES ('Run 5km a day and dodge laser bullets', 'Running', 'Stay fit and healthy', '', 'f6b8', 0, 0, NULL, NULL);",
         );
         await db.execute(
-          "INSERT INTO habit (title, group_title, desc, color, icon, is_retired, is_negative, habit_conditionally_active_id, chrono_label_id) VALUES ('Drink Water', 'Health', 'At least 8 cups', 'FF316DD6', 'f86a', 0, 0, NULL, NULL);",
+          "INSERT INTO habit (title, group_title, desc, color, icon, is_retired, is_negative, habit_conditionally_active_id, chrono_label_id) VALUES ('Drink Water', 'Health', 'At least 8 cups', '', 'f86a', 0, 0, NULL, NULL);",
         );
         await db.execute(
-          "INSERT INTO habit (title, group_title, desc, color, icon, is_retired, is_negative, habit_conditionally_active_id, chrono_label_id) VALUES ('Meditate 10 minutes', 'Health', 'Relax and focus', 'FF4197A4', 'f0144', 0, 0, NULL, NULL);",
+          "INSERT INTO habit (title, group_title, desc, color, icon, is_retired, is_negative, habit_conditionally_active_id, chrono_label_id) VALUES ('Meditate 10 minutes', 'Health', 'Relax and focus', '', 'f0144', 0, 0, NULL, NULL);",
         );
       },
 

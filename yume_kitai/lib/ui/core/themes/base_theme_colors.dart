@@ -3,6 +3,7 @@ import 'theme_extension.dart';
 
 class BaseThemeColors {
   static const AppThemeExtension baseColors = AppThemeExtension(
+    // TODO: fix bg color
     surfaceBg: Color.fromARGB(255, 51, 11, 48),
     surfaceOverlay: Color.fromRGBO(
       34,

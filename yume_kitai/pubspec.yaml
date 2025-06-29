@@ -37,6 +37,8 @@ flutter:
       fonts:
         - asset: assets/fonts/Raleway.ttf
   assets:
+  # TODO: remove these
     - assets/images/YumeLogo.png
     - assets/images/Java.png
+    - assets/images/Dust.jpg
   uses-material-design: true
