@@ -2,7 +2,6 @@
 // Use of this source code is governed by the Apache 2.0 License that can be
 // found in the LICENSE file.
 
-import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';

@@ -46,6 +46,7 @@ class _HabitsScreenState extends State<HabitsScreen> {
           return Stack(
             children: [
               ListView.builder(
+                physics: const BouncingScrollPhysics(),
                 padding: const EdgeInsets.only(top: 24),
                 itemCount: filteredHabits.length,
                 itemBuilder: (context, index) {
