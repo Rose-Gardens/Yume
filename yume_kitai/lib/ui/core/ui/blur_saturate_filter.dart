@@ -29,6 +29,10 @@ final ImageFilter blurSaturateFilterPerformance = ImageFilter.compose(
   inner: const ColorFilter.matrix(darkMatrixOriginalSaturate),
 );
 
+const ImageFilter saturateFilterPerformance = ColorFilter.matrix(
+  darkMatrixOriginalSaturate,
+);
+
 final ImageFilter hyperBlurSaturateFilter = ImageFilter.compose(
   outer: ImageFilter.blur(sigmaX: 30, sigmaY: 30, tileMode: TileMode.decal),
   inner: const ColorFilter.matrix(darkMatrixHyperSaturate),
