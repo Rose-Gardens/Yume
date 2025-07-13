@@ -5,9 +5,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
+import '../../../core/themes/theme_extension.dart';
+
 class HabitsDateSliverDelegate extends SliverPersistentHeaderDelegate {
   final double collapsedHeight = 0;
-  final double expandedHeight = 150;
+  final double expandedHeight = 200;
 
   @override
   Widget build(
@@ -15,31 +17,47 @@ class HabitsDateSliverDelegate extends SliverPersistentHeaderDelegate {
     double shrinkOffset,
     bool overlapsContent,
   ) {
+    final theme = Theme.of(context).extension<AppThemeExtension>()!;
+
     final double progress = (shrinkOffset / (maxExtent - minExtent)).clamp(
       0.0,
       1.0,
     );
     return Align(
       child:
-          Text(
-                "Today's Habits",
-                style: Theme.of(
-                  context,
-                ).textTheme.titleLarge!.copyWith(fontSize: 32),
+          Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                spacing: 12,
+                children: [
+                  Text(
+                    "Friday, December 13",
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      fontSize: 20,
+                      color: theme.foregroundMedium,
+                    ),
+                  ),
+                  Text(
+                    "Today's Habits",
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      fontSize: 40,
+                      color: theme.foregroundHigh,
+                      fontVariations: [const FontVariation('wght', 700)],
+                    ),
+                  ),
+                ],
               )
-              // * (divided by 2) slows down how quickly the effects happen
-              .animate(adapter: ValueAdapter(progress / 2))
+              // * (divided by (x > 1)) slows down how quickly the effects happen
+              .animate(adapter: ValueAdapter(progress / 1.5))
               .scale(
                 begin: const Offset(1, 1),
                 end: const Offset(0, 0),
-                curve: Curves.easeOut,
               )
               .blur(
                 begin: const Offset(0, 0),
-                end: const Offset(15, 15),
-                curve: Curves.easeOut,
+                end: const Offset(8, 8),
+                curve: Curves.easeOutQuint,
               )
-              .fadeOut(begin: 1.0, curve: Curves.easeOut),
+              .fade(begin: 1.0, end: 0.0, curve: Curves.easeOutSine),
     );
   }
 

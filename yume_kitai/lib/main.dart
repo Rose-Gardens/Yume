@@ -10,6 +10,7 @@ import 'ui/core/themes/app_theme.dart';
 
 void main() {
   // to load assets
+  // TODO: remove dev main
   WidgetsFlutterBinding.ensureInitialized();
   development.main();
 }
