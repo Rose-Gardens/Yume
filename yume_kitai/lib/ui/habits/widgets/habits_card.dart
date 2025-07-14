@@ -2,6 +2,7 @@
 // Use of this source code is governed by the Apache 2.0 License that can be
 // found in the LICENSE file.
 
+import 'package:conditional_parent_widget/conditional_parent_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_animate/flutter_animate.dart';
@@ -24,6 +25,7 @@ class HabitsCard extends StatefulWidget {
   final Habit habit;
   final double? width;
   final SwipeDirection swipeDirection;
+  final bool shouldBlurUI = false;
 
   @override
   State<HabitsCard> createState() => _HabitsCardState();
@@ -103,13 +105,15 @@ class _HabitsCardState extends State<HabitsCard>
     }
 
     if (widget.swipeDirection == SwipeDirection.right) {
+      _animationController.repeat();
       habitText = 'slide to complete';
       borderRadius = BorderRadius.circular(50);
       dynamicCardColor = theme.surfaceVeryHigh;
-      dynamicTextStyle = Theme.of(context).textTheme.titleLarge?.copyWith(
-        color: Colors.black,
-      );
-    } else {
+      dynamicTextStyle = Theme.of(
+        context,
+      ).textTheme.titleLarge?.copyWith(color: Colors.black);
+    } else { 
+      _animationController.stop();
       habitText = widget.habit.title;
       borderRadius = BorderRadius.circular(22);
       dynamicCardColor = cardColor;
@@ -120,70 +124,73 @@ class _HabitsCardState extends State<HabitsCard>
 
     // * TODO: Widget Tree Starts Here. Clean that up lol
 
-    return ClipRRect(
-      borderRadius: borderRadius,
-      child: BackdropFilter(
-        filter: blurSaturateFilter,
-        child: Container(
-          width: widget.width,
-          constraints: BoxConstraints(
-            minHeight: 32,
-            maxHeight: 96,
-            minWidth: 56,
-            maxWidth: MediaQuery.of(context).size.width,
+    return ConditionalParentWidget(
+      condition: widget.shouldBlurUI,
+      parentBuilder: (Widget child) => ClipRRect(
+        borderRadius: borderRadius,
+        child: BackdropFilter(
+          filter: blurSaturateFilterPerformance,
+          child: child,
+        ),
+      ),
+      child: Container(
+        width: widget.width,
+        constraints: BoxConstraints(
+          minHeight: 32,
+          maxHeight: 96,
+          minWidth: 56,
+          maxWidth: MediaQuery.of(context).size.width,
+        ),
+        margin: EdgeInsets.zero,
+        decoration: ShapeDecoration(
+          color: dynamicCardColor,
+          shape: SmoothRectangleBorder(
+            borderRadius: borderRadius,
+            smoothness: 0.6,
+            side: BorderSide(color: theme.borderLow, width: 0.5),
           ),
-          margin: EdgeInsets.zero,
-          decoration: ShapeDecoration(
-            color: dynamicCardColor,
-            shape: SmoothRectangleBorder(
-              borderRadius: borderRadius,
-              smoothness: 0.6,
-              side: BorderSide(color: theme.borderLow, width: 0.5),
-            ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(8),
-            child: Row(
-              children: [
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Container(
-                      width: 40,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        color: cardColor,
-                        borderRadius: BorderRadius.circular(100),
-                      ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Row(
+            children: [
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: cardColor,
+                      borderRadius: BorderRadius.circular(100),
                     ),
-                    iconWidget,
+                  ),
+                  iconWidget,
+                ],
+              ),
+              const SizedBox(width: 8),
+              Flexible(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                          habitText,
+                          style: dynamicTextStyle,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        )
+                        .animate(
+                          controller: _animationController,
+                        )
+                        .shimmer(
+                          delay: 300.ms,
+                          duration: 1750.ms,
+                          color: theme.foregroundMax,
+                        ),
                   ],
                 ),
-                const SizedBox(width: 8),
-                Flexible(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                            habitText,
-                            style: dynamicTextStyle,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          )
-                          .animate(
-                            controller: _animationController,
-                            onPlay: (controller) => controller.repeat(),
-                          )
-                          .shimmer(
-                            duration: 1750.ms,
-                            color: theme.foregroundMax,
-                            delay: 600.ms,
-                          ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
