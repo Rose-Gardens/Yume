@@ -36,7 +36,7 @@ class Habit with _$Habit {
     @JsonKey(name: 'is_negative') required bool isNegative,
 
     /// Foreign-key / PK id of the habit_conditionally_active table. e.g. "5"
-    @JsonKey(name: 'habit_conditionallY_active_id')
+    @JsonKey(name: 'habit_conditionally_active_id')
     required int? habitConditionallyActiveId,
 
     /// Foreign-key / PK id of the chrono_label table. e.g. "5"

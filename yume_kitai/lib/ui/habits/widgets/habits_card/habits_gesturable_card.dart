@@ -134,15 +134,24 @@ class _HabitsGesturableCardState extends State<HabitsGesturableCard>
         _animationController.value = swipeProgress;
       },
       onHorizontalDragEnd: (details) {
-        _animationController
-            .animateTo(
-              0.0,
-              curve: Curves.easeOutQuint,
-              duration: const Duration(milliseconds: 500),
-            )
-            .whenComplete(
-              () => setState(() => swipeDirection = SwipeDirection.none),
-            );
+        final velocity = details.primaryVelocity ?? 0;
+        if (velocity > 800 || _animationController.value > 0.6) {
+          _animationController
+              .fling(velocity: 2.0)
+              .whenComplete(
+                () => setState(() => swipeDirection = SwipeDirection.none),
+              );
+        } else {
+          _animationController
+              .animateTo(
+                0.0,
+                curve: Curves.easeOutQuint,
+                duration: const Duration(milliseconds: 500),
+              )
+              .whenComplete(
+                () => setState(() => swipeDirection = SwipeDirection.none),
+              );
+        }
       },
 
       child: AnimatedScale(
