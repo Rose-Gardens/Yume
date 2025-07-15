@@ -34,7 +34,11 @@ class PopupMenuContent extends StatefulWidget {
 
 class _PopupMenuContentState extends State<PopupMenuContent> {
   static const double menuWidth = 175;
-  static BorderRadius menuBorderRadius = BorderRadius.circular(16.0);
+  static const Duration animationDuration = Duration(milliseconds: 350);
+  static const BorderRadius menuBorderRadius = BorderRadius.all(
+    Radius.circular(16.0),
+  );
+  
   late final double topPosition = widget.globalPos.dy - 50;
   late final double leftPosition = widget.globalPos.dx - 50;
   // > Adding in 1 so that the entire rowHeight is one index
@@ -83,9 +87,9 @@ class _PopupMenuContentState extends State<PopupMenuContent> {
                       key: widget._menuKey,
                       width: menuWidth,
                       decoration: BoxDecoration(
-                        color: theme.surfaceOverlay.withValues(alpha: 0.5),
+                        color: theme.surfaceOverlay.withValues(alpha: 0.6),
                         borderRadius: menuBorderRadius,
-                        border: Border.all(color: theme.borderMedium)
+                        border: Border.all(color: theme.borderMedium),
                       ),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -119,9 +123,13 @@ class _PopupMenuContentState extends State<PopupMenuContent> {
                 ),
               )
               .animate(controller: widget._animationController)
-              .fadeIn(duration: 300.ms, curve: Curves.easeOutQuint, begin: 0)
+              .fadeIn(
+                duration: animationDuration,
+                curve: Curves.easeOutQuint,
+                begin: 0,
+              )
               .scale(
-                duration: 300.ms,
+                duration: animationDuration,
                 curve: Curves.easeOutBack,
                 begin: const Offset(0.6, 0.6),
               ),
