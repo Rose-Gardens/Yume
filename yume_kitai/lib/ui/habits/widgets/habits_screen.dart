@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:yume_kitai/ui/core/ui/popup_menu/popup_menu.dart';
 import 'package:yume_kitai/ui/habits/view_models/habits_viewmodel.dart';
 
-import 'package:yume_kitai/ui/habits/widgets/habits_gesturable_card.dart';
+import 'package:yume_kitai/ui/habits/widgets/habits_card/habits_gesturable_card.dart';
 import 'package:yume_kitai/ui/habits/widgets/habits_sliver_appbar.dart';
 
 class HabitsScreen extends StatefulWidget {

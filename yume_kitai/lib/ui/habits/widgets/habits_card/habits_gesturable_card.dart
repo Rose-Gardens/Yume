@@ -10,9 +10,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_sficon/flutter_sficon.dart';
 import 'package:yume_kitai/config/dependencies.dart';
 
-import '../../../domain/models/habit/habit/habit.dart';
-import '../../../utils/swipe_direction.dart';
-import '../../core/ui/popup_menu/popup_menu.dart';
+import '../../../../domain/models/habit/habit/habit.dart';
+import '../../../../utils/swipe_direction.dart';
+import '../../../core/ui/popup_menu/popup_menu.dart';
 
 import 'habits_card.dart';
 
@@ -44,14 +44,13 @@ class _HabitsGesturableCardState extends State<HabitsGesturableCard>
 
   @override
   void initState() {
+    super.initState();
     _animationController = AnimationController(vsync: this);
 
     _radiusTween = BorderRadiusTween(
       begin: BorderRadius.circular(HabitsGesturableCard.cardBorderRadius),
       end: BorderRadius.circular(HabitsGesturableCard.cardSwipedBorderRadius),
     );
-
-    super.initState();
   }
 
   @override

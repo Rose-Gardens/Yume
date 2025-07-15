@@ -24,11 +24,11 @@ class PopupMenuState extends State<PopupMenu>
 
   @override
   void initState() {
+    super.initState();
     _animationController = AnimationController(
       reverseDuration: const Duration(milliseconds: 150),
       vsync: this,
     );
-    super.initState();
   }
 
   @override
