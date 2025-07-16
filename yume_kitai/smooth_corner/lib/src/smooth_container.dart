@@ -8,7 +8,7 @@ class SmoothContainer extends Container {
   /// [getOuterPath].
   ///
   /// If radiuses of X and Y from one corner are not equal, the smallest one will be used.
-  final BorderRadiusGeometry borderRadius;
+  final BorderRadius borderRadius;
 
   /// The smoothness of corners.
   ///

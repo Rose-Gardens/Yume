@@ -12,7 +12,8 @@ part of 'chrono_label_goal.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ChronoLabelGoal _$ChronoLabelGoalFromJson(Map<String, dynamic> json) {
   return _ChronoLabelGoal.fromJson(json);
@@ -45,14 +46,16 @@ mixin _$ChronoLabelGoal {
 /// @nodoc
 abstract class $ChronoLabelGoalCopyWith<$Res> {
   factory $ChronoLabelGoalCopyWith(
-          ChronoLabelGoal value, $Res Function(ChronoLabelGoal) then) =
-      _$ChronoLabelGoalCopyWithImpl<$Res, ChronoLabelGoal>;
+    ChronoLabelGoal value,
+    $Res Function(ChronoLabelGoal) then,
+  ) = _$ChronoLabelGoalCopyWithImpl<$Res, ChronoLabelGoal>;
   @useResult
-  $Res call(
-      {int chronoLabelGoalId,
-      DateTime createdOn,
-      String target,
-      int chronoLabelId});
+  $Res call({
+    int chronoLabelGoalId,
+    DateTime createdOn,
+    String target,
+    int chronoLabelId,
+  });
 }
 
 /// @nodoc
@@ -75,40 +78,45 @@ class _$ChronoLabelGoalCopyWithImpl<$Res, $Val extends ChronoLabelGoal>
     Object? target = null,
     Object? chronoLabelId = null,
   }) {
-    return _then(_value.copyWith(
-      chronoLabelGoalId: null == chronoLabelGoalId
-          ? _value.chronoLabelGoalId
-          : chronoLabelGoalId // ignore: cast_nullable_to_non_nullable
-              as int,
-      createdOn: null == createdOn
-          ? _value.createdOn
-          : createdOn // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      target: null == target
-          ? _value.target
-          : target // ignore: cast_nullable_to_non_nullable
-              as String,
-      chronoLabelId: null == chronoLabelId
-          ? _value.chronoLabelId
-          : chronoLabelId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            chronoLabelGoalId: null == chronoLabelGoalId
+                ? _value.chronoLabelGoalId
+                : chronoLabelGoalId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            createdOn: null == createdOn
+                ? _value.createdOn
+                : createdOn // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+            target: null == target
+                ? _value.target
+                : target // ignore: cast_nullable_to_non_nullable
+                      as String,
+            chronoLabelId: null == chronoLabelId
+                ? _value.chronoLabelId
+                : chronoLabelId // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ChronoLabelGoalImplCopyWith<$Res>
     implements $ChronoLabelGoalCopyWith<$Res> {
-  factory _$$ChronoLabelGoalImplCopyWith(_$ChronoLabelGoalImpl value,
-          $Res Function(_$ChronoLabelGoalImpl) then) =
-      __$$ChronoLabelGoalImplCopyWithImpl<$Res>;
+  factory _$$ChronoLabelGoalImplCopyWith(
+    _$ChronoLabelGoalImpl value,
+    $Res Function(_$ChronoLabelGoalImpl) then,
+  ) = __$$ChronoLabelGoalImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int chronoLabelGoalId,
-      DateTime createdOn,
-      String target,
-      int chronoLabelId});
+  $Res call({
+    int chronoLabelGoalId,
+    DateTime createdOn,
+    String target,
+    int chronoLabelId,
+  });
 }
 
 /// @nodoc
@@ -116,8 +124,9 @@ class __$$ChronoLabelGoalImplCopyWithImpl<$Res>
     extends _$ChronoLabelGoalCopyWithImpl<$Res, _$ChronoLabelGoalImpl>
     implements _$$ChronoLabelGoalImplCopyWith<$Res> {
   __$$ChronoLabelGoalImplCopyWithImpl(
-      _$ChronoLabelGoalImpl _value, $Res Function(_$ChronoLabelGoalImpl) _then)
-      : super(_value, _then);
+    _$ChronoLabelGoalImpl _value,
+    $Res Function(_$ChronoLabelGoalImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ChronoLabelGoal
   /// with the given fields replaced by the non-null parameter values.
@@ -129,35 +138,38 @@ class __$$ChronoLabelGoalImplCopyWithImpl<$Res>
     Object? target = null,
     Object? chronoLabelId = null,
   }) {
-    return _then(_$ChronoLabelGoalImpl(
-      chronoLabelGoalId: null == chronoLabelGoalId
-          ? _value.chronoLabelGoalId
-          : chronoLabelGoalId // ignore: cast_nullable_to_non_nullable
-              as int,
-      createdOn: null == createdOn
-          ? _value.createdOn
-          : createdOn // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      target: null == target
-          ? _value.target
-          : target // ignore: cast_nullable_to_non_nullable
-              as String,
-      chronoLabelId: null == chronoLabelId
-          ? _value.chronoLabelId
-          : chronoLabelId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$ChronoLabelGoalImpl(
+        chronoLabelGoalId: null == chronoLabelGoalId
+            ? _value.chronoLabelGoalId
+            : chronoLabelGoalId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        createdOn: null == createdOn
+            ? _value.createdOn
+            : createdOn // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        target: null == target
+            ? _value.target
+            : target // ignore: cast_nullable_to_non_nullable
+                  as String,
+        chronoLabelId: null == chronoLabelId
+            ? _value.chronoLabelId
+            : chronoLabelId // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ChronoLabelGoalImpl implements _ChronoLabelGoal {
-  const _$ChronoLabelGoalImpl(
-      {required this.chronoLabelGoalId,
-      required this.createdOn,
-      required this.target,
-      required this.chronoLabelId});
+  const _$ChronoLabelGoalImpl({
+    required this.chronoLabelGoalId,
+    required this.createdOn,
+    required this.target,
+    required this.chronoLabelId,
+  });
 
   factory _$ChronoLabelGoalImpl.fromJson(Map<String, dynamic> json) =>
       _$$ChronoLabelGoalImplFromJson(json);
@@ -200,7 +212,12 @@ class _$ChronoLabelGoalImpl implements _ChronoLabelGoal {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, chronoLabelGoalId, createdOn, target, chronoLabelId);
+    runtimeType,
+    chronoLabelGoalId,
+    createdOn,
+    target,
+    chronoLabelId,
+  );
 
   /// Create a copy of ChronoLabelGoal
   /// with the given fields replaced by the non-null parameter values.
@@ -209,22 +226,23 @@ class _$ChronoLabelGoalImpl implements _ChronoLabelGoal {
   @pragma('vm:prefer-inline')
   _$$ChronoLabelGoalImplCopyWith<_$ChronoLabelGoalImpl> get copyWith =>
       __$$ChronoLabelGoalImplCopyWithImpl<_$ChronoLabelGoalImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ChronoLabelGoalImplToJson(
-      this,
-    );
+    return _$$ChronoLabelGoalImplToJson(this);
   }
 }
 
 abstract class _ChronoLabelGoal implements ChronoLabelGoal {
-  const factory _ChronoLabelGoal(
-      {required final int chronoLabelGoalId,
-      required final DateTime createdOn,
-      required final String target,
-      required final int chronoLabelId}) = _$ChronoLabelGoalImpl;
+  const factory _ChronoLabelGoal({
+    required final int chronoLabelGoalId,
+    required final DateTime createdOn,
+    required final String target,
+    required final int chronoLabelId,
+  }) = _$ChronoLabelGoalImpl;
 
   factory _ChronoLabelGoal.fromJson(Map<String, dynamic> json) =
       _$ChronoLabelGoalImpl.fromJson;

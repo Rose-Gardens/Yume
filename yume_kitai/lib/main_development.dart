@@ -33,13 +33,10 @@ void main() {
       default:
         color = '\x1B[37m'; // white
     }
-    debugPrint('$color[$time] [level: $level] [from: $loggerName]: $message\x1B[0m');
+    debugPrint(
+      '$color[$time] [level: $level] [from: $loggerName]: $message\x1B[0m',
+    );
   });
 
-  runApp(
-    MultiProvider(
-      providers: providersLocal,
-      child: const MainApp(),
-    ),
-  );
+  runApp(MultiProvider(providers: providersLocal, child: const MainApp()));
 }

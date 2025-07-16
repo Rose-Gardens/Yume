@@ -5,9 +5,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
-import '../../habits/widgets/habits_sheet.dart';
 
 import '../../../routing/routes.dart';
+import '../../habits/widgets/habits_create_sheet.dart';
 import '../themes/theme_extension.dart';
 
 class AppShell extends StatelessWidget {
@@ -33,41 +33,58 @@ class AppShell extends StatelessWidget {
             backgroundColor: Colors.transparent,
             context: context,
             builder: (BuildContext context) {
-              return const HabitsSheet();
+              return const HabitsCreateSheet();
             },
           );
         },
         backgroundColor: theme.surfaceLow,
         foregroundColor: theme.foregroundHigh,
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.0),
-            side: BorderSide(color: theme.borderMedium)),
+          borderRadius: BorderRadius.circular(16.0),
+          side: BorderSide(color: theme.borderMedium),
+        ),
         child: const Icon(Icons.add_rounded),
       ),
-      body: Builder(
-        builder: (context) {
-          return SafeArea(
-            child: Column(
-              children: [
-                Expanded(child: child),
-              ],
+      body: Stack(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/Dust.jpg'),
+                fit: BoxFit.cover,
+              ),
             ),
-          );
-        },
+          ),
+          const SizedBox.expand(
+            child: DecoratedBox(
+              decoration: BoxDecoration(color: Color.fromARGB(85, 0, 0, 0)),
+            ),
+          ),
+          Builder(
+            builder: (context) {
+              return SafeArea(child: SizedBox.expand(child: child));
+            },
+          ),
+        ],
       ),
       bottomNavigationBar: NavigationBar(
         destinations: const [
           NavigationDestination(
-              icon: Icon(
-                Icons.schedule_rounded,
-              ),
-              label: 'Chrono'),
+            icon: Icon(Icons.schedule_rounded),
+            label: 'Chrono',
+          ),
           NavigationDestination(
-              icon: Icon(Icons.dashboard_rounded), label: 'Habits'),
+            icon: Icon(Icons.dashboard_rounded),
+            label: 'Habits',
+          ),
           NavigationDestination(
-              icon: Icon(Icons.area_chart_rounded), label: 'Analytics'),
+            icon: Icon(Icons.area_chart_rounded),
+            label: 'Analytics',
+          ),
           NavigationDestination(
-              icon: Icon(Icons.add_task_rounded), label: 'Tasks'),
+            icon: Icon(Icons.add_task_rounded),
+            label: 'Tasks',
+          ),
         ],
         selectedIndex: _getSelectedIndex(context),
         onDestinationSelected: (index) {
@@ -78,8 +95,9 @@ class AppShell extends StatelessWidget {
   }
 
   int _getSelectedIndex(BuildContext context) {
-    final location =
-        GoRouter.of(context).routeInformationProvider.value.uri.toString();
+    final location = GoRouter.of(
+      context,
+    ).routeInformationProvider.value.uri.toString();
     switch (location) {
       case Routes.chrono:
         return 0;

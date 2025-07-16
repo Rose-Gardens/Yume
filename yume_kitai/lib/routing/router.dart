@@ -49,9 +49,7 @@ final GoRouter router = GoRouter(
               path: Routes.chrono,
               pageBuilder: (context, state) {
                 return NoTransitionPage(
-                  child: ChronoScreen(
-                    viewModel: ChronoViewModel(),
-                  ),
+                  child: ChronoScreen(viewModel: ChronoViewModel()),
                 );
               },
             ),
@@ -63,9 +61,7 @@ final GoRouter router = GoRouter(
             GoRoute(
               path: Routes.habits,
               pageBuilder: (context, state) {
-                return const NoTransitionPage(
-                  child: HabitsScreen(),
-                );
+                return const NoTransitionPage(child: HabitsScreen());
               },
             ),
           ],
@@ -77,9 +73,7 @@ final GoRouter router = GoRouter(
               path: Routes.analytics,
               pageBuilder: (context, state) {
                 return NoTransitionPage(
-                  child: AnalyticsScreen(
-                    viewModel: AnalyticsViewModel(),
-                  ),
+                  child: AnalyticsScreen(viewModel: AnalyticsViewModel()),
                 );
               },
             ),
@@ -92,9 +86,7 @@ final GoRouter router = GoRouter(
               path: Routes.tasks,
               pageBuilder: (context, state) {
                 return NoTransitionPage(
-                  child: TasksScreen(
-                    viewModel: TasksViewModel(),
-                  ),
+                  child: TasksScreen(viewModel: TasksViewModel()),
                 );
               },
             ),
@@ -107,9 +99,7 @@ final GoRouter router = GoRouter(
               path: Routes.settings,
               pageBuilder: (context, state) {
                 return NoTransitionPage(
-                  child: SettingsScreen(
-                    viewModel: SettingsViewModel(),
-                  ),
+                  child: SettingsScreen(viewModel: SettingsViewModel()),
                 );
               },
             ),

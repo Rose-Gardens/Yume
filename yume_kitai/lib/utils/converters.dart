@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 /// Converts hex strings e.g. "0xffffff" to a base 16 integer.
-int hexStringToHexInt(String hexString) {
+int hexInt(String hexString) {
   if (hexString.isEmpty) {
     throw ArgumentError("Hex string cannot be empty.");
   }

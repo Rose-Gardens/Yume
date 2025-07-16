@@ -12,7 +12,8 @@ part of 'chrono_label_autostart.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ChronoLabelAutostart _$ChronoLabelAutostartFromJson(Map<String, dynamic> json) {
   return _ChronoLabelAutostart.fromJson(json);
@@ -50,22 +51,26 @@ mixin _$ChronoLabelAutostart {
 
 /// @nodoc
 abstract class $ChronoLabelAutostartCopyWith<$Res> {
-  factory $ChronoLabelAutostartCopyWith(ChronoLabelAutostart value,
-          $Res Function(ChronoLabelAutostart) then) =
-      _$ChronoLabelAutostartCopyWithImpl<$Res, ChronoLabelAutostart>;
+  factory $ChronoLabelAutostartCopyWith(
+    ChronoLabelAutostart value,
+    $Res Function(ChronoLabelAutostart) then,
+  ) = _$ChronoLabelAutostartCopyWithImpl<$Res, ChronoLabelAutostart>;
   @useResult
-  $Res call(
-      {int chronoLabelAutostartId,
-      DateTime startAt,
-      DateTime? endAt,
-      DateTime? startVacationOn,
-      DateTime? endVacationOn,
-      int chronoLabelId});
+  $Res call({
+    int chronoLabelAutostartId,
+    DateTime startAt,
+    DateTime? endAt,
+    DateTime? startVacationOn,
+    DateTime? endVacationOn,
+    int chronoLabelId,
+  });
 }
 
 /// @nodoc
-class _$ChronoLabelAutostartCopyWithImpl<$Res,
-        $Val extends ChronoLabelAutostart>
+class _$ChronoLabelAutostartCopyWithImpl<
+  $Res,
+  $Val extends ChronoLabelAutostart
+>
     implements $ChronoLabelAutostartCopyWith<$Res> {
   _$ChronoLabelAutostartCopyWithImpl(this._value, this._then);
 
@@ -86,59 +91,65 @@ class _$ChronoLabelAutostartCopyWithImpl<$Res,
     Object? endVacationOn = freezed,
     Object? chronoLabelId = null,
   }) {
-    return _then(_value.copyWith(
-      chronoLabelAutostartId: null == chronoLabelAutostartId
-          ? _value.chronoLabelAutostartId
-          : chronoLabelAutostartId // ignore: cast_nullable_to_non_nullable
-              as int,
-      startAt: null == startAt
-          ? _value.startAt
-          : startAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      endAt: freezed == endAt
-          ? _value.endAt
-          : endAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      startVacationOn: freezed == startVacationOn
-          ? _value.startVacationOn
-          : startVacationOn // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      endVacationOn: freezed == endVacationOn
-          ? _value.endVacationOn
-          : endVacationOn // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      chronoLabelId: null == chronoLabelId
-          ? _value.chronoLabelId
-          : chronoLabelId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            chronoLabelAutostartId: null == chronoLabelAutostartId
+                ? _value.chronoLabelAutostartId
+                : chronoLabelAutostartId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            startAt: null == startAt
+                ? _value.startAt
+                : startAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+            endAt: freezed == endAt
+                ? _value.endAt
+                : endAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            startVacationOn: freezed == startVacationOn
+                ? _value.startVacationOn
+                : startVacationOn // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            endVacationOn: freezed == endVacationOn
+                ? _value.endVacationOn
+                : endVacationOn // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            chronoLabelId: null == chronoLabelId
+                ? _value.chronoLabelId
+                : chronoLabelId // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ChronoLabelAutostartImplCopyWith<$Res>
     implements $ChronoLabelAutostartCopyWith<$Res> {
-  factory _$$ChronoLabelAutostartImplCopyWith(_$ChronoLabelAutostartImpl value,
-          $Res Function(_$ChronoLabelAutostartImpl) then) =
-      __$$ChronoLabelAutostartImplCopyWithImpl<$Res>;
+  factory _$$ChronoLabelAutostartImplCopyWith(
+    _$ChronoLabelAutostartImpl value,
+    $Res Function(_$ChronoLabelAutostartImpl) then,
+  ) = __$$ChronoLabelAutostartImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int chronoLabelAutostartId,
-      DateTime startAt,
-      DateTime? endAt,
-      DateTime? startVacationOn,
-      DateTime? endVacationOn,
-      int chronoLabelId});
+  $Res call({
+    int chronoLabelAutostartId,
+    DateTime startAt,
+    DateTime? endAt,
+    DateTime? startVacationOn,
+    DateTime? endVacationOn,
+    int chronoLabelId,
+  });
 }
 
 /// @nodoc
 class __$$ChronoLabelAutostartImplCopyWithImpl<$Res>
     extends _$ChronoLabelAutostartCopyWithImpl<$Res, _$ChronoLabelAutostartImpl>
     implements _$$ChronoLabelAutostartImplCopyWith<$Res> {
-  __$$ChronoLabelAutostartImplCopyWithImpl(_$ChronoLabelAutostartImpl _value,
-      $Res Function(_$ChronoLabelAutostartImpl) _then)
-      : super(_value, _then);
+  __$$ChronoLabelAutostartImplCopyWithImpl(
+    _$ChronoLabelAutostartImpl _value,
+    $Res Function(_$ChronoLabelAutostartImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ChronoLabelAutostart
   /// with the given fields replaced by the non-null parameter values.
@@ -152,45 +163,48 @@ class __$$ChronoLabelAutostartImplCopyWithImpl<$Res>
     Object? endVacationOn = freezed,
     Object? chronoLabelId = null,
   }) {
-    return _then(_$ChronoLabelAutostartImpl(
-      chronoLabelAutostartId: null == chronoLabelAutostartId
-          ? _value.chronoLabelAutostartId
-          : chronoLabelAutostartId // ignore: cast_nullable_to_non_nullable
-              as int,
-      startAt: null == startAt
-          ? _value.startAt
-          : startAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      endAt: freezed == endAt
-          ? _value.endAt
-          : endAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      startVacationOn: freezed == startVacationOn
-          ? _value.startVacationOn
-          : startVacationOn // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      endVacationOn: freezed == endVacationOn
-          ? _value.endVacationOn
-          : endVacationOn // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      chronoLabelId: null == chronoLabelId
-          ? _value.chronoLabelId
-          : chronoLabelId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$ChronoLabelAutostartImpl(
+        chronoLabelAutostartId: null == chronoLabelAutostartId
+            ? _value.chronoLabelAutostartId
+            : chronoLabelAutostartId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        startAt: null == startAt
+            ? _value.startAt
+            : startAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        endAt: freezed == endAt
+            ? _value.endAt
+            : endAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        startVacationOn: freezed == startVacationOn
+            ? _value.startVacationOn
+            : startVacationOn // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        endVacationOn: freezed == endVacationOn
+            ? _value.endVacationOn
+            : endVacationOn // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        chronoLabelId: null == chronoLabelId
+            ? _value.chronoLabelId
+            : chronoLabelId // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ChronoLabelAutostartImpl implements _ChronoLabelAutostart {
-  const _$ChronoLabelAutostartImpl(
-      {required this.chronoLabelAutostartId,
-      required this.startAt,
-      required this.endAt,
-      required this.startVacationOn,
-      required this.endVacationOn,
-      required this.chronoLabelId});
+  const _$ChronoLabelAutostartImpl({
+    required this.chronoLabelAutostartId,
+    required this.startAt,
+    required this.endAt,
+    required this.startVacationOn,
+    required this.endVacationOn,
+    required this.chronoLabelId,
+  });
 
   factory _$ChronoLabelAutostartImpl.fromJson(Map<String, dynamic> json) =>
       _$$ChronoLabelAutostartImplFromJson(json);
@@ -243,8 +257,15 @@ class _$ChronoLabelAutostartImpl implements _ChronoLabelAutostart {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, chronoLabelAutostartId, startAt,
-      endAt, startVacationOn, endVacationOn, chronoLabelId);
+  int get hashCode => Object.hash(
+    runtimeType,
+    chronoLabelAutostartId,
+    startAt,
+    endAt,
+    startVacationOn,
+    endVacationOn,
+    chronoLabelId,
+  );
 
   /// Create a copy of ChronoLabelAutostart
   /// with the given fields replaced by the non-null parameter values.
@@ -252,26 +273,27 @@ class _$ChronoLabelAutostartImpl implements _ChronoLabelAutostart {
   @override
   @pragma('vm:prefer-inline')
   _$$ChronoLabelAutostartImplCopyWith<_$ChronoLabelAutostartImpl>
-      get copyWith =>
-          __$$ChronoLabelAutostartImplCopyWithImpl<_$ChronoLabelAutostartImpl>(
-              this, _$identity);
+  get copyWith =>
+      __$$ChronoLabelAutostartImplCopyWithImpl<_$ChronoLabelAutostartImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ChronoLabelAutostartImplToJson(
-      this,
-    );
+    return _$$ChronoLabelAutostartImplToJson(this);
   }
 }
 
 abstract class _ChronoLabelAutostart implements ChronoLabelAutostart {
-  const factory _ChronoLabelAutostart(
-      {required final int chronoLabelAutostartId,
-      required final DateTime startAt,
-      required final DateTime? endAt,
-      required final DateTime? startVacationOn,
-      required final DateTime? endVacationOn,
-      required final int chronoLabelId}) = _$ChronoLabelAutostartImpl;
+  const factory _ChronoLabelAutostart({
+    required final int chronoLabelAutostartId,
+    required final DateTime startAt,
+    required final DateTime? endAt,
+    required final DateTime? startVacationOn,
+    required final DateTime? endVacationOn,
+    required final int chronoLabelId,
+  }) = _$ChronoLabelAutostartImpl;
 
   factory _ChronoLabelAutostart.fromJson(Map<String, dynamic> json) =
       _$ChronoLabelAutostartImpl.fromJson;
@@ -305,5 +327,5 @@ abstract class _ChronoLabelAutostart implements ChronoLabelAutostart {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChronoLabelAutostartImplCopyWith<_$ChronoLabelAutostartImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

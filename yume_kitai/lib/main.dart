@@ -8,8 +8,9 @@ import 'main_development.dart' as development;
 import 'routing/router.dart';
 import 'ui/core/themes/app_theme.dart';
 
-void main() { 
+void main() {
   // to load assets
+  // TODO: remove dev main
   WidgetsFlutterBinding.ensureInitialized();
   development.main();
 }
@@ -21,7 +22,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: true,
-      title: "Yume Kitai",
+      title: "Yume",
       theme: AppTheme.getDefaultTheme(),
       routerConfig: router,
     );

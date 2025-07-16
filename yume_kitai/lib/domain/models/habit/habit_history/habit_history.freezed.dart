@@ -12,7 +12,8 @@ part of 'habit_history.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 HabitHistory _$HabitHistoryFromJson(Map<String, dynamic> json) {
   return _HabitHistory.fromJson(json);
@@ -48,15 +49,17 @@ mixin _$HabitHistory {
 /// @nodoc
 abstract class $HabitHistoryCopyWith<$Res> {
   factory $HabitHistoryCopyWith(
-          HabitHistory value, $Res Function(HabitHistory) then) =
-      _$HabitHistoryCopyWithImpl<$Res, HabitHistory>;
+    HabitHistory value,
+    $Res Function(HabitHistory) then,
+  ) = _$HabitHistoryCopyWithImpl<$Res, HabitHistory>;
   @useResult
-  $Res call(
-      {int habitHistoryId,
-      DateTime createdOn,
-      String completionState,
-      int habitId,
-      int? habitTagId});
+  $Res call({
+    int habitHistoryId,
+    DateTime createdOn,
+    String completionState,
+    int habitId,
+    int? habitTagId,
+  });
 }
 
 /// @nodoc
@@ -80,28 +83,31 @@ class _$HabitHistoryCopyWithImpl<$Res, $Val extends HabitHistory>
     Object? habitId = null,
     Object? habitTagId = freezed,
   }) {
-    return _then(_value.copyWith(
-      habitHistoryId: null == habitHistoryId
-          ? _value.habitHistoryId
-          : habitHistoryId // ignore: cast_nullable_to_non_nullable
-              as int,
-      createdOn: null == createdOn
-          ? _value.createdOn
-          : createdOn // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      completionState: null == completionState
-          ? _value.completionState
-          : completionState // ignore: cast_nullable_to_non_nullable
-              as String,
-      habitId: null == habitId
-          ? _value.habitId
-          : habitId // ignore: cast_nullable_to_non_nullable
-              as int,
-      habitTagId: freezed == habitTagId
-          ? _value.habitTagId
-          : habitTagId // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            habitHistoryId: null == habitHistoryId
+                ? _value.habitHistoryId
+                : habitHistoryId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            createdOn: null == createdOn
+                ? _value.createdOn
+                : createdOn // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+            completionState: null == completionState
+                ? _value.completionState
+                : completionState // ignore: cast_nullable_to_non_nullable
+                      as String,
+            habitId: null == habitId
+                ? _value.habitId
+                : habitId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            habitTagId: freezed == habitTagId
+                ? _value.habitTagId
+                : habitTagId // ignore: cast_nullable_to_non_nullable
+                      as int?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -109,16 +115,18 @@ class _$HabitHistoryCopyWithImpl<$Res, $Val extends HabitHistory>
 abstract class _$$HabitHistoryImplCopyWith<$Res>
     implements $HabitHistoryCopyWith<$Res> {
   factory _$$HabitHistoryImplCopyWith(
-          _$HabitHistoryImpl value, $Res Function(_$HabitHistoryImpl) then) =
-      __$$HabitHistoryImplCopyWithImpl<$Res>;
+    _$HabitHistoryImpl value,
+    $Res Function(_$HabitHistoryImpl) then,
+  ) = __$$HabitHistoryImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int habitHistoryId,
-      DateTime createdOn,
-      String completionState,
-      int habitId,
-      int? habitTagId});
+  $Res call({
+    int habitHistoryId,
+    DateTime createdOn,
+    String completionState,
+    int habitId,
+    int? habitTagId,
+  });
 }
 
 /// @nodoc
@@ -126,8 +134,9 @@ class __$$HabitHistoryImplCopyWithImpl<$Res>
     extends _$HabitHistoryCopyWithImpl<$Res, _$HabitHistoryImpl>
     implements _$$HabitHistoryImplCopyWith<$Res> {
   __$$HabitHistoryImplCopyWithImpl(
-      _$HabitHistoryImpl _value, $Res Function(_$HabitHistoryImpl) _then)
-      : super(_value, _then);
+    _$HabitHistoryImpl _value,
+    $Res Function(_$HabitHistoryImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of HabitHistory
   /// with the given fields replaced by the non-null parameter values.
@@ -140,40 +149,43 @@ class __$$HabitHistoryImplCopyWithImpl<$Res>
     Object? habitId = null,
     Object? habitTagId = freezed,
   }) {
-    return _then(_$HabitHistoryImpl(
-      habitHistoryId: null == habitHistoryId
-          ? _value.habitHistoryId
-          : habitHistoryId // ignore: cast_nullable_to_non_nullable
-              as int,
-      createdOn: null == createdOn
-          ? _value.createdOn
-          : createdOn // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      completionState: null == completionState
-          ? _value.completionState
-          : completionState // ignore: cast_nullable_to_non_nullable
-              as String,
-      habitId: null == habitId
-          ? _value.habitId
-          : habitId // ignore: cast_nullable_to_non_nullable
-              as int,
-      habitTagId: freezed == habitTagId
-          ? _value.habitTagId
-          : habitTagId // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
+    return _then(
+      _$HabitHistoryImpl(
+        habitHistoryId: null == habitHistoryId
+            ? _value.habitHistoryId
+            : habitHistoryId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        createdOn: null == createdOn
+            ? _value.createdOn
+            : createdOn // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        completionState: null == completionState
+            ? _value.completionState
+            : completionState // ignore: cast_nullable_to_non_nullable
+                  as String,
+        habitId: null == habitId
+            ? _value.habitId
+            : habitId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        habitTagId: freezed == habitTagId
+            ? _value.habitTagId
+            : habitTagId // ignore: cast_nullable_to_non_nullable
+                  as int?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$HabitHistoryImpl implements _HabitHistory {
-  const _$HabitHistoryImpl(
-      {required this.habitHistoryId,
-      required this.createdOn,
-      required this.completionState,
-      required this.habitId,
-      required this.habitTagId});
+  const _$HabitHistoryImpl({
+    required this.habitHistoryId,
+    required this.createdOn,
+    required this.completionState,
+    required this.habitId,
+    required this.habitTagId,
+  });
 
   factory _$HabitHistoryImpl.fromJson(Map<String, dynamic> json) =>
       _$$HabitHistoryImplFromJson(json);
@@ -221,8 +233,14 @@ class _$HabitHistoryImpl implements _HabitHistory {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, habitHistoryId, createdOn,
-      completionState, habitId, habitTagId);
+  int get hashCode => Object.hash(
+    runtimeType,
+    habitHistoryId,
+    createdOn,
+    completionState,
+    habitId,
+    habitTagId,
+  );
 
   /// Create a copy of HabitHistory
   /// with the given fields replaced by the non-null parameter values.
@@ -234,19 +252,18 @@ class _$HabitHistoryImpl implements _HabitHistory {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$HabitHistoryImplToJson(
-      this,
-    );
+    return _$$HabitHistoryImplToJson(this);
   }
 }
 
 abstract class _HabitHistory implements HabitHistory {
-  const factory _HabitHistory(
-      {required final int habitHistoryId,
-      required final DateTime createdOn,
-      required final String completionState,
-      required final int habitId,
-      required final int? habitTagId}) = _$HabitHistoryImpl;
+  const factory _HabitHistory({
+    required final int habitHistoryId,
+    required final DateTime createdOn,
+    required final String completionState,
+    required final int habitId,
+    required final int? habitTagId,
+  }) = _$HabitHistoryImpl;
 
   factory _HabitHistory.fromJson(Map<String, dynamic> json) =
       _$HabitHistoryImpl.fromJson;

@@ -12,7 +12,8 @@ part of 'habit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 Habit _$HabitFromJson(Map<String, dynamic> json) {
   return _Habit.fromJson(json);
@@ -70,18 +71,19 @@ abstract class $HabitCopyWith<$Res> {
   factory $HabitCopyWith(Habit value, $Res Function(Habit) then) =
       _$HabitCopyWithImpl<$Res, Habit>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'habit_id') int? habitId,
-      String title,
-      @JsonKey(name: 'group_title') String? groupTitle,
-      String desc,
-      String color,
-      String icon,
-      @JsonKey(name: 'is_retired') bool isRetired,
-      @JsonKey(name: 'is_negative') bool isNegative,
-      @JsonKey(name: 'habit_conditionallY_active_id')
-      int? habitConditionallyActiveId,
-      @JsonKey(name: 'chrono_label_id') int? chronoLabelId});
+  $Res call({
+    @JsonKey(name: 'habit_id') int? habitId,
+    String title,
+    @JsonKey(name: 'group_title') String? groupTitle,
+    String desc,
+    String color,
+    String icon,
+    @JsonKey(name: 'is_retired') bool isRetired,
+    @JsonKey(name: 'is_negative') bool isNegative,
+    @JsonKey(name: 'habit_conditionallY_active_id')
+    int? habitConditionallyActiveId,
+    @JsonKey(name: 'chrono_label_id') int? chronoLabelId,
+  });
 }
 
 /// @nodoc
@@ -110,70 +112,75 @@ class _$HabitCopyWithImpl<$Res, $Val extends Habit>
     Object? habitConditionallyActiveId = freezed,
     Object? chronoLabelId = freezed,
   }) {
-    return _then(_value.copyWith(
-      habitId: freezed == habitId
-          ? _value.habitId
-          : habitId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      groupTitle: freezed == groupTitle
-          ? _value.groupTitle
-          : groupTitle // ignore: cast_nullable_to_non_nullable
-              as String?,
-      desc: null == desc
-          ? _value.desc
-          : desc // ignore: cast_nullable_to_non_nullable
-              as String,
-      color: null == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as String,
-      icon: null == icon
-          ? _value.icon
-          : icon // ignore: cast_nullable_to_non_nullable
-              as String,
-      isRetired: null == isRetired
-          ? _value.isRetired
-          : isRetired // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isNegative: null == isNegative
-          ? _value.isNegative
-          : isNegative // ignore: cast_nullable_to_non_nullable
-              as bool,
-      habitConditionallyActiveId: freezed == habitConditionallyActiveId
-          ? _value.habitConditionallyActiveId
-          : habitConditionallyActiveId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      chronoLabelId: freezed == chronoLabelId
-          ? _value.chronoLabelId
-          : chronoLabelId // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            habitId: freezed == habitId
+                ? _value.habitId
+                : habitId // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            title: null == title
+                ? _value.title
+                : title // ignore: cast_nullable_to_non_nullable
+                      as String,
+            groupTitle: freezed == groupTitle
+                ? _value.groupTitle
+                : groupTitle // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            desc: null == desc
+                ? _value.desc
+                : desc // ignore: cast_nullable_to_non_nullable
+                      as String,
+            color: null == color
+                ? _value.color
+                : color // ignore: cast_nullable_to_non_nullable
+                      as String,
+            icon: null == icon
+                ? _value.icon
+                : icon // ignore: cast_nullable_to_non_nullable
+                      as String,
+            isRetired: null == isRetired
+                ? _value.isRetired
+                : isRetired // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isNegative: null == isNegative
+                ? _value.isNegative
+                : isNegative // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            habitConditionallyActiveId: freezed == habitConditionallyActiveId
+                ? _value.habitConditionallyActiveId
+                : habitConditionallyActiveId // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            chronoLabelId: freezed == chronoLabelId
+                ? _value.chronoLabelId
+                : chronoLabelId // ignore: cast_nullable_to_non_nullable
+                      as int?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$HabitImplCopyWith<$Res> implements $HabitCopyWith<$Res> {
   factory _$$HabitImplCopyWith(
-          _$HabitImpl value, $Res Function(_$HabitImpl) then) =
-      __$$HabitImplCopyWithImpl<$Res>;
+    _$HabitImpl value,
+    $Res Function(_$HabitImpl) then,
+  ) = __$$HabitImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'habit_id') int? habitId,
-      String title,
-      @JsonKey(name: 'group_title') String? groupTitle,
-      String desc,
-      String color,
-      String icon,
-      @JsonKey(name: 'is_retired') bool isRetired,
-      @JsonKey(name: 'is_negative') bool isNegative,
-      @JsonKey(name: 'habit_conditionallY_active_id')
-      int? habitConditionallyActiveId,
-      @JsonKey(name: 'chrono_label_id') int? chronoLabelId});
+  $Res call({
+    @JsonKey(name: 'habit_id') int? habitId,
+    String title,
+    @JsonKey(name: 'group_title') String? groupTitle,
+    String desc,
+    String color,
+    String icon,
+    @JsonKey(name: 'is_retired') bool isRetired,
+    @JsonKey(name: 'is_negative') bool isNegative,
+    @JsonKey(name: 'habit_conditionallY_active_id')
+    int? habitConditionallyActiveId,
+    @JsonKey(name: 'chrono_label_id') int? chronoLabelId,
+  });
 }
 
 /// @nodoc
@@ -181,8 +188,9 @@ class __$$HabitImplCopyWithImpl<$Res>
     extends _$HabitCopyWithImpl<$Res, _$HabitImpl>
     implements _$$HabitImplCopyWith<$Res> {
   __$$HabitImplCopyWithImpl(
-      _$HabitImpl _value, $Res Function(_$HabitImpl) _then)
-      : super(_value, _then);
+    _$HabitImpl _value,
+    $Res Function(_$HabitImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Habit
   /// with the given fields replaced by the non-null parameter values.
@@ -200,66 +208,69 @@ class __$$HabitImplCopyWithImpl<$Res>
     Object? habitConditionallyActiveId = freezed,
     Object? chronoLabelId = freezed,
   }) {
-    return _then(_$HabitImpl(
-      habitId: freezed == habitId
-          ? _value.habitId
-          : habitId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      groupTitle: freezed == groupTitle
-          ? _value.groupTitle
-          : groupTitle // ignore: cast_nullable_to_non_nullable
-              as String?,
-      desc: null == desc
-          ? _value.desc
-          : desc // ignore: cast_nullable_to_non_nullable
-              as String,
-      color: null == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as String,
-      icon: null == icon
-          ? _value.icon
-          : icon // ignore: cast_nullable_to_non_nullable
-              as String,
-      isRetired: null == isRetired
-          ? _value.isRetired
-          : isRetired // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isNegative: null == isNegative
-          ? _value.isNegative
-          : isNegative // ignore: cast_nullable_to_non_nullable
-              as bool,
-      habitConditionallyActiveId: freezed == habitConditionallyActiveId
-          ? _value.habitConditionallyActiveId
-          : habitConditionallyActiveId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      chronoLabelId: freezed == chronoLabelId
-          ? _value.chronoLabelId
-          : chronoLabelId // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
+    return _then(
+      _$HabitImpl(
+        habitId: freezed == habitId
+            ? _value.habitId
+            : habitId // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        title: null == title
+            ? _value.title
+            : title // ignore: cast_nullable_to_non_nullable
+                  as String,
+        groupTitle: freezed == groupTitle
+            ? _value.groupTitle
+            : groupTitle // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        desc: null == desc
+            ? _value.desc
+            : desc // ignore: cast_nullable_to_non_nullable
+                  as String,
+        color: null == color
+            ? _value.color
+            : color // ignore: cast_nullable_to_non_nullable
+                  as String,
+        icon: null == icon
+            ? _value.icon
+            : icon // ignore: cast_nullable_to_non_nullable
+                  as String,
+        isRetired: null == isRetired
+            ? _value.isRetired
+            : isRetired // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isNegative: null == isNegative
+            ? _value.isNegative
+            : isNegative // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        habitConditionallyActiveId: freezed == habitConditionallyActiveId
+            ? _value.habitConditionallyActiveId
+            : habitConditionallyActiveId // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        chronoLabelId: freezed == chronoLabelId
+            ? _value.chronoLabelId
+            : chronoLabelId // ignore: cast_nullable_to_non_nullable
+                  as int?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$HabitImpl implements _Habit {
-  const _$HabitImpl(
-      {@JsonKey(name: 'habit_id') this.habitId,
-      required this.title,
-      @JsonKey(name: 'group_title') required this.groupTitle,
-      required this.desc,
-      required this.color,
-      required this.icon,
-      @JsonKey(name: 'is_retired') required this.isRetired,
-      @JsonKey(name: 'is_negative') required this.isNegative,
-      @JsonKey(name: 'habit_conditionallY_active_id')
-      required this.habitConditionallyActiveId,
-      @JsonKey(name: 'chrono_label_id') required this.chronoLabelId});
+  const _$HabitImpl({
+    @JsonKey(name: 'habit_id') this.habitId,
+    required this.title,
+    @JsonKey(name: 'group_title') required this.groupTitle,
+    required this.desc,
+    required this.color,
+    required this.icon,
+    @JsonKey(name: 'is_retired') required this.isRetired,
+    @JsonKey(name: 'is_negative') required this.isNegative,
+    @JsonKey(name: 'habit_conditionallY_active_id')
+    required this.habitConditionallyActiveId,
+    @JsonKey(name: 'chrono_label_id') required this.chronoLabelId,
+  });
 
   factory _$HabitImpl.fromJson(Map<String, dynamic> json) =>
       _$$HabitImplFromJson(json);
@@ -331,8 +342,10 @@ class _$HabitImpl implements _Habit {
                 other.isRetired == isRetired) &&
             (identical(other.isNegative, isNegative) ||
                 other.isNegative == isNegative) &&
-            (identical(other.habitConditionallyActiveId,
-                    habitConditionallyActiveId) ||
+            (identical(
+                  other.habitConditionallyActiveId,
+                  habitConditionallyActiveId,
+                ) ||
                 other.habitConditionallyActiveId ==
                     habitConditionallyActiveId) &&
             (identical(other.chronoLabelId, chronoLabelId) ||
@@ -342,17 +355,18 @@ class _$HabitImpl implements _Habit {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      habitId,
-      title,
-      groupTitle,
-      desc,
-      color,
-      icon,
-      isRetired,
-      isNegative,
-      habitConditionallyActiveId,
-      chronoLabelId);
+    runtimeType,
+    habitId,
+    title,
+    groupTitle,
+    desc,
+    color,
+    icon,
+    isRetired,
+    isNegative,
+    habitConditionallyActiveId,
+    chronoLabelId,
+  );
 
   /// Create a copy of Habit
   /// with the given fields replaced by the non-null parameter values.
@@ -364,26 +378,24 @@ class _$HabitImpl implements _Habit {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$HabitImplToJson(
-      this,
-    );
+    return _$$HabitImplToJson(this);
   }
 }
 
 abstract class _Habit implements Habit {
-  const factory _Habit(
-      {@JsonKey(name: 'habit_id') final int? habitId,
-      required final String title,
-      @JsonKey(name: 'group_title') required final String? groupTitle,
-      required final String desc,
-      required final String color,
-      required final String icon,
-      @JsonKey(name: 'is_retired') required final bool isRetired,
-      @JsonKey(name: 'is_negative') required final bool isNegative,
-      @JsonKey(name: 'habit_conditionallY_active_id')
-      required final int? habitConditionallyActiveId,
-      @JsonKey(name: 'chrono_label_id')
-      required final int? chronoLabelId}) = _$HabitImpl;
+  const factory _Habit({
+    @JsonKey(name: 'habit_id') final int? habitId,
+    required final String title,
+    @JsonKey(name: 'group_title') required final String? groupTitle,
+    required final String desc,
+    required final String color,
+    required final String icon,
+    @JsonKey(name: 'is_retired') required final bool isRetired,
+    @JsonKey(name: 'is_negative') required final bool isNegative,
+    @JsonKey(name: 'habit_conditionallY_active_id')
+    required final int? habitConditionallyActiveId,
+    @JsonKey(name: 'chrono_label_id') required final int? chronoLabelId,
+  }) = _$HabitImpl;
 
   factory _Habit.fromJson(Map<String, dynamic> json) = _$HabitImpl.fromJson;
 

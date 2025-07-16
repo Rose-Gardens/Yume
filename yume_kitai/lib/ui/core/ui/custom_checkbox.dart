@@ -6,8 +6,11 @@ import 'package:flutter/material.dart';
 import '../../core/themes/theme_extension.dart';
 
 class CustomCheckbox extends StatelessWidget {
-  const CustomCheckbox(
-      {super.key, required this.value, required this.onChanged});
+  const CustomCheckbox({
+    super.key,
+    required this.value,
+    required this.onChanged,
+  });
 
   final bool value;
   final ValueChanged<bool> onChanged;
@@ -26,18 +29,15 @@ class CustomCheckbox extends StatelessWidget {
         width: 40,
         height: 40,
         decoration: ShapeDecoration(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(100),
+          ),
           color: color,
         ),
         child: AnimatedOpacity(
           opacity: opacityLevel,
           duration: const Duration(milliseconds: 100),
-          child: Icon(
-            icon,
-            color: theme.foregroundHigh,
-            size: 36,
-          ),
+          child: Icon(icon, color: theme.foregroundHigh, size: 36),
         ),
       ),
       onTap: () {

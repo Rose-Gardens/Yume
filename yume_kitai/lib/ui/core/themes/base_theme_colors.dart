@@ -3,15 +3,27 @@ import 'theme_extension.dart';
 
 class BaseThemeColors {
   static const AppThemeExtension baseColors = AppThemeExtension(
-    surfaceBg: Colors.black,
-    surfaceOverlay:
-        Color.fromRGBO(23, 23, 25, 1), // ? For things like bottom sheets
+    // TODO: fix bg color
+    surfaceBg: Color.fromARGB(255, 51, 11, 48),
+    surfaceOverlay: Color.fromRGBO(
+      24,
+      25,
+      27,
+      1,
+    ), // ? For things like bottom sheets
     surfaceLow: Color.fromRGBO(255, 255, 255, 0.06),
     surfaceMedium: Color.fromRGBO(255, 255, 255, 0.11),
     surfaceHigh: Color.fromRGBO(255, 255, 255, 0.20),
+    surfaceVeryHigh: Color.fromRGBO(255, 255, 255, 0.30),
     surfaceInverse: Color.fromRGBO(255, 255, 255, 0.80),
-    overlayLow: Color.fromRGBO(0, 0, 0, 0.25),
-    overlayHigh: Color.fromRGBO(0, 0, 0, 0.75),
+    overlayVeryLow: Color.fromRGBO(
+      0,
+      0,
+      0,
+      0.03,
+    ), // ? very high transparency scrim
+    overlayLow: Color.fromRGBO(0, 0, 0, 0.25), // ? high transparency scrim
+    overlayHigh: Color.fromRGBO(0, 0, 0, 0.75), // ? low transparency scrim
     borderLow: Color.fromRGBO(255, 255, 255, 0.20),
     borderMedium: Color.fromRGBO(255, 255, 255, 0.30),
     borderHigh: Color.fromRGBO(255, 255, 255, 0.40),
@@ -26,6 +38,6 @@ class BaseThemeColors {
     foregroundMax: Color.fromRGBO(255, 255, 255, 1.00),
     foregroundInverseLow: Color.fromRGBO(43, 43, 43, 0.80),
     foregroundInverseHigh: Color.fromRGBO(43, 43, 43, 0.60),
-    error: Color.fromRGBO(255, 105, 143, 1),
+    danger: Color.fromRGBO(226, 46, 91, 1),
   );
 }

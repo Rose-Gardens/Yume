@@ -5,31 +5,32 @@ class AppTheme {
   static ThemeData getDefaultTheme() {
     const defColors = AppThemeColors.defaultColors;
     const baseStyle = TextStyle(
-        letterSpacing: 0, fontVariations: [FontVariation('wght', 500.0)]);
+      letterSpacing: 0,
+      fontVariations: [FontVariation('wght', 400.0)],
+      // ? lnum Lining Numbers, ss09 Connected W
+      fontFeatures: <FontFeature>[
+        FontFeature.enable('lnum'),
+        FontFeature.enable('ss09'),
+      ],
+    );
 
     return ThemeData(
       extensions: const [defColors],
-      fontFamily: 'NunitoSans',
+      fontFamily: 'Raleway',
       textTheme: TextTheme(
         headlineSmall: baseStyle.copyWith(
-          fontVariations: [
-            const FontVariation('wght', 700),
-          ],
+          fontVariations: [const FontVariation('wght', 700)],
         ),
         titleLarge: baseStyle.copyWith(
-          fontSize: 18,
-          height: 1.1,
-          fontVariations: [
-            const FontVariation('wght', 700),
-          ],
+          fontSize: 16,
+          height: 1.05,
+          fontVariations: [const FontVariation('wght', 600)],
         ),
         bodyLarge: baseStyle,
-        bodyMedium: baseStyle.copyWith(
-          fontVariations: [
-            const FontVariation('wght', 400),
-          ],
+        bodyMedium: baseStyle.copyWith(fontSize: 15),
+        bodySmall: baseStyle.copyWith(
+          fontVariations: [const FontVariation('wght', 500)],
         ),
-        bodySmall: baseStyle,
         labelLarge: baseStyle.copyWith(fontSize: 16),
       ),
       scaffoldBackgroundColor: defColors.surfaceBg,
@@ -39,19 +40,21 @@ class AppTheme {
         indicatorColor: defColors.surfaceHigh,
         indicatorShape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
-          side: BorderSide(
-            color: defColors.borderHigh,
-            width: 0.5,
-          ),
+          side: BorderSide(color: defColors.borderHigh, width: 0.5),
         ),
-        labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>(
-            (Set<WidgetState> states) {
-          const baseNavStyle =
-              TextStyle(fontVariations: [FontVariation('wght', 600.0)]);
+        labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>((
+          Set<WidgetState> states,
+        ) {
+          const baseNavStyle = TextStyle(
+            fontVariations: [FontVariation('wght', 600.0)],
+          );
           return states.contains(WidgetState.selected)
-              ? baseNavStyle.copyWith(color: defColors.foregroundMax) // Selected
+              ? baseNavStyle.copyWith(
+                  color: defColors.foregroundMax,
+                ) // Selected
               : baseNavStyle.copyWith(
-                  color: defColors.foregroundMedium); // Unselected
+                  color: defColors.foregroundMedium,
+                ); // Unselected
         }),
         iconTheme: WidgetStateProperty.resolveWith<IconThemeData>(
           (Set<WidgetState> states) => states.contains(WidgetState.selected)

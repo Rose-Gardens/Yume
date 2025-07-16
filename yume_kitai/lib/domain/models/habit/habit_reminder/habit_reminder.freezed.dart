@@ -12,7 +12,8 @@ part of 'habit_reminder.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 HabitReminder _$HabitReminderFromJson(Map<String, dynamic> json) {
   return _HabitReminder.fromJson(json);
@@ -48,15 +49,17 @@ mixin _$HabitReminder {
 /// @nodoc
 abstract class $HabitReminderCopyWith<$Res> {
   factory $HabitReminderCopyWith(
-          HabitReminder value, $Res Function(HabitReminder) then) =
-      _$HabitReminderCopyWithImpl<$Res, HabitReminder>;
+    HabitReminder value,
+    $Res Function(HabitReminder) then,
+  ) = _$HabitReminderCopyWithImpl<$Res, HabitReminder>;
   @useResult
-  $Res call(
-      {int habitReminderId,
-      String type,
-      DateTime? remindOn,
-      DateTime remindAt,
-      int habitId});
+  $Res call({
+    int habitReminderId,
+    String type,
+    DateTime? remindOn,
+    DateTime remindAt,
+    int habitId,
+  });
 }
 
 /// @nodoc
@@ -80,28 +83,31 @@ class _$HabitReminderCopyWithImpl<$Res, $Val extends HabitReminder>
     Object? remindAt = null,
     Object? habitId = null,
   }) {
-    return _then(_value.copyWith(
-      habitReminderId: null == habitReminderId
-          ? _value.habitReminderId
-          : habitReminderId // ignore: cast_nullable_to_non_nullable
-              as int,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      remindOn: freezed == remindOn
-          ? _value.remindOn
-          : remindOn // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      remindAt: null == remindAt
-          ? _value.remindAt
-          : remindAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      habitId: null == habitId
-          ? _value.habitId
-          : habitId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            habitReminderId: null == habitReminderId
+                ? _value.habitReminderId
+                : habitReminderId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            type: null == type
+                ? _value.type
+                : type // ignore: cast_nullable_to_non_nullable
+                      as String,
+            remindOn: freezed == remindOn
+                ? _value.remindOn
+                : remindOn // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            remindAt: null == remindAt
+                ? _value.remindAt
+                : remindAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+            habitId: null == habitId
+                ? _value.habitId
+                : habitId // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -109,16 +115,18 @@ class _$HabitReminderCopyWithImpl<$Res, $Val extends HabitReminder>
 abstract class _$$HabitReminderImplCopyWith<$Res>
     implements $HabitReminderCopyWith<$Res> {
   factory _$$HabitReminderImplCopyWith(
-          _$HabitReminderImpl value, $Res Function(_$HabitReminderImpl) then) =
-      __$$HabitReminderImplCopyWithImpl<$Res>;
+    _$HabitReminderImpl value,
+    $Res Function(_$HabitReminderImpl) then,
+  ) = __$$HabitReminderImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int habitReminderId,
-      String type,
-      DateTime? remindOn,
-      DateTime remindAt,
-      int habitId});
+  $Res call({
+    int habitReminderId,
+    String type,
+    DateTime? remindOn,
+    DateTime remindAt,
+    int habitId,
+  });
 }
 
 /// @nodoc
@@ -126,8 +134,9 @@ class __$$HabitReminderImplCopyWithImpl<$Res>
     extends _$HabitReminderCopyWithImpl<$Res, _$HabitReminderImpl>
     implements _$$HabitReminderImplCopyWith<$Res> {
   __$$HabitReminderImplCopyWithImpl(
-      _$HabitReminderImpl _value, $Res Function(_$HabitReminderImpl) _then)
-      : super(_value, _then);
+    _$HabitReminderImpl _value,
+    $Res Function(_$HabitReminderImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of HabitReminder
   /// with the given fields replaced by the non-null parameter values.
@@ -140,40 +149,43 @@ class __$$HabitReminderImplCopyWithImpl<$Res>
     Object? remindAt = null,
     Object? habitId = null,
   }) {
-    return _then(_$HabitReminderImpl(
-      habitReminderId: null == habitReminderId
-          ? _value.habitReminderId
-          : habitReminderId // ignore: cast_nullable_to_non_nullable
-              as int,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      remindOn: freezed == remindOn
-          ? _value.remindOn
-          : remindOn // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      remindAt: null == remindAt
-          ? _value.remindAt
-          : remindAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      habitId: null == habitId
-          ? _value.habitId
-          : habitId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$HabitReminderImpl(
+        habitReminderId: null == habitReminderId
+            ? _value.habitReminderId
+            : habitReminderId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        type: null == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as String,
+        remindOn: freezed == remindOn
+            ? _value.remindOn
+            : remindOn // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        remindAt: null == remindAt
+            ? _value.remindAt
+            : remindAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        habitId: null == habitId
+            ? _value.habitId
+            : habitId // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$HabitReminderImpl implements _HabitReminder {
-  const _$HabitReminderImpl(
-      {required this.habitReminderId,
-      required this.type,
-      required this.remindOn,
-      required this.remindAt,
-      required this.habitId});
+  const _$HabitReminderImpl({
+    required this.habitReminderId,
+    required this.type,
+    required this.remindOn,
+    required this.remindAt,
+    required this.habitId,
+  });
 
   factory _$HabitReminderImpl.fromJson(Map<String, dynamic> json) =>
       _$$HabitReminderImplFromJson(json);
@@ -221,7 +233,13 @@ class _$HabitReminderImpl implements _HabitReminder {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, habitReminderId, type, remindOn, remindAt, habitId);
+    runtimeType,
+    habitReminderId,
+    type,
+    remindOn,
+    remindAt,
+    habitId,
+  );
 
   /// Create a copy of HabitReminder
   /// with the given fields replaced by the non-null parameter values.
@@ -233,19 +251,18 @@ class _$HabitReminderImpl implements _HabitReminder {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$HabitReminderImplToJson(
-      this,
-    );
+    return _$$HabitReminderImplToJson(this);
   }
 }
 
 abstract class _HabitReminder implements HabitReminder {
-  const factory _HabitReminder(
-      {required final int habitReminderId,
-      required final String type,
-      required final DateTime? remindOn,
-      required final DateTime remindAt,
-      required final int habitId}) = _$HabitReminderImpl;
+  const factory _HabitReminder({
+    required final int habitReminderId,
+    required final String type,
+    required final DateTime? remindOn,
+    required final DateTime remindAt,
+    required final int habitId,
+  }) = _$HabitReminderImpl;
 
   factory _HabitReminder.fromJson(Map<String, dynamic> json) =
       _$HabitReminderImpl.fromJson;

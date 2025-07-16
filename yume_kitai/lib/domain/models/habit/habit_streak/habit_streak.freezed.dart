@@ -12,7 +12,8 @@ part of 'habit_streak.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 HabitStreak _$HabitStreakFromJson(Map<String, dynamic> json) {
   return _HabitStreak.fromJson(json);
@@ -45,8 +46,9 @@ mixin _$HabitStreak {
 /// @nodoc
 abstract class $HabitStreakCopyWith<$Res> {
   factory $HabitStreakCopyWith(
-          HabitStreak value, $Res Function(HabitStreak) then) =
-      _$HabitStreakCopyWithImpl<$Res, HabitStreak>;
+    HabitStreak value,
+    $Res Function(HabitStreak) then,
+  ) = _$HabitStreakCopyWithImpl<$Res, HabitStreak>;
   @useResult
   $Res call({int habitStreakId, int current, int best, int habitId});
 }
@@ -71,24 +73,27 @@ class _$HabitStreakCopyWithImpl<$Res, $Val extends HabitStreak>
     Object? best = null,
     Object? habitId = null,
   }) {
-    return _then(_value.copyWith(
-      habitStreakId: null == habitStreakId
-          ? _value.habitStreakId
-          : habitStreakId // ignore: cast_nullable_to_non_nullable
-              as int,
-      current: null == current
-          ? _value.current
-          : current // ignore: cast_nullable_to_non_nullable
-              as int,
-      best: null == best
-          ? _value.best
-          : best // ignore: cast_nullable_to_non_nullable
-              as int,
-      habitId: null == habitId
-          ? _value.habitId
-          : habitId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            habitStreakId: null == habitStreakId
+                ? _value.habitStreakId
+                : habitStreakId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            current: null == current
+                ? _value.current
+                : current // ignore: cast_nullable_to_non_nullable
+                      as int,
+            best: null == best
+                ? _value.best
+                : best // ignore: cast_nullable_to_non_nullable
+                      as int,
+            habitId: null == habitId
+                ? _value.habitId
+                : habitId // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -96,8 +101,9 @@ class _$HabitStreakCopyWithImpl<$Res, $Val extends HabitStreak>
 abstract class _$$HabitStreakImplCopyWith<$Res>
     implements $HabitStreakCopyWith<$Res> {
   factory _$$HabitStreakImplCopyWith(
-          _$HabitStreakImpl value, $Res Function(_$HabitStreakImpl) then) =
-      __$$HabitStreakImplCopyWithImpl<$Res>;
+    _$HabitStreakImpl value,
+    $Res Function(_$HabitStreakImpl) then,
+  ) = __$$HabitStreakImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int habitStreakId, int current, int best, int habitId});
@@ -108,8 +114,9 @@ class __$$HabitStreakImplCopyWithImpl<$Res>
     extends _$HabitStreakCopyWithImpl<$Res, _$HabitStreakImpl>
     implements _$$HabitStreakImplCopyWith<$Res> {
   __$$HabitStreakImplCopyWithImpl(
-      _$HabitStreakImpl _value, $Res Function(_$HabitStreakImpl) _then)
-      : super(_value, _then);
+    _$HabitStreakImpl _value,
+    $Res Function(_$HabitStreakImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of HabitStreak
   /// with the given fields replaced by the non-null parameter values.
@@ -121,35 +128,38 @@ class __$$HabitStreakImplCopyWithImpl<$Res>
     Object? best = null,
     Object? habitId = null,
   }) {
-    return _then(_$HabitStreakImpl(
-      habitStreakId: null == habitStreakId
-          ? _value.habitStreakId
-          : habitStreakId // ignore: cast_nullable_to_non_nullable
-              as int,
-      current: null == current
-          ? _value.current
-          : current // ignore: cast_nullable_to_non_nullable
-              as int,
-      best: null == best
-          ? _value.best
-          : best // ignore: cast_nullable_to_non_nullable
-              as int,
-      habitId: null == habitId
-          ? _value.habitId
-          : habitId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$HabitStreakImpl(
+        habitStreakId: null == habitStreakId
+            ? _value.habitStreakId
+            : habitStreakId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        current: null == current
+            ? _value.current
+            : current // ignore: cast_nullable_to_non_nullable
+                  as int,
+        best: null == best
+            ? _value.best
+            : best // ignore: cast_nullable_to_non_nullable
+                  as int,
+        habitId: null == habitId
+            ? _value.habitId
+            : habitId // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$HabitStreakImpl implements _HabitStreak {
-  const _$HabitStreakImpl(
-      {required this.habitStreakId,
-      required this.current,
-      required this.best,
-      required this.habitId});
+  const _$HabitStreakImpl({
+    required this.habitStreakId,
+    required this.current,
+    required this.best,
+    required this.habitId,
+  });
 
   factory _$HabitStreakImpl.fromJson(Map<String, dynamic> json) =>
       _$$HabitStreakImplFromJson(json);
@@ -202,18 +212,17 @@ class _$HabitStreakImpl implements _HabitStreak {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$HabitStreakImplToJson(
-      this,
-    );
+    return _$$HabitStreakImplToJson(this);
   }
 }
 
 abstract class _HabitStreak implements HabitStreak {
-  const factory _HabitStreak(
-      {required final int habitStreakId,
-      required final int current,
-      required final int best,
-      required final int habitId}) = _$HabitStreakImpl;
+  const factory _HabitStreak({
+    required final int habitStreakId,
+    required final int current,
+    required final int best,
+    required final int habitId,
+  }) = _$HabitStreakImpl;
 
   factory _HabitStreak.fromJson(Map<String, dynamic> json) =
       _$HabitStreakImpl.fromJson;

@@ -12,7 +12,8 @@ part of 'chrono_label.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ChronoLabel _$ChronoLabelFromJson(Map<String, dynamic> json) {
   return _ChronoLabel.fromJson(json);
@@ -48,15 +49,17 @@ mixin _$ChronoLabel {
 /// @nodoc
 abstract class $ChronoLabelCopyWith<$Res> {
   factory $ChronoLabelCopyWith(
-          ChronoLabel value, $Res Function(ChronoLabel) then) =
-      _$ChronoLabelCopyWithImpl<$Res, ChronoLabel>;
+    ChronoLabel value,
+    $Res Function(ChronoLabel) then,
+  ) = _$ChronoLabelCopyWithImpl<$Res, ChronoLabel>;
   @useResult
-  $Res call(
-      {int chronoLabelId,
-      String title,
-      String groupTitle,
-      String color,
-      bool isNegative});
+  $Res call({
+    int chronoLabelId,
+    String title,
+    String groupTitle,
+    String color,
+    bool isNegative,
+  });
 }
 
 /// @nodoc
@@ -80,28 +83,31 @@ class _$ChronoLabelCopyWithImpl<$Res, $Val extends ChronoLabel>
     Object? color = null,
     Object? isNegative = null,
   }) {
-    return _then(_value.copyWith(
-      chronoLabelId: null == chronoLabelId
-          ? _value.chronoLabelId
-          : chronoLabelId // ignore: cast_nullable_to_non_nullable
-              as int,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      groupTitle: null == groupTitle
-          ? _value.groupTitle
-          : groupTitle // ignore: cast_nullable_to_non_nullable
-              as String,
-      color: null == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as String,
-      isNegative: null == isNegative
-          ? _value.isNegative
-          : isNegative // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            chronoLabelId: null == chronoLabelId
+                ? _value.chronoLabelId
+                : chronoLabelId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            title: null == title
+                ? _value.title
+                : title // ignore: cast_nullable_to_non_nullable
+                      as String,
+            groupTitle: null == groupTitle
+                ? _value.groupTitle
+                : groupTitle // ignore: cast_nullable_to_non_nullable
+                      as String,
+            color: null == color
+                ? _value.color
+                : color // ignore: cast_nullable_to_non_nullable
+                      as String,
+            isNegative: null == isNegative
+                ? _value.isNegative
+                : isNegative // ignore: cast_nullable_to_non_nullable
+                      as bool,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -109,16 +115,18 @@ class _$ChronoLabelCopyWithImpl<$Res, $Val extends ChronoLabel>
 abstract class _$$ChronoLabelImplCopyWith<$Res>
     implements $ChronoLabelCopyWith<$Res> {
   factory _$$ChronoLabelImplCopyWith(
-          _$ChronoLabelImpl value, $Res Function(_$ChronoLabelImpl) then) =
-      __$$ChronoLabelImplCopyWithImpl<$Res>;
+    _$ChronoLabelImpl value,
+    $Res Function(_$ChronoLabelImpl) then,
+  ) = __$$ChronoLabelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int chronoLabelId,
-      String title,
-      String groupTitle,
-      String color,
-      bool isNegative});
+  $Res call({
+    int chronoLabelId,
+    String title,
+    String groupTitle,
+    String color,
+    bool isNegative,
+  });
 }
 
 /// @nodoc
@@ -126,8 +134,9 @@ class __$$ChronoLabelImplCopyWithImpl<$Res>
     extends _$ChronoLabelCopyWithImpl<$Res, _$ChronoLabelImpl>
     implements _$$ChronoLabelImplCopyWith<$Res> {
   __$$ChronoLabelImplCopyWithImpl(
-      _$ChronoLabelImpl _value, $Res Function(_$ChronoLabelImpl) _then)
-      : super(_value, _then);
+    _$ChronoLabelImpl _value,
+    $Res Function(_$ChronoLabelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ChronoLabel
   /// with the given fields replaced by the non-null parameter values.
@@ -140,40 +149,43 @@ class __$$ChronoLabelImplCopyWithImpl<$Res>
     Object? color = null,
     Object? isNegative = null,
   }) {
-    return _then(_$ChronoLabelImpl(
-      chronoLabelId: null == chronoLabelId
-          ? _value.chronoLabelId
-          : chronoLabelId // ignore: cast_nullable_to_non_nullable
-              as int,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      groupTitle: null == groupTitle
-          ? _value.groupTitle
-          : groupTitle // ignore: cast_nullable_to_non_nullable
-              as String,
-      color: null == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as String,
-      isNegative: null == isNegative
-          ? _value.isNegative
-          : isNegative // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$ChronoLabelImpl(
+        chronoLabelId: null == chronoLabelId
+            ? _value.chronoLabelId
+            : chronoLabelId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        title: null == title
+            ? _value.title
+            : title // ignore: cast_nullable_to_non_nullable
+                  as String,
+        groupTitle: null == groupTitle
+            ? _value.groupTitle
+            : groupTitle // ignore: cast_nullable_to_non_nullable
+                  as String,
+        color: null == color
+            ? _value.color
+            : color // ignore: cast_nullable_to_non_nullable
+                  as String,
+        isNegative: null == isNegative
+            ? _value.isNegative
+            : isNegative // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ChronoLabelImpl implements _ChronoLabel {
-  const _$ChronoLabelImpl(
-      {required this.chronoLabelId,
-      required this.title,
-      required this.groupTitle,
-      required this.color,
-      required this.isNegative});
+  const _$ChronoLabelImpl({
+    required this.chronoLabelId,
+    required this.title,
+    required this.groupTitle,
+    required this.color,
+    required this.isNegative,
+  });
 
   factory _$ChronoLabelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ChronoLabelImplFromJson(json);
@@ -221,7 +233,13 @@ class _$ChronoLabelImpl implements _ChronoLabel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, chronoLabelId, title, groupTitle, color, isNegative);
+    runtimeType,
+    chronoLabelId,
+    title,
+    groupTitle,
+    color,
+    isNegative,
+  );
 
   /// Create a copy of ChronoLabel
   /// with the given fields replaced by the non-null parameter values.
@@ -233,19 +251,18 @@ class _$ChronoLabelImpl implements _ChronoLabel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ChronoLabelImplToJson(
-      this,
-    );
+    return _$$ChronoLabelImplToJson(this);
   }
 }
 
 abstract class _ChronoLabel implements ChronoLabel {
-  const factory _ChronoLabel(
-      {required final int chronoLabelId,
-      required final String title,
-      required final String groupTitle,
-      required final String color,
-      required final bool isNegative}) = _$ChronoLabelImpl;
+  const factory _ChronoLabel({
+    required final int chronoLabelId,
+    required final String title,
+    required final String groupTitle,
+    required final String color,
+    required final bool isNegative,
+  }) = _$ChronoLabelImpl;
 
   factory _ChronoLabel.fromJson(Map<String, dynamic> json) =
       _$ChronoLabelImpl.fromJson;

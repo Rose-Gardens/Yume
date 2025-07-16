@@ -14,7 +14,7 @@ import 'habit_repository.dart';
 
 class HabitRepositoryLocal implements HabitRepository {
   HabitRepositoryLocal({required LocalDataService localDataService})
-      : _localDataService = localDataService;
+    : _localDataService = localDataService;
 
   final LocalDataService _localDataService;
 
@@ -23,8 +23,11 @@ class HabitRepositoryLocal implements HabitRepository {
   Future<Result<int>> createHabit(Habit habit) async {
     try {
       final db = await _localDataService.getDatabaseInstance();
-      int newId = await db.insert('habit', habit.toJson(),
-          conflictAlgorithm: ConflictAlgorithm.replace);
+      int newId = await db.insert(
+        'habit',
+        habit.toJson(),
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
       return Result.ok(newId);
     } on Exception catch (e) {
       return Result.error(e);
@@ -48,8 +51,12 @@ class HabitRepositoryLocal implements HabitRepository {
   Future<Result<void>> updateHabit(Habit habit) async {
     try {
       final db = await _localDataService.getDatabaseInstance();
-      await db.update('habit', habit.toJson(),
-          where: 'habit_id = ?', whereArgs: [habit.habitId]);
+      await db.update(
+        'habit',
+        habit.toJson(),
+        where: 'habit_id = ?',
+        whereArgs: [habit.habitId],
+      );
       return const Result.ok(null);
     } on Exception catch (e) {
       return Result.error(e);
@@ -117,7 +124,9 @@ class HabitRepositoryLocal implements HabitRepository {
   Future<Result<List<Habit>>> getHabitList() async {
     try {
       final db = await _localDataService.getDatabaseInstance();
-      final List<Map<String, Object?>> habitList = await db.rawQuery('SELECT * from habit');
+      final List<Map<String, Object?>> habitList = await db.rawQuery(
+        'SELECT * from habit',
+      );
       return Result.ok([
         for (final {
               'habit_id': habitId as int,
@@ -128,20 +137,23 @@ class HabitRepositoryLocal implements HabitRepository {
               'icon': icon as String,
               'is_retired': isRetired as int,
               'is_negative': isNegative as int,
-              'habit_conditionally_active_id': habitConditionallyActiveId as int?,
+              'habit_conditionally_active_id':
+                  habitConditionallyActiveId as int?,
               'chrono_label_id': chronoLabelId as int?,
-            } in habitList)
+            }
+            in habitList)
           Habit(
-              habitId: habitId,
-              title: title,
-              groupTitle: groupTitle,
-              desc: desc,
-              color: color,
-              icon: icon,
-              isRetired: isRetired == 0 ? false : true,
-              isNegative: isNegative == 0 ? false : true,
-              habitConditionallyActiveId: habitConditionallyActiveId,
-              chronoLabelId: chronoLabelId,)
+            habitId: habitId,
+            title: title,
+            groupTitle: groupTitle,
+            desc: desc,
+            color: color,
+            icon: icon,
+            isRetired: isRetired == 0 ? false : true,
+            isNegative: isNegative == 0 ? false : true,
+            habitConditionallyActiveId: habitConditionallyActiveId,
+            chronoLabelId: chronoLabelId,
+          ),
       ]);
     } on Exception catch (e) {
       return Result.error(e);
@@ -149,28 +161,28 @@ class HabitRepositoryLocal implements HabitRepository {
   }
 
   /// Defines a function that returns a [Habit] based on its habit_id.
-//   @override
-//   Future<Result<Habit>> getHabitById(int habitId) async {
-//     try {
-//       final db = await _localDataService.getDatabaseInstance();
-//       final List<Map<String, Object?>> habitList =
-//           await db.query('habit', where: 'habit_id = ?', whereArgs: [habitId]);
-//       if (habitList.isNotEmpty) {
-//         final habitRow = habitList.first;
-//         final habit = Habit(
-//             habitId: habitRow['habit_id'] as int,
-//             habitTitle: habitRow['habit_title'] as String,
-//             habitFreq: habitRow['habit_freq'] as String,
-//             habitDesc: habitRow['habit_desc'] as String,
-//             habitColor: habitRow['habit_color'] as String,
-//             habitIcon: habitRow['habit_icon'] as String);
+  //   @override
+  //   Future<Result<Habit>> getHabitById(int habitId) async {
+  //     try {
+  //       final db = await _localDataService.getDatabaseInstance();
+  //       final List<Map<String, Object?>> habitList =
+  //           await db.query('habit', where: 'habit_id = ?', whereArgs: [habitId]);
+  //       if (habitList.isNotEmpty) {
+  //         final habitRow = habitList.first;
+  //         final habit = Habit(
+  //             habitId: habitRow['habit_id'] as int,
+  //             habitTitle: habitRow['habit_title'] as String,
+  //             habitFreq: habitRow['habit_freq'] as String,
+  //             habitDesc: habitRow['habit_desc'] as String,
+  //             habitColor: habitRow['habit_color'] as String,
+  //             habitIcon: habitRow['habit_icon'] as String);
 
-//         return Result.ok(habit);
-//       } else {
-//         return Result.error(Exception('No habit found'));
-//       }
-//     } on Exception catch (e) {
-//       return Result.error(e);
-//     }
-//   }
+  //         return Result.ok(habit);
+  //       } else {
+  //         return Result.error(Exception('No habit found'));
+  //       }
+  //     } on Exception catch (e) {
+  //       return Result.error(e);
+  //     }
+  //   }
 }

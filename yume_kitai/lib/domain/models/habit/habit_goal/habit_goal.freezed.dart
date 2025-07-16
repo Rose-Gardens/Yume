@@ -12,7 +12,8 @@ part of 'habit_goal.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 HabitGoal _$HabitGoalFromJson(Map<String, dynamic> json) {
   return _HabitGoal.fromJson(json);
@@ -50,12 +51,13 @@ abstract class $HabitGoalCopyWith<$Res> {
   factory $HabitGoalCopyWith(HabitGoal value, $Res Function(HabitGoal) then) =
       _$HabitGoalCopyWithImpl<$Res, HabitGoal>;
   @useResult
-  $Res call(
-      {int habitGoalId,
-      int target,
-      int currentAmount,
-      String unit,
-      int habitId});
+  $Res call({
+    int habitGoalId,
+    int target,
+    int currentAmount,
+    String unit,
+    int habitId,
+  });
 }
 
 /// @nodoc
@@ -79,28 +81,31 @@ class _$HabitGoalCopyWithImpl<$Res, $Val extends HabitGoal>
     Object? unit = null,
     Object? habitId = null,
   }) {
-    return _then(_value.copyWith(
-      habitGoalId: null == habitGoalId
-          ? _value.habitGoalId
-          : habitGoalId // ignore: cast_nullable_to_non_nullable
-              as int,
-      target: null == target
-          ? _value.target
-          : target // ignore: cast_nullable_to_non_nullable
-              as int,
-      currentAmount: null == currentAmount
-          ? _value.currentAmount
-          : currentAmount // ignore: cast_nullable_to_non_nullable
-              as int,
-      unit: null == unit
-          ? _value.unit
-          : unit // ignore: cast_nullable_to_non_nullable
-              as String,
-      habitId: null == habitId
-          ? _value.habitId
-          : habitId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            habitGoalId: null == habitGoalId
+                ? _value.habitGoalId
+                : habitGoalId // ignore: cast_nullable_to_non_nullable
+                      as int,
+            target: null == target
+                ? _value.target
+                : target // ignore: cast_nullable_to_non_nullable
+                      as int,
+            currentAmount: null == currentAmount
+                ? _value.currentAmount
+                : currentAmount // ignore: cast_nullable_to_non_nullable
+                      as int,
+            unit: null == unit
+                ? _value.unit
+                : unit // ignore: cast_nullable_to_non_nullable
+                      as String,
+            habitId: null == habitId
+                ? _value.habitId
+                : habitId // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -108,16 +113,18 @@ class _$HabitGoalCopyWithImpl<$Res, $Val extends HabitGoal>
 abstract class _$$HabitGoalImplCopyWith<$Res>
     implements $HabitGoalCopyWith<$Res> {
   factory _$$HabitGoalImplCopyWith(
-          _$HabitGoalImpl value, $Res Function(_$HabitGoalImpl) then) =
-      __$$HabitGoalImplCopyWithImpl<$Res>;
+    _$HabitGoalImpl value,
+    $Res Function(_$HabitGoalImpl) then,
+  ) = __$$HabitGoalImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int habitGoalId,
-      int target,
-      int currentAmount,
-      String unit,
-      int habitId});
+  $Res call({
+    int habitGoalId,
+    int target,
+    int currentAmount,
+    String unit,
+    int habitId,
+  });
 }
 
 /// @nodoc
@@ -125,8 +132,9 @@ class __$$HabitGoalImplCopyWithImpl<$Res>
     extends _$HabitGoalCopyWithImpl<$Res, _$HabitGoalImpl>
     implements _$$HabitGoalImplCopyWith<$Res> {
   __$$HabitGoalImplCopyWithImpl(
-      _$HabitGoalImpl _value, $Res Function(_$HabitGoalImpl) _then)
-      : super(_value, _then);
+    _$HabitGoalImpl _value,
+    $Res Function(_$HabitGoalImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of HabitGoal
   /// with the given fields replaced by the non-null parameter values.
@@ -139,40 +147,43 @@ class __$$HabitGoalImplCopyWithImpl<$Res>
     Object? unit = null,
     Object? habitId = null,
   }) {
-    return _then(_$HabitGoalImpl(
-      habitGoalId: null == habitGoalId
-          ? _value.habitGoalId
-          : habitGoalId // ignore: cast_nullable_to_non_nullable
-              as int,
-      target: null == target
-          ? _value.target
-          : target // ignore: cast_nullable_to_non_nullable
-              as int,
-      currentAmount: null == currentAmount
-          ? _value.currentAmount
-          : currentAmount // ignore: cast_nullable_to_non_nullable
-              as int,
-      unit: null == unit
-          ? _value.unit
-          : unit // ignore: cast_nullable_to_non_nullable
-              as String,
-      habitId: null == habitId
-          ? _value.habitId
-          : habitId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$HabitGoalImpl(
+        habitGoalId: null == habitGoalId
+            ? _value.habitGoalId
+            : habitGoalId // ignore: cast_nullable_to_non_nullable
+                  as int,
+        target: null == target
+            ? _value.target
+            : target // ignore: cast_nullable_to_non_nullable
+                  as int,
+        currentAmount: null == currentAmount
+            ? _value.currentAmount
+            : currentAmount // ignore: cast_nullable_to_non_nullable
+                  as int,
+        unit: null == unit
+            ? _value.unit
+            : unit // ignore: cast_nullable_to_non_nullable
+                  as String,
+        habitId: null == habitId
+            ? _value.habitId
+            : habitId // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$HabitGoalImpl implements _HabitGoal {
-  const _$HabitGoalImpl(
-      {required this.habitGoalId,
-      required this.target,
-      required this.currentAmount,
-      required this.unit,
-      required this.habitId});
+  const _$HabitGoalImpl({
+    required this.habitGoalId,
+    required this.target,
+    required this.currentAmount,
+    required this.unit,
+    required this.habitId,
+  });
 
   factory _$HabitGoalImpl.fromJson(Map<String, dynamic> json) =>
       _$$HabitGoalImplFromJson(json);
@@ -219,7 +230,13 @@ class _$HabitGoalImpl implements _HabitGoal {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, habitGoalId, target, currentAmount, unit, habitId);
+    runtimeType,
+    habitGoalId,
+    target,
+    currentAmount,
+    unit,
+    habitId,
+  );
 
   /// Create a copy of HabitGoal
   /// with the given fields replaced by the non-null parameter values.
@@ -231,19 +248,18 @@ class _$HabitGoalImpl implements _HabitGoal {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$HabitGoalImplToJson(
-      this,
-    );
+    return _$$HabitGoalImplToJson(this);
   }
 }
 
 abstract class _HabitGoal implements HabitGoal {
-  const factory _HabitGoal(
-      {required final int habitGoalId,
-      required final int target,
-      required final int currentAmount,
-      required final String unit,
-      required final int habitId}) = _$HabitGoalImpl;
+  const factory _HabitGoal({
+    required final int habitGoalId,
+    required final int target,
+    required final int currentAmount,
+    required final String unit,
+    required final int habitId,
+  }) = _$HabitGoalImpl;
 
   factory _HabitGoal.fromJson(Map<String, dynamic> json) =
       _$HabitGoalImpl.fromJson;
