@@ -58,7 +58,7 @@ class HabitsCardContent extends StatelessWidget {
         return Container(
           width: width,
           constraints: BoxConstraints(
-            minHeight: 32,
+            minHeight: 56,
             maxHeight: 96,
             minWidth: 56,
             maxWidth: MediaQuery.of(context).size.width,

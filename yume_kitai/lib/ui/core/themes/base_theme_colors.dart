@@ -6,9 +6,9 @@ class BaseThemeColors {
     // TODO: fix bg color
     surfaceBg: Color.fromARGB(255, 51, 11, 48),
     surfaceOverlay: Color.fromRGBO(
-      34,
-      35,
-      37,
+      24,
+      25,
+      27,
       1,
     ), // ? For things like bottom sheets
     surfaceLow: Color.fromRGBO(255, 255, 255, 0.06),

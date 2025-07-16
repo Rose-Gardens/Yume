@@ -3,8 +3,9 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:yume_kitai/ui/habits/widgets/delegates/habits_date_sliver_delegate.dart';
+
+import './delegates/habits_title_sliver_delegate.dart';
 
 List<Widget> habitsSliverAppbar(BuildContext context) => [
-  SliverPersistentHeader(delegate: HabitsDateSliverDelegate(),)
+  SliverPersistentHeader(delegate: HabitsTitleSliverDelegate(),)
 ];
