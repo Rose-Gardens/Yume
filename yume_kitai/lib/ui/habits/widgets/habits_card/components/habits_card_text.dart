@@ -13,17 +13,18 @@ class HabitsCardText extends StatelessWidget {
   const HabitsCardText({
     super.key,
     required this.style,
+    required this.theme,
     required this.isSwipeRight,
     required this.shimmerController,
   });
 
   final HabitsCardStyle style;
+  final AppThemeExtension theme;
   final bool isSwipeRight;
   final AnimationController shimmerController;
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<AppThemeExtension>()!;
     isSwipeRight ? shimmerController.repeat() : shimmerController.reset();
     return Text(
           style.habitText,

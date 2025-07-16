@@ -25,8 +25,6 @@ class HabitsGesturableCard extends StatefulWidget {
 
   final Habit habit;
   final GlobalKey<PopupMenuState> overlayKey;
-  static const double cardBorderRadius = 22.0;
-  static const double cardSwipedBorderRadius = 50.0;
   static const double cardSwipedWidth = 56.0;
 
   @override
@@ -35,27 +33,20 @@ class HabitsGesturableCard extends StatefulWidget {
 
 class _HabitsGesturableCardState extends State<HabitsGesturableCard>
     with SingleTickerProviderStateMixin {
-  late final AnimationController _animationController;
-  late final BorderRadiusTween _radiusTween;
+  late final AnimationController _widthController;
 
-  double swipeDist = 0;
   bool isPressed = false;
   SwipeDirection swipeDirection = SwipeDirection.none;
 
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(vsync: this);
-
-    _radiusTween = BorderRadiusTween(
-      begin: BorderRadius.circular(HabitsGesturableCard.cardBorderRadius),
-      end: BorderRadius.circular(HabitsGesturableCard.cardSwipedBorderRadius),
-    );
+    _widthController = AnimationController(vsync: this);
   }
 
   @override
   void dispose() {
-    _animationController.dispose();
+    _widthController.dispose();
     super.dispose();
   }
 
@@ -127,22 +118,24 @@ class _HabitsGesturableCardState extends State<HabitsGesturableCard>
           }
         }
         final swipeProgress =
-            (_animationController.value + delta / fullCardWidth).clamp(
+            (_widthController.value + delta / fullCardWidth).clamp(
               0.0,
               1.0,
             );
-        _animationController.value = swipeProgress;
+        _widthController.value = swipeProgress;
       },
       onHorizontalDragEnd: (details) {
         final velocity = details.primaryVelocity ?? 0;
-        if (velocity > 800 || _animationController.value > 0.6) {
-          _animationController
+        if (velocity > 800 ||
+            velocity < -800 ||
+            _widthController.value > 0.5) {
+          _widthController
               .fling(velocity: 2.0)
               .whenComplete(
                 () => setState(() => swipeDirection = SwipeDirection.none),
               );
         } else {
-          _animationController
+          _widthController
               .animateTo(
                 0.0,
                 curve: Curves.easeOutQuint,
@@ -161,9 +154,9 @@ class _HabitsGesturableCardState extends State<HabitsGesturableCard>
         child: Align(
           alignment: getSwipeAlignment(swipeDirection),
           child: AnimatedBuilder(
-            animation: _animationController,
+            animation: _widthController,
             builder: (BuildContext context, _) {
-              final t = _animationController.value;
+              final t = _widthController.value;
               final width = lerpDouble(
                 fullCardWidth,
                 HabitsGesturableCard.cardSwipedWidth,

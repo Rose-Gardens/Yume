@@ -57,14 +57,14 @@ class HabitsCardStyle {
 
     final isSwipeRight = swipeDirection == SwipeDirection.right;
     return HabitsCardStyle(
-      cardColor: isSwipeRight ? theme.surfaceVeryHigh : baseCardColor,
+      cardColor: baseCardColor,
       iconColor: baseIconColor,
       habitText: isSwipeRight ? 'slide to complete' : habit.title,
       iconWidget: iconW,
       textStyle: (textTheme.titleLarge!).copyWith(
         color: isSwipeRight ? Colors.black : theme.foregroundHigh,
       ),
-      borderRadius: BorderRadius.circular(isSwipeRight ? 50 : 22),
+      borderRadius: BorderRadius.circular(22.0),
     );
   }
 

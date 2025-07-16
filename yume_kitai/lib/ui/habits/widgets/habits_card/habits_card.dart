@@ -30,16 +30,22 @@ class HabitsCard extends StatefulWidget {
   State<HabitsCard> createState() => _HabitsCardState();
 }
 
-class _HabitsCardState extends State<HabitsCard>
-    with SingleTickerProviderStateMixin {
+class _HabitsCardState extends State<HabitsCard> with TickerProviderStateMixin {
   late final AnimationController _shimmerController;
+  late final AnimationController _containerController;
   late HabitsCardStyle _style;
+  late AppThemeExtension _theme;
   bool isSwipeRight = false;
 
   @override
   void initState() {
     super.initState();
     _shimmerController = AnimationController(vsync: this);
+    _containerController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+      reverseDuration: const Duration(milliseconds: 150),
+    );
   }
 
   @override
@@ -61,16 +67,17 @@ class _HabitsCardState extends State<HabitsCard>
   @override
   void dispose() {
     _shimmerController.dispose();
+    _containerController.dispose();
     super.dispose();
   }
 
   void _recomputeWidget() {
-    final theme = Theme.of(context).extension<AppThemeExtension>()!;
+    _theme = Theme.of(context).extension<AppThemeExtension>()!;
     final textTheme = Theme.of(context).textTheme;
     _style = HabitsCardStyle.from(
       habit: widget.habit,
       swipeDirection: widget.swipeDirection,
-      theme: theme,
+      theme: _theme,
       textTheme: textTheme,
     );
     isSwipeRight = widget.swipeDirection == SwipeDirection.right;
@@ -89,7 +96,9 @@ class _HabitsCardState extends State<HabitsCard>
       ),
       child: HabitsCardContent(
         style: _style,
+        theme: _theme,
         width: widget.width,
+        containerController: _containerController,
         shimmerController: _shimmerController,
         isSwipeRight: isSwipeRight,
       ),
