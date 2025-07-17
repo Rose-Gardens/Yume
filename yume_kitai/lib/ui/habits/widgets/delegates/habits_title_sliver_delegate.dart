@@ -17,7 +17,9 @@ class HabitsTitleSliverDelegate extends SliverPersistentHeaderDelegate {
     double shrinkOffset,
     bool overlapsContent,
   ) {
-    final theme = Theme.of(context).extension<AppThemeExtension>()!;
+    final baseTheme = Theme.of(context);
+    final theme = baseTheme.extension<AppThemeExtension>()!;
+    final textTheme = baseTheme.textTheme;
 
     final double progress = (shrinkOffset / (maxExtent - minExtent)).clamp(
       0.0,
@@ -31,14 +33,14 @@ class HabitsTitleSliverDelegate extends SliverPersistentHeaderDelegate {
                 children: [
                   Text(
                     "Friday, December 13",
-                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    style: textTheme.titleLarge!.copyWith(
                       fontSize: 20,
                       color: theme.foregroundMedium,
                     ),
                   ),
                   Text(
                     "Today's Habits",
-                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    style: textTheme.titleLarge!.copyWith(
                       fontSize: 40,
                       color: theme.foregroundHigh,
                       fontVariations: [const FontVariation('wght', 700)],
@@ -48,10 +50,7 @@ class HabitsTitleSliverDelegate extends SliverPersistentHeaderDelegate {
               )
               // * (divided by (x > 1)) slows down how quickly the effects happen
               .animate(adapter: ValueAdapter(progress / 1.5))
-              .scale(
-                begin: const Offset(1, 1),
-                end: const Offset(0, 0),
-              )
+              .scale(begin: const Offset(1, 1), end: const Offset(0, 0))
               .blur(
                 begin: const Offset(0, 0),
                 end: const Offset(8, 8),

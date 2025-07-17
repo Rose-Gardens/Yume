@@ -23,7 +23,8 @@ class PopupMenuItemTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<AppThemeExtension>()!;
+    final baseTheme = Theme.of(context);
+    final theme = baseTheme.extension<AppThemeExtension>()!;
 
     return Container(
       margin: EdgeInsets.zero,
@@ -33,9 +34,7 @@ class PopupMenuItemTile extends StatelessWidget {
         children: [
           Text(
             menuItem.title,
-            style: Theme.of(
-              context,
-            ).textTheme.bodyMedium?.copyWith(color: textColor, fontVariations: [const FontVariation('wght', 550)]),
+            style: baseTheme.textTheme.bodyMedium?.copyWith(color: textColor, fontVariations: [const FontVariation('wght', 550)]),
           ),
           const Spacer(),
           // ? centers the icons across all rows

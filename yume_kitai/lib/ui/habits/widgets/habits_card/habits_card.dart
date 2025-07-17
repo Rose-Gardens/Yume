@@ -24,7 +24,7 @@ class HabitsCard extends StatefulWidget {
   final Habit habit;
   final double? width;
   final SwipeDirection swipeDirection;
-  final bool shouldBlurUI = false;
+  final bool shouldBlurUI = true;
 
   @override
   State<HabitsCard> createState() => _HabitsCardState();
@@ -72,13 +72,13 @@ class _HabitsCardState extends State<HabitsCard> with TickerProviderStateMixin {
   }
 
   void _recomputeWidget() {
-    _theme = Theme.of(context).extension<AppThemeExtension>()!;
-    final textTheme = Theme.of(context).textTheme;
+    final baseTheme = Theme.of(context);
+    _theme = baseTheme.extension<AppThemeExtension>()!;
     _style = HabitsCardStyle.from(
       habit: widget.habit,
       swipeDirection: widget.swipeDirection,
       theme: _theme,
-      textTheme: textTheme,
+      textTheme: baseTheme.textTheme,
     );
     isSwipeRight = widget.swipeDirection == SwipeDirection.right;
   }

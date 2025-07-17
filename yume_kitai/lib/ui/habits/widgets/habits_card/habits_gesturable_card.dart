@@ -72,7 +72,7 @@ class _HabitsGesturableCardState extends State<HabitsGesturableCard>
 
   @override
   Widget build(BuildContext context) {
-    final fullCardWidth = MediaQuery.of(context).size.width - 32.0;
+    final fullCardWidth = MediaQuery.sizeOf(context).width - 32.0;
 
     return GestureDetector(
       key: ValueKey(widget.habit.habitId),
