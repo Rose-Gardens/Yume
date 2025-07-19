@@ -31,6 +31,7 @@ class HabitsCard extends StatefulWidget {
 }
 
 class _HabitsCardState extends State<HabitsCard> with TickerProviderStateMixin {
+  static const animationDuration = Duration(milliseconds: 300);
   late final AnimationController _shimmerController;
   late final AnimationController _containerController;
   late HabitsCardStyle _style;
@@ -43,7 +44,7 @@ class _HabitsCardState extends State<HabitsCard> with TickerProviderStateMixin {
     _shimmerController = AnimationController(vsync: this);
     _containerController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 300),
+      duration: animationDuration,
       reverseDuration: const Duration(milliseconds: 150),
     );
   }
