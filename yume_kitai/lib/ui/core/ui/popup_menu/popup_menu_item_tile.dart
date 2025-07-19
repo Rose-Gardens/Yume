@@ -26,26 +26,27 @@ class PopupMenuItemTile extends StatelessWidget {
     final baseTheme = Theme.of(context);
     final theme = baseTheme.extension<AppThemeExtension>()!;
 
-    return Container(
-      margin: EdgeInsets.zero,
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      color: currentIndex == selectedIndex ? theme.foregroundDim : null,
-      child: Row(
-        children: [
-          Text(
-            menuItem.title,
-            style: baseTheme.textTheme.bodyMedium?.copyWith(color: textColor, fontVariations: [const FontVariation('wght', 550)]),
-          ),
-          const Spacer(),
-          // ? centers the icons across all rows
-          SizedBox(
-            width: 24,
-            height: 24,
-            child: Center(
-              child: SFIcon(menuItem.icon, fontSize: 16, color: textColor),
+    return ColoredBox(
+      color: currentIndex == selectedIndex ? theme.foregroundDim : Colors.transparent,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Row(
+          children: [
+            Text(
+              menuItem.title,
+              style: baseTheme.textTheme.bodyMedium?.copyWith(color: textColor, fontVariations: [const FontVariation('wght', 550)]),
             ),
-          ),
-        ],
+            const Spacer(),
+            // ? centers the icons across all rows
+            SizedBox(
+              width: 24,
+              height: 24,
+              child: Center(
+                child: SFIcon(menuItem.icon, fontSize: 16, color: textColor),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
