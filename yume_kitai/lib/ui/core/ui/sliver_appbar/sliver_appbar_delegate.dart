@@ -9,7 +9,7 @@ import '../../themes/theme_extension.dart';
 
 class SliverAppbarDelegate extends SliverPersistentHeaderDelegate {
   final double collapsedHeight = 0;
-  final double expandedHeight = 200;
+  final double expandedHeight = 220;
 
   @override
   Widget build(
@@ -25,38 +25,40 @@ class SliverAppbarDelegate extends SliverPersistentHeaderDelegate {
       0.0,
       1.0,
     );
-    return Align(
-      child:
-          Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                spacing: 12,
-                children: [
-                  Text(
-                    "Friday, December 13",
-                    style: textTheme.titleLarge!.copyWith(
-                      fontSize: 20,
-                      color: theme.foregroundMedium,
+    return SafeArea(
+      child: Align(
+        child:
+            Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  spacing: 12,
+                  children: [
+                    Text(
+                      "Friday, December 13",
+                      style: textTheme.titleLarge!.copyWith(
+                        fontSize: 20,
+                        color: theme.foregroundMedium,
+                      ),
                     ),
-                  ),
-                  Text(
-                    "Today's Habits",
-                    style: textTheme.titleLarge!.copyWith(
-                      fontSize: 40,
-                      color: theme.foregroundHigh,
-                      fontVariations: [const FontVariation('wght', 700)],
+                    Text(
+                      "Today's Habits",
+                      style: textTheme.titleLarge!.copyWith(
+                        fontSize: 40,
+                        color: theme.foregroundHigh,
+                        fontVariations: [const FontVariation('wght', 700)],
+                      ),
                     ),
-                  ),
-                ],
-              )
-              // * (divided by (x > 1)) slows down how quickly the effects happen
-              .animate(adapter: ValueAdapter(progress / 1.5))
-              .scale(begin: const Offset(1, 1), end: const Offset(0, 0))
-              .blur(
-                begin: const Offset(0, 0),
-                end: const Offset(8, 8),
-                curve: Curves.easeOutQuint,
-              )
-              .fade(begin: 1.0, end: 0.0, curve: Curves.easeOutSine),
+                  ],
+                )
+                // * (divided by (x > 1)) slows down how quickly the effects happen
+                .animate(adapter: ValueAdapter(progress / 1.5))
+                .scale(begin: const Offset(1, 1), end: const Offset(0, 0))
+                .blur(
+                  begin: const Offset(0, 0),
+                  end: const Offset(8, 8),
+                  curve: Curves.easeOutQuint,
+                )
+                .fade(begin: 1.0, end: 0.0, curve: Curves.easeOutSine),
+      ),
     );
   }
 

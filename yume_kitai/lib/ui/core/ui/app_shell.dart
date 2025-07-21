@@ -62,7 +62,7 @@ class AppShell extends StatelessWidget {
           ),
           Builder(
             builder: (context) {
-              return SafeArea(child: SizedBox.expand(child: child));
+              return SizedBox.expand(child: child);
             },
           ),
         ],
