@@ -36,7 +36,7 @@ final _shellNavigatorSettingsKey = GlobalKey<NavigatorState>(
 );
 
 final GoRouter router = GoRouter(
-  initialLocation: Routes.habits, // TODO fix to chrono
+  initialLocation: Routes.settings, // TODO fix to chrono
   navigatorKey: _rootNavigatorKey,
   routes: [
     StatefulShellRoute.indexedStack(

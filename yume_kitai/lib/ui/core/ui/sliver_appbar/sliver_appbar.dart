@@ -4,8 +4,8 @@
 
 import 'package:flutter/material.dart';
 
-import './delegates/habits_title_sliver_delegate.dart';
+import 'sliver_appbar_delegate.dart';
 
-List<Widget> habitsSliverAppbar(BuildContext context) => [
-  SliverPersistentHeader(delegate: HabitsTitleSliverDelegate(),)
+List<Widget> sliverAppbar(BuildContext context) => [
+  SliverPersistentHeader(delegate: SliverAppbarDelegate()),
 ];

@@ -5,9 +5,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-import '../../../core/themes/theme_extension.dart';
+import '../../themes/theme_extension.dart';
 
-class HabitsTitleSliverDelegate extends SliverPersistentHeaderDelegate {
+class SliverAppbarDelegate extends SliverPersistentHeaderDelegate {
   final double collapsedHeight = 0;
   final double expandedHeight = 200;
 

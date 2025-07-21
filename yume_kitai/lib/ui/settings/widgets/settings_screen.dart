@@ -3,7 +3,9 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:yume_kitai/ui/core/ui/sliver_appbar/sliver_appbar.dart';
 
+import '../../core/themes/theme_extension.dart';
 import '../view_models/settings_viewmodel.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -18,6 +20,17 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    final baseTheme = Theme.of(context);
+    final theme = baseTheme.extension<AppThemeExtension>()!;
+
+    return ColoredBox(
+      color: theme.overlayHigh,
+      child: CustomScrollView(
+        physics: const BouncingScrollPhysics(
+          parent: AlwaysScrollableScrollPhysics(),
+        ),
+        slivers: [...sliverAppbar(context)],
+      ),
+    );
   }
 }
