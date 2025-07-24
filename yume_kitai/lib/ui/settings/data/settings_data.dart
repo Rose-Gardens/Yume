@@ -27,8 +27,8 @@ const settingsData = <SettingsGroup>[
     items: [
       SettingsItem(
         title: "Appearance",
-        color: Color(0xFFA33ACD),
-        icon: SFIcons.sf_paintpalette_fill,
+        color: Color(0xFFCD5C3A),
+        icon: SFIcons.sf_paintbrush_pointed_fill,
       ),
     ],
   ),
@@ -58,12 +58,12 @@ const settingsData = <SettingsGroup>[
       SettingsItem(
         title: "Backup",
         color: Color(0xFF0C6043),
-        icon: SFIcons.sf_externaldrive_badge_timemachine,
+        icon: SFIcons.sf_externaldrive_fill,
       ),
       SettingsItem(
         title: "Archive",
         color: Color(0xFF247685),
-        icon: SFIcons.sf_archivebox_circle,
+        icon: SFIcons.sf_archivebox_fill,
       ),
     ],
   ),
@@ -73,7 +73,7 @@ const settingsData = <SettingsGroup>[
       SettingsItem(
         title: "Feedback Report",
         color: Color(0xFFA35D1D),
-        icon: SFIcons.sf_bubble_left_and_bubble_right,
+        icon: SFIcons.sf_bubble_left_fill,
       ),
       SettingsItem(title: "Follow on BlueSky", color: Color(0xFF1185FE)),
       SettingsItem(
@@ -89,12 +89,12 @@ const settingsData = <SettingsGroup>[
       SettingsItem(
         title: "Privacy Policy",
         color: Color(0xFF424242),
-        icon: SFIcons.sf_lock_circle_dotted,
+        icon: SFIcons.sf_lock_fill,
       ),
       SettingsItem(
         title: "Terms of Use",
         color: Color(0xFF424242),
-        icon: SFIcons.sf_doc_text,
+        icon: SFIcons.sf_text_document_fill,
       ),
     ],
   ),
