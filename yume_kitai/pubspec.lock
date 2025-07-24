@@ -531,7 +531,7 @@ packages:
       path: smooth_corner
       relative: true
     source: path
-    version: "1.1.0"
+    version: "1.1.1"
   source_gen:
     dependency: transitive
     description:

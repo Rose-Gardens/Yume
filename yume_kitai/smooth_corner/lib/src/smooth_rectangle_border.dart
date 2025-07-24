@@ -10,8 +10,8 @@ class SmoothRectangleBorder extends OutlinedBorder {
   const SmoothRectangleBorder({
     this.smoothness = 0.0,
     this.borderRadius = BorderRadius.zero,
-    BorderSide side = BorderSide.none,
-  }) : super(side: side);
+    super.side,
+  });
 
   /// The radius for each corner.
   ///
