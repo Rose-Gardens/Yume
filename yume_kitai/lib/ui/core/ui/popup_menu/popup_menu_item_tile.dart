@@ -10,31 +10,38 @@ import 'package:yume_kitai/ui/core/themes/theme_extension.dart';
 class PopupMenuItemTile extends StatelessWidget {
   const PopupMenuItemTile({
     super.key,
+    required this.theme,
     required this.menuItem,
-    required this.textColor,
+    required this.isDanger,
     required this.currentIndex,
     required this.selectedIndex,
   });
 
-  final Color textColor;
+  final bool isDanger;
   final int currentIndex;
   final int? selectedIndex;
+  final AppThemeExtension theme;
   final ({String title, IconData icon, bool isDanger}) menuItem;
 
   @override
   Widget build(BuildContext context) {
     final baseTheme = Theme.of(context);
-    final theme = baseTheme.extension<AppThemeExtension>()!;
+    final textColor = isDanger ? theme.danger : theme.foregroundBright;
 
     return ColoredBox(
-      color: currentIndex == selectedIndex ? theme.foregroundDim : Colors.transparent,
+      color: currentIndex == selectedIndex
+          ? theme.foregroundDim
+          : Colors.transparent,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Row(
           children: [
             Text(
               menuItem.title,
-              style: baseTheme.textTheme.bodyMedium?.copyWith(color: textColor, fontVariations: [const FontVariation('wght', 550)]),
+              style: baseTheme.textTheme.bodyMedium?.copyWith(
+                color: textColor,
+                fontVariations: [const FontVariation('wght', 550)],
+              ),
             ),
             const Spacer(),
             // ? centers the icons across all rows

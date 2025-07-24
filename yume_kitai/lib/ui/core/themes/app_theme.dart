@@ -32,6 +32,7 @@ class AppTheme {
           fontVariations: [const FontVariation('wght', 500)],
         ),
         labelLarge: baseStyle.copyWith(fontSize: 16),
+        labelSmall: baseStyle.copyWith(fontSize: 12),
       ),
       scaffoldBackgroundColor: defColors.surfaceBg,
       appBarTheme: AppBarTheme(backgroundColor: defColors.surfaceBg),

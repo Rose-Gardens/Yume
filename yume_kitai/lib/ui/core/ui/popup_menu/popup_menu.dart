@@ -72,6 +72,7 @@ class PopupMenuState extends State<PopupMenu>
               menuHeight: menuHeight,
               globalPos: globalPos,
               menuData: menuData,
+              theme: theme
             ),
           ],
         );
