@@ -24,31 +24,23 @@ class SmoothCard extends Card {
   final BorderSide side;
 
   SmoothCard({
-    Key? key,
+    super.key,
     this.smoothness = 0.6,
     this.borderRadius = BorderRadius.zero,
     this.side = BorderSide.none,
-    Widget? child,
-    Color? color,
-    Color? shadowColor,
-    double? elevation,
-    bool borderOnForeground = true,
-    EdgeInsetsGeometry? margin,
-    bool semanticContainer = true,
+    super.child,
+    super.color,
+    super.shadowColor,
+    super.elevation,
+    super.borderOnForeground,
+    super.margin,
+    super.semanticContainer,
   }) : super(
-          key: key,
-          color: color,
-          shadowColor: shadowColor,
-          elevation: elevation,
-          borderOnForeground: borderOnForeground,
-          margin: margin,
-          semanticContainer: semanticContainer,
           clipBehavior: Clip.antiAlias,
           shape: SmoothRectangleBorder(
             side: side,
             borderRadius: borderRadius,
             smoothness: smoothness,
           ),
-          child: child,
         );
 }

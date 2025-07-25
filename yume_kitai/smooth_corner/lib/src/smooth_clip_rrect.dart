@@ -28,12 +28,12 @@ class SmoothClipRRect extends StatelessWidget {
   final Widget child;
 
   const SmoothClipRRect({
-    Key? key,
+    super.key,
     this.smoothness = 0.6,
     this.borderRadius = BorderRadius.zero,
     this.side = BorderSide.none,
     required this.child,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

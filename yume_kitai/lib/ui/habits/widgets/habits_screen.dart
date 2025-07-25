@@ -8,7 +8,7 @@ import 'package:yume_kitai/ui/core/ui/popup_menu/popup_menu.dart';
 import 'package:yume_kitai/ui/habits/view_models/habits_viewmodel.dart';
 
 import 'package:yume_kitai/ui/habits/widgets/habits_card/habits_gesturable_card.dart';
-import 'package:yume_kitai/ui/habits/widgets/habits_sliver_appbar.dart';
+import 'package:yume_kitai/ui/core/ui/sliver_appbar/sliver_appbar.dart';
 
 class HabitsScreen extends StatefulWidget {
   const HabitsScreen({super.key});
@@ -31,7 +31,7 @@ class _HabitsScreenState extends State<HabitsScreen> {
         if (viewModel.loadHabits.running || viewModel.habits == null) {
           return const Center(child: CircularProgressIndicator());
         }
-    
+
         // TODO: make an error widget
         // If the function failed, press to try again.
         if (viewModel.loadHabits.error) {
@@ -41,13 +41,15 @@ class _HabitsScreenState extends State<HabitsScreen> {
         final filteredHabits = viewModel.habits!
             .where((habit) => !habit.isRetired)
             .toList();
-    
+
         return Stack(
           children: [
             CustomScrollView(
-              physics: const BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(
+                parent: AlwaysScrollableScrollPhysics(),
+              ),
               slivers: [
-                ...habitsSliverAppbar(context),
+                ...sliverAppbar(context),
                 SliverPadding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   sliver: SliverList(

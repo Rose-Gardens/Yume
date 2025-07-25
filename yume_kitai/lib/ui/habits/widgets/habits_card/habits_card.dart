@@ -24,13 +24,14 @@ class HabitsCard extends StatefulWidget {
   final Habit habit;
   final double? width;
   final SwipeDirection swipeDirection;
-  final bool shouldBlurUI = false;
+  final bool shouldBlurUI = true;
 
   @override
   State<HabitsCard> createState() => _HabitsCardState();
 }
 
 class _HabitsCardState extends State<HabitsCard> with TickerProviderStateMixin {
+  static const animationDuration = Duration(milliseconds: 300);
   late final AnimationController _shimmerController;
   late final AnimationController _containerController;
   late HabitsCardStyle _style;
@@ -43,7 +44,7 @@ class _HabitsCardState extends State<HabitsCard> with TickerProviderStateMixin {
     _shimmerController = AnimationController(vsync: this);
     _containerController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 300),
+      duration: animationDuration,
       reverseDuration: const Duration(milliseconds: 150),
     );
   }
@@ -72,13 +73,13 @@ class _HabitsCardState extends State<HabitsCard> with TickerProviderStateMixin {
   }
 
   void _recomputeWidget() {
-    _theme = Theme.of(context).extension<AppThemeExtension>()!;
-    final textTheme = Theme.of(context).textTheme;
+    final baseTheme = Theme.of(context);
+    _theme = baseTheme.extension<AppThemeExtension>()!;
     _style = HabitsCardStyle.from(
       habit: widget.habit,
       swipeDirection: widget.swipeDirection,
       theme: _theme,
-      textTheme: textTheme,
+      textTheme: baseTheme.textTheme,
     );
     isSwipeRight = widget.swipeDirection == SwipeDirection.right;
   }

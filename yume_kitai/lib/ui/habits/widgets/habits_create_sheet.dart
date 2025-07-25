@@ -37,7 +37,8 @@ class _HabitsCreateSheetState extends State<HabitsCreateSheet> {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<HabitsViewModel>();
-    final theme = Theme.of(context).extension<AppThemeExtension>()!;
+    final baseTheme = Theme.of(context);
+    final theme = baseTheme.extension<AppThemeExtension>()!;
 
     return Container(
       margin: const EdgeInsets.only(top: 32),
@@ -67,7 +68,7 @@ class _HabitsCreateSheetState extends State<HabitsCreateSheet> {
                   children: [
                     Text(
                       "Create Habit",
-                      style: Theme.of(context).textTheme.headlineSmall
+                      style: baseTheme.textTheme.headlineSmall
                           ?.copyWith(color: theme.foregroundHigh),
                     ),
                     Form(

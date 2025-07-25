@@ -62,35 +62,35 @@ class AppShell extends StatelessWidget {
           ),
           Builder(
             builder: (context) {
-              return SafeArea(child: SizedBox.expand(child: child));
+              return SizedBox.expand(child: child);
             },
           ),
         ],
       ),
-      bottomNavigationBar: NavigationBar(
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.schedule_rounded),
-            label: 'Chrono',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.dashboard_rounded),
-            label: 'Habits',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.area_chart_rounded),
-            label: 'Analytics',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.add_task_rounded),
-            label: 'Tasks',
-          ),
-        ],
-        selectedIndex: _getSelectedIndex(context),
-        onDestinationSelected: (index) {
-          _onTabSelected(context, index);
-        },
-      ),
+      // bottomNavigationBar: NavigationBar(
+      //   destinations: const [
+      //     NavigationDestination(
+      //       icon: Icon(Icons.schedule_rounded),
+      //       label: 'Chrono',
+      //     ),
+      //     NavigationDestination(
+      //       icon: Icon(Icons.dashboard_rounded),
+      //       label: 'Habits',
+      //     ),
+      //     NavigationDestination(
+      //       icon: Icon(Icons.area_chart_rounded),
+      //       label: 'Analytics',
+      //     ),
+      //     NavigationDestination(
+      //       icon: Icon(Icons.add_task_rounded),
+      //       label: 'Tasks',
+      //     ),
+      //   ],
+      //   selectedIndex: _getSelectedIndex(context),
+      //   onDestinationSelected: (index) {
+      //     _onTabSelected(context, index);
+      //   },
+      // ),
     );
   }
 

@@ -61,7 +61,7 @@ class HabitsCardContent extends StatelessWidget {
             minHeight: 56,
             maxHeight: 96,
             minWidth: 56,
-            maxWidth: MediaQuery.of(context).size.width,
+            maxWidth: MediaQuery.sizeOf(context).width,
           ),
           margin: EdgeInsets.zero,
           decoration: ShapeDecoration(

@@ -30,7 +30,9 @@ class InputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<AppThemeExtension>()!;
+    final baseTheme = Theme.of(context);
+    final theme = baseTheme.extension<AppThemeExtension>()!;
+    final textTheme = baseTheme.textTheme;
 
     return Column(
       children: [
@@ -40,9 +42,7 @@ class InputField extends StatelessWidget {
             padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
             child: Text(
               label,
-              style: Theme.of(
-                context,
-              ).textTheme.labelLarge?.copyWith(color: theme.foregroundLow),
+              style: textTheme.labelLarge?.copyWith(color: theme.foregroundLow),
             ),
           ),
         ),
@@ -50,9 +50,7 @@ class InputField extends StatelessWidget {
           validator: validator,
           controller: controller,
           textCapitalization: TextCapitalization.words,
-          style: Theme.of(
-            context,
-          ).textTheme.bodyLarge?.copyWith(color: theme.foregroundHigh),
+          style: textTheme.bodyLarge?.copyWith(color: theme.foregroundHigh),
           maxLines: largeFieldSize ? 5 : 1,
           autofocus: autofocus,
           cursorColor: theme.foregroundHigh,

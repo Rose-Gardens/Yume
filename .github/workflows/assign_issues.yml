@@ -1,0 +1,19 @@
+name: "Auto-assign new issues" 
+
+# Trigger on issue creation
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  assign:
+    # Runs on Ubuntu
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Add me as assignee
+        uses: actions-ecosystem/action-add-assignees@v1
+        with:
+          # GitHub token for authentication
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          assignees: GetPsyched6

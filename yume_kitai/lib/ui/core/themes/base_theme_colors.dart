@@ -23,7 +23,7 @@ class BaseThemeColors {
       0.03,
     ), // ? very high transparency scrim
     overlayLow: Color.fromRGBO(0, 0, 0, 0.25), // ? high transparency scrim
-    overlayHigh: Color.fromRGBO(0, 0, 0, 0.75), // ? low transparency scrim
+    overlayHigh: Color.fromRGBO(0, 0, 0, 0.5), // ? low transparency scrim
     borderLow: Color.fromRGBO(255, 255, 255, 0.20),
     borderMedium: Color.fromRGBO(255, 255, 255, 0.30),
     borderHigh: Color.fromRGBO(255, 255, 255, 0.40),

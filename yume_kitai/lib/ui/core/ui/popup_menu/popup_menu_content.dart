@@ -17,6 +17,7 @@ class PopupMenuContent extends StatefulWidget {
     required this.globalPos,
     required this.menuData,
     required this.menuHeight,
+    required this.theme,
     required GlobalKey menuKey,
     required AnimationController animationController,
   }) : _animationController = animationController,
@@ -25,6 +26,7 @@ class PopupMenuContent extends StatefulWidget {
   final Offset globalPos;
   final GlobalKey _menuKey;
   final double? menuHeight;
+  final AppThemeExtension theme;
   final AnimationController _animationController;
   final List<({String title, IconData icon, bool isDanger})> menuData;
 
@@ -48,8 +50,6 @@ class _PopupMenuContentState extends State<PopupMenuContent> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<AppThemeExtension>()!;
-
     return Positioned(
       top: topPosition,
       left: leftPosition,
@@ -87,9 +87,9 @@ class _PopupMenuContentState extends State<PopupMenuContent> {
                       key: widget._menuKey,
                       width: menuWidth,
                       decoration: BoxDecoration(
-                        color: theme.surfaceOverlay.withValues(alpha: 0.6),
+                        color: widget.theme.surfaceOverlay.withValues(alpha: 0.6),
                         borderRadius: menuBorderRadius,
-                        border: Border.all(color: theme.borderMedium),
+                        border: Border.all(color: widget.theme.borderMedium),
                       ),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -101,11 +101,10 @@ class _PopupMenuContentState extends State<PopupMenuContent> {
                           ) ...[
                             PopupMenuItemTile(
                               menuItem: widget.menuData[index],
-                              textColor: widget.menuData[index].isDanger
-                                  ? theme.danger
-                                  : theme.foregroundBright,
+                              isDanger: widget.menuData[index].isDanger,
                               currentIndex: index,
                               selectedIndex: selectedIndex,
+                              theme: widget.theme,
                             ),
                             if (index != widget.menuData.length - 1)
                               Divider(
@@ -113,7 +112,7 @@ class _PopupMenuContentState extends State<PopupMenuContent> {
                                 endIndent: 12,
                                 height: 0,
                                 thickness: 0,
-                                color: theme.foregroundVeryLow,
+                                color: widget.theme.foregroundVeryLow,
                               ),
                           ],
                         ],
