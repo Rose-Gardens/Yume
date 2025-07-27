@@ -44,28 +44,32 @@ class _HabitsScreenState extends State<HabitsScreen> {
 
         return Stack(
           children: [
-            CustomScrollView(
-              physics: const BouncingScrollPhysics(
-                parent: AlwaysScrollableScrollPhysics(),
-              ),
-              slivers: [
-                ...sliverAppbar(context),
-                SliverPadding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  sliver: SliverList(
-                    delegate: SliverChildBuilderDelegate((context, index) {
-                      final habit = filteredHabits[index];
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: 12),
-                        child: HabitsGesturableCard(
-                          habit: habit,
-                          overlayKey: overlayKey,
-                        ),
-                      );
-                    }, childCount: filteredHabits.length),
-                  ),
+            // > The earliest place I could add BackdropGroup
+            // > for the Habit card blurs.
+            BackdropGroup(
+              child: CustomScrollView(
+                physics: const BouncingScrollPhysics(
+                  parent: AlwaysScrollableScrollPhysics(),
                 ),
-              ],
+                slivers: [
+                  ...sliverAppbar(context),
+                  SliverPadding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    sliver: SliverList(
+                      delegate: SliverChildBuilderDelegate((context, index) {
+                        final habit = filteredHabits[index];
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 12),
+                          child: HabitsGesturableCard(
+                            habit: habit,
+                            overlayKey: overlayKey,
+                          ),
+                        );
+                      }, childCount: filteredHabits.length),
+                    ),
+                  ),
+                ],
+              ),
             ),
             PopupMenu(key: overlayKey),
           ],

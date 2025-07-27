@@ -29,29 +29,33 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
     return ColoredBox(
       color: theme.overlayHigh,
-      child: CustomScrollView(
-        physics: const BouncingScrollPhysics(
-          parent: AlwaysScrollableScrollPhysics(),
-        ),
-        slivers: [
-          ...sliverAppbar(context),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate((context, index) {
-                final settingsGroup = settingsGroups[index];
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 20),
-                  child: SettingsContent(
-                    isYume: settingsGroup.title == "Yume",
-                    settingsGroup: settingsGroup,
-                    baseTheme: baseTheme,
-                  ),
-                );
-              }, childCount: settingsGroups.length),
-            ),
+      // > The earliest place I could add BackdropGroup
+      // > for the Settings Content blurs.
+      child: BackdropGroup(
+        child: CustomScrollView(
+          physics: const BouncingScrollPhysics(
+            parent: AlwaysScrollableScrollPhysics(),
           ),
-        ],
+          slivers: [
+            ...sliverAppbar(context),
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              sliver: SliverList(
+                delegate: SliverChildBuilderDelegate((context, index) {
+                  final settingsGroup = settingsGroups[index];
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: SettingsContent(
+                      isYume: settingsGroup.title == "Yume",
+                      settingsGroup: settingsGroup,
+                      baseTheme: baseTheme,
+                    ),
+                  );
+                }, childCount: settingsGroups.length),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

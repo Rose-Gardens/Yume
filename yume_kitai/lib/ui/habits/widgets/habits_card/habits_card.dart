@@ -90,7 +90,7 @@ class _HabitsCardState extends State<HabitsCard> with TickerProviderStateMixin {
       condition: widget.shouldBlurUI,
       parentBuilder: (Widget child) => ClipRRect(
         borderRadius: _style.borderRadius,
-        child: BackdropFilter(
+        child: BackdropFilter.grouped(
           filter: blurSaturateFilterPerformance,
           child: child,
         ),
