@@ -3,7 +3,8 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:yume_kitai/ui/core/ui/sliver_appbar/sliver_appbar.dart';
+
+import 'package:yume_kitai/ui/core/ui/sliver_appbar_content_list/sliver_appbar_content_list.dart';
 import 'package:yume_kitai/ui/settings/widgets/settings_content.dart';
 
 import '../../core/themes/theme_extension.dart';
@@ -19,7 +20,6 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-
   @override
   Widget build(BuildContext context) {
     final baseTheme = Theme.of(context);
@@ -31,31 +31,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
       color: theme.overlayHigh,
       // > The earliest place I could add BackdropGroup
       // > for the Settings Content blurs.
-      child: BackdropGroup(
-        child: CustomScrollView(
-          physics: const BouncingScrollPhysics(
-            parent: AlwaysScrollableScrollPhysics(),
-          ),
-          slivers: [
-            ...sliverAppbar(context),
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              sliver: SliverList(
-                delegate: SliverChildBuilderDelegate((context, index) {
-                  final settingsGroup = settingsGroups[index];
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
-                    child: SettingsContent(
-                      isYume: settingsGroup.title == "Yume",
-                      settingsGroup: settingsGroup,
-                      baseTheme: baseTheme,
-                    ),
-                  );
-                }, childCount: settingsGroups.length),
-              ),
+      child: SliverAppbarContentList(
+        delegate: SliverChildBuilderDelegate((context, index) {
+          final settingsGroup = settingsGroups[index];
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: SettingsContent(
+              isYume: settingsGroup.title == "Yume",
+              settingsGroup: settingsGroup,
+              baseTheme: baseTheme,
             ),
-          ],
-        ),
+          );
+        }, childCount: settingsGroups.length),
       ),
     );
   }

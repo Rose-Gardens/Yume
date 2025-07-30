@@ -12,8 +12,10 @@ import 'package:flutter_animate/flutter_animate.dart';
 import '../../themes/theme_extension.dart';
 
 class SliverAppbarDelegate extends SliverPersistentHeaderDelegate {
-  final double collapsedHeight = 0;
-  final double expandedHeight = 220;
+  SliverAppbarDelegate({required this.minHeight, required this.maxHeight});
+
+  final double minHeight;
+  final double maxHeight;
 
   @override
   Widget build(
@@ -74,10 +76,10 @@ class SliverAppbarDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => expandedHeight;
+  double get maxExtent => maxHeight;
 
   @override
-  double get minExtent => collapsedHeight;
+  double get minExtent => minHeight;
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
