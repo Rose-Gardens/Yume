@@ -58,9 +58,11 @@ class _SliverAppbarContentListState extends State<SliverAppbarContentList>
             }
             _scrollController.animateTo(
               snap,
-              //TODO: tweak the duration and curve
-              duration: const Duration(milliseconds: 1000),
-              curve: Curves.easeOutQuart,
+              // TODO: tweak the duration and curve
+              // /> Also its not nearly as smooth as it should be
+              // /> See Samsung
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.easeOut,
             );
           }
         });

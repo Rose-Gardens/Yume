@@ -24,7 +24,7 @@ class HabitsCard extends StatefulWidget {
   final Habit habit;
   final double? width;
   final SwipeDirection swipeDirection;
-  final bool shouldBlurUI = true;
+  final bool shouldBlurUI = false;
 
   @override
   State<HabitsCard> createState() => _HabitsCardState();
