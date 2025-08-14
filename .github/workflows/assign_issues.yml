@@ -1,19 +1,19 @@
-name: "Auto-assign new issues" 
-
-# Trigger on issue creation
+name: Auto Assign
 on:
   issues:
     types: [opened]
-
+  pull_request:
+    types: [opened]
 jobs:
-  assign:
-    # Runs on Ubuntu
+  run:
     runs-on: ubuntu-latest
-
+    permissions:
+      issues: write
+      pull-requests: write
     steps:
-      - name: Add me as assignee
-        uses: actions-ecosystem/action-add-assignees@v1
-        with:
-          # GitHub token for authentication
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: 'Auto-assign issue'
+      uses: pozil/auto-assign-issue@v1
+      with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
           assignees: GetPsyched6
+          numOfAssignee: 1
