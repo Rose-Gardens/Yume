@@ -63,7 +63,7 @@ class SettingsContent extends StatelessWidget {
           condition: shouldBlurUI,
           parentBuilder: (Widget child) => ClipRRect(
             borderRadius: borderRadius,
-            child: BackdropFilter(
+            child: BackdropFilter.grouped(
               filter: blurSaturateFilterPerformance,
               child: child,
             ),

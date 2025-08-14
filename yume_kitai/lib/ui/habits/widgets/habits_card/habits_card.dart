@@ -24,7 +24,7 @@ class HabitsCard extends StatefulWidget {
   final Habit habit;
   final double? width;
   final SwipeDirection swipeDirection;
-  final bool shouldBlurUI = true;
+  final bool shouldBlurUI = false;
 
   @override
   State<HabitsCard> createState() => _HabitsCardState();
@@ -90,7 +90,7 @@ class _HabitsCardState extends State<HabitsCard> with TickerProviderStateMixin {
       condition: widget.shouldBlurUI,
       parentBuilder: (Widget child) => ClipRRect(
         borderRadius: _style.borderRadius,
-        child: BackdropFilter(
+        child: BackdropFilter.grouped(
           filter: blurSaturateFilterPerformance,
           child: child,
         ),
